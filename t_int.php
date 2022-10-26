@@ -16,6 +16,6 @@ $stmt = $pdo->query("SELECT rec_name,rec_sname FROM rec_user");
 $stmt->execute();
 $result = $stmt->fetchAll();
 foreach ($result as $row){
-	echo "<li>{$row['rec_name']} {$row['rec_sname']}</li>"
+	echo "<li>".$row['rec_name']." ".$row['rec_sname']."</li>";
 }
 ?>
