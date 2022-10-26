@@ -3,11 +3,12 @@
 
 	    if (isset($_GET['id'])) 
 	    {
-			 $id = $_GET['id'];
-			 $query = "SELECT * FROM candidate_file WHERE file_id = '$id'";
-			 $result = mysqli_query($con,$query) or die('Error, query failed');
+			$id = $_GET['id'];
+			$query = "SELECT * FROM candidate_file WHERE file_id = '$id'";
+			$stmt = $con->query($query);
 			 //list($fileid, $filename, $filetype, $size,$data) = mysqli_fetch_array($result);
-			$row = mysqli_fetch_array($result);
+			//$row = mysqli_fetch_array($result);
+			$row = $stmt->fetch()
 			$data = $row["data"];
 			$size = $row["size"];
 			$filetype = $row["filetype"];
@@ -26,7 +27,7 @@
 			 flush();
 			 //$data = stripslashes($row["data"]);
 			 echo $data;
-			 mysqli_close($con);
+			 //mysqli_close($con);
 			 exit;
 	    }
  ?>

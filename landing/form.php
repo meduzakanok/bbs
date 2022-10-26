@@ -181,20 +181,20 @@ else{
 											<optgroup label="ประเทศนิยม">
 												<?php
 													$sql = "SELECT country,country_val FROM passport_country Where country_pop=1 order by country";
-													$query = mysqli_query($con, $sql);
-													while($result = mysqli_fetch_assoc($query)):
+													$stmt = $con->query($sql);
+													while ($result = $stmt->fetch()) {
 												?>
 													<option value="<?php echo $result['country_val']?>"><?php echo $result['country']?></option>
-												<?php endwhile; ?>
+													<?php } ?>
 											</optgroup>
 											<optgroup label="ทั้งหมด">
 												<?php
 													$sql = "SELECT country,country_val FROM passport_country order by country";
-													$query = mysqli_query($con, $sql);
-													while($result = mysqli_fetch_assoc($query)):
+													$stmt = $con->query($sql);
+													while ($result = $stmt->fetch()) {
 												?>
 													<option value="<?php echo $result['country_val']?>"><?php echo $result['country']?></option>
-												<?php endwhile; ?>
+													<?php } ?>
 											</optgroup>
 										</select>
 										</div>
@@ -217,13 +217,13 @@ else{
 									<td style="width: 30%">
 										<?php
 											$sql = "SELECT provinceID,provinceThai FROM postalcode group by provinceID";
-											$query = mysqli_query($con, $sql);
+											$stmt = $con->query($sql);	
 										?>
 										<select name="ddProvince" id="ddProvince" class="ddStyle" style="width: 100%;cursor: pointer;">
 											<option value="">-เลือกจังหวัด-</option>
-											<?php while($result = mysqli_fetch_assoc($query)): ?>
+											<?php while ($result = $stmt->fetch()) { ?>
 											<option value="<?php echo $result['provinceID']?>"><?php echo $result['provinceThai']?></option>
-											<?php endwhile; ?>
+											<?php } ?>
 										 </select>
 										 <input type="hidden" name="ddProvince_info" id="ddProvince_info">
 									</td>
@@ -507,11 +507,11 @@ else{
 							 <select name="ddModule[]" id="ddModule" class="ddStyle" style="width: 100%" multiple>
 								<?php
 									$sql = "SELECT SAP_module,SAP_moduleVal FROM sap_modules order by SAP_module";
-									$query = mysqli_query($con, $sql);
-									while($result = mysqli_fetch_assoc($query)):
+									$stmt = $con->query($sql);
+									while ($result = $stmt->fetch()) {
 								?>
 									<option value="<?php echo $result['SAP_moduleVal']?>"><?php echo $result['SAP_module']?></option>
-								<?php endwhile; ?>
+								<?php }?>
 							 </select>
 						</td>
 					</tr>
@@ -524,11 +524,11 @@ else{
 							<select name="ddLanguage[]" id="ddLanguage" class="ddStyle" style="width: 100%" multiple>
 								<?php
 									$sql = "SELECT lang,lang_val FROM prog_lang order by lang";
-									$query = mysqli_query($con, $sql);
-									while($result = mysqli_fetch_assoc($query)):
+									$stmt = $con->query($sql);
+									while ($result = $stmt->fetch()) {
 								?>
 									<option value="<?php echo $result['lang_val']?>"><?php echo $result['lang']?></option>
-								<?php endwhile; ?>
+								<?php } ?>
 							 </select>
 						</td>
 					</tr>
@@ -1742,6 +1742,6 @@ else{
 <?php
 //if ($con)
 //	mysqli_close($con);
-if ($con)
-	mysqli_close($con);
+//if ($con)
+//	mysqli_close($con);
 ?>

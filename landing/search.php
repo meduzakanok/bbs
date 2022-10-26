@@ -117,10 +117,10 @@ else{
 								$sql .= " or (name_th LIKE '%".trim($txtName)."%') or (sname_th LIKE '%".trim($txtName)."%'))";
 								$sql .= " group by candidate_ID";
 								//echo 'sql candidate - '.$sql."<br/>";
-								$query = mysqli_query($con, $sql);
+								$stmt = $con->query($sql);
 								//$rows = mysqli_num_rows($query);
 								$candidate_rec = '(';
-								while($result = mysqli_fetch_assoc($query)){
+								while ($result = $stmt->fetch()) {
 									$candidate_rec .= "'".$result['candidate_ID']."',";
 								} //end while
 								if ($candidate_rec  != '('){
@@ -144,10 +144,10 @@ else{
 									$sql .= " and (candidate_ID in ".$candidate_rec.")";
 								$sql .= " group by candidate_ID";
 								//echo 'sql candidate_position - '.$sql."<br/>";
-								$query = mysqli_query($con, $sql);
+								$stmt = $con->query($sql);
 								//$rows = mysqli_num_rows($query);
 								$candidate_pos = '(';
-								while($result = mysqli_fetch_assoc($query)){
+								while ($result = $stmt->fetch()) {
 									$candidate_pos .= "'".$result['candidate_ID']."',";
 								} //end while
 								if ($candidate_pos  != '('){
@@ -169,10 +169,10 @@ else{
 									$sql .= " and (candidate_ID in ".$candidate_pos.")";
 								$sql .= " group by candidate_ID";
 								//echo 'sql candidate_callrecord - '.$sql."<br/>";
-								$query = mysqli_query($con, $sql);
+								$stmt = $con->query($sql);
 								//$rows = mysqli_num_rows($query);
 								$candidate_call = '(';
-								while($result = mysqli_fetch_assoc($query)){
+								while ($result = $stmt->fetch()) {
 									$candidate_call .= "'".$result['candidate_ID']."',";
 								} //end while
 								if ($candidate_call  != '('){
@@ -196,10 +196,10 @@ else{
 									$sql .= " and (candidate_ID in ".$candidate_call.")";
 								$sql .= " group by candidate_ID";
 								//echo 'sql candidate_callrecord - '.$sql."<br/>";
-								$query = mysqli_query($con, $sql);
+								$stmt = $con->query($sql);
 								//$rows = mysqli_num_rows($query);
 								$candidate_int = '(';
-								while($result = mysqli_fetch_assoc($query)){
+								while ($result = $stmt->fetch()) {
 									$candidate_int .= "'".$result['candidate_ID']."',";
 								} //end while
 								if ($candidate_int  != '('){
@@ -279,9 +279,9 @@ else{
 					
 					//echo 'candidate_record - '.$candidate_record."<br>";
 					//echo 'SQL - '.$sql."<br>";
-					$query = mysqli_query($con, $sql);
+					$stmt = $con->query($sql);
 					//$rows = mysqli_num_rows($query);
-					while($result = mysqli_fetch_assoc($query)){
+					while ($result = $stmt->fetch()) {
 				?>
 				<tr>
 					<td style="vertical-align: top;"><?php echo $result['title_en'].$result['name_en'].' '.$result['sname_en']?></td>
@@ -291,17 +291,17 @@ else{
 							$sql_pos = "SELECT * FROM candidate_position ";
 							$sql_pos .= " where 1 ";
 							$sql_pos .= " and (candidate_ID ='".$result['candidate_ID']."') ";
-							$query_pos = mysqli_query($con, $sql_pos);
-							while($result_pos = mysqli_fetch_assoc($query_pos)){
+							$stmt = $con->query($sql_pos);
+							while ($result_pos = $stmt->fetch()) {
 								echo '<table style="width:100%;" id="tabRecord_inside"><tr>';
 								echo "<td style='width:150px;vertical-align: top;text-align: left;'>".$result_pos['position']."</td>";
 								$sql_posskill = "SELECT * FROM candidate_positionskill ";
 								$sql_posskill .= " where 1 ";
 								$sql_posskill .= " and (candidate_ID ='".$result['candidate_ID']."') ";
 								$sql_posskill .= " and (position ='".$result_pos['position']."') ";
-								$query_posskill = mysqli_query($con, $sql_posskill);
+								$stmt = $con->query($sql_posskill);
 								echo '<td style="vertical-align: top;">';
-								while($result_posskill = mysqli_fetch_assoc($query_posskill)){
+								while ($result_posskill = $stmt->fetch()) {
 									echo "- ".$result_posskill['skill']."<br/>";
 								}
 								echo "</td>";
@@ -314,8 +314,8 @@ else{
 							$sql_cMail = "SELECT * FROM candidate_contact ";
 							$sql_cMail .= " where contact_type='Email' ";
 							$sql_cMail .= " and (candidate_ID ='".$result['candidate_ID']."') ";
-							$query_cMail = mysqli_query($con, $sql_cMail);
-							while($result_cMail = mysqli_fetch_assoc($query_cMail)){
+							$stmt = $con->query($sql_cMail);
+							while ($result_cMail = $stmt->fetch()) {
 								echo "- ".$result_cMail['contact_info']."<br/>";
 							}
 						?>
@@ -325,8 +325,8 @@ else{
 							$sql_cTel = "SELECT * FROM candidate_contact ";
 							$sql_cTel .= " where contact_type='Telephone' ";
 							$sql_cTel .= " and (candidate_ID ='".$result['candidate_ID']."') ";
-							$query_cTel = mysqli_query($con, $sql_cTel);
-							while($result_cTel = mysqli_fetch_assoc($query_cTel)){
+							$stmt = $con->query($sql_cTel);
+							while ($result_cTel = $stmt->fetch()) {
 								echo "- ".$result_cTel['contact_info']."<br/>";
 							}
 						?>
@@ -336,8 +336,8 @@ else{
 							$sql_cLine = "SELECT * FROM candidate_contact ";
 							$sql_cLine .= " where contact_type='LineID' ";
 							$sql_cLine .= " and (candidate_ID ='".$result['candidate_ID']."') ";
-							$query_cLine = mysqli_query($con, $sql_cLine);
-							while($result_cLine = mysqli_fetch_assoc($query_cLine)){
+							$stmt = $con->query($sql_cLine);
+							while ($result_cLine = $stmt->fetch()) {
 								echo $result_cLine['contact_info']."<br/>";
 							}
 						?>

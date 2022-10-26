@@ -14,10 +14,11 @@ function getLogin($enc, $ind) {
 		$str_l = trim(decrypt($str_l));
 		$chk=0;
 		$sql = "SELECT * FROM login_session WHERE login_user='".$str_l."' and login_flag='Y' order by login_date desc";
-		$query = mysqli_query($con, $sql);
-		$rows = mysqli_num_rows($query);
+		$stmt = $con->query($sql);
+		$rows = $stmt->rowCount();
+										
 		if ($rows>0){
-			while($result = mysqli_fetch_assoc($query)){
+			while ($result = $stmt->fetch()) {
 				if ($chk>0)
 					break;
 				$r_enc = $str_l.'/'.$result['login_name']." ".$result['login_sname'];
@@ -30,10 +31,11 @@ function getLogin($enc, $ind) {
 		$str_l = trim(decrypt($str_l));
 		$chk=0;
 		$sql = "SELECT * FROM login_session WHERE login_user='".$str_l."' and login_flag='N' order by login_date desc";
-		$query = mysqli_query($con, $sql);
-		$rows = mysqli_num_rows($query);
+		$stmt = $con->query($sql);
+		$rows = $stmt->rowCount();
+		
 		if ($rows>0){
-			while($result = mysqli_fetch_assoc($query)){
+			while ($result = $stmt->fetch()) {
 				//if ($chk>0)
 				//	break;
 				$r_enc = 'Last Access '.$result['login_date'];

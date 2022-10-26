@@ -10,12 +10,12 @@ if($frm=="candidate"){
 function Delcandidate($id){
 	global $con;
 	$sql = "UPDATE candidate SET flag_delete='Y' WHERE candidate_ID ='".$id."'";
-	$query = mysqli_query($con, $sql);
+	$stmt = $con->query($sql);
 	if($query) 
 		$res = 1;
 	else
 		$res = 0;
 	return $res;
 }
-mysqli_close($con);
+//mysqli_close($con);
 ?>

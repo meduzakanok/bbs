@@ -24,14 +24,15 @@ else if($_POST["action"]=="load-client"){
 function loadPosition($act,$position_id){
 	global $con;
 	$sql = "SELECT position_ID, position, position_val FROM position order by position";
-	$query = mysqli_query($con, $sql);
-	$rows = mysqli_num_rows($query);
+	$stmt = $con->query($sql);
+	$rows = $stmt->rowCount();
+										
 	//$result = $conn->query($sql);
 	$options="<option value=''>--Select Position--</option>";
 	if ($rows > 0) {
 	  // output data of each row
 	  
-	 while($result = mysqli_fetch_assoc($query)) {  
+	while ($result = $stmt->fetch()) {
 		if ($position_id == $result['position_val'])
 			$options.= "<option value='".$result['position_val']."' selected>".$result['position']."</option>";
 		else 
@@ -44,13 +45,13 @@ function loadPosition($act,$position_id){
 function loadClient($act,$position_id){
 	global $con;
 	$sql = "SELECT * FROM client_company order by client_company ";
-	$query = mysqli_query($con, $sql);
-	$rows = mysqli_num_rows($query);
+	$stmt = $con->query($sql);
+	$rows = $stmt->rowCount();
 	//$result = $conn->query($sql);
 	$options="<option value=''>--Select Company--</option>";
 	if ($rows > 0) {
-	  // output data of each row
-		 while($result = mysqli_fetch_assoc($query)) {  
+		// output data of each row
+		 while ($result = $stmt->fetch()) {
 			if ($act == '1')
 				$options.= "<option value='".$result['client_ID']."|".$result['client_department']."|".$result['client_contact']."|".$result['client_company']."'>".$result['client_company']."</option>";
 			elseif ($act == '2'){
@@ -86,5 +87,5 @@ function loadClient($act,$position_id){
 	return $options;
 }
 */
-mysqli_close($con);
+//mysqli_close($con);
 ?>

@@ -271,7 +271,7 @@ else{
 									if ($pos=='Other' && isset($txtPositionOther))
 										$sql_position .= " '$txtPositionOther', ";
 									$sql_position .= " '$current_date', '$current_date')";
-									$r_position = mysqli_query($con,$sql_position);
+									$stmt = $con->query($sql_position);
 									
 									if($pos == 'SAP') {								//-----------------------------------------------------------------------------start insert SAP
 										$pos_ind[0][0] = '<img src="images/radioBtnC.png">';
@@ -282,7 +282,7 @@ else{
 													$sql_sap_skill .= " create_date, update_date)";
 													$sql_sap_skill .= " VALUES ('$candidate_ID', '$pos ', '$sap_skill', 'text', ";
 													$sql_sap_skill .= " '$current_date', '$current_date')";
-													$r_sap_skill = mysqli_query($con,$sql_sap_skill);
+													$stmt = $con->query($sql_sap_skill);
 													$pos_ind[0][1] .= '- '.$sap_skill.'<br/>';
 												} //end if sap_skill
 											} //end for sap_skill
@@ -297,7 +297,7 @@ else{
 													$sql_prog_skill .= " create_date, update_date)";
 													$sql_prog_skill .= " VALUES ('$candidate_ID', '$pos ', '$prog_skill', 'text', ";
 													$sql_prog_skill .= " '$current_date', '$current_date')";
-													$r_prog_skill = mysqli_query($con,$sql_prog_skill);
+													$stmt = $con->query($sql_prog_skill);
 													$pos_ind[1][1] .= '- '.$prog_skill.'<br/>';
 												} //end if sql_prog_skill
 											} //end for sql_prog_skill
@@ -310,7 +310,7 @@ else{
 											$sql_sa_skill .= " create_date, update_date)";
 											$sql_sa_skill .= " VALUES ('$candidate_ID', '$pos ', '$radSACode', 'choice', ";
 											$sql_sa_skill .= " '$current_date', '$current_date')";
-											$r_sa_skill = mysqli_query($con,$sql_sa_skill);
+											$stmt = $con->query($sql_sa_skill);
 											if($radSACode == 'Y')
 												$radSACode_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
 											else
@@ -321,7 +321,7 @@ else{
 											$sql_sa_skill_txt .= " create_date, update_date)";
 											$sql_sa_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtSALange', 'text', ";
 											$sql_sa_skill_txt .= " '$current_date', '$current_date')";
-											$r_sa_skill_txt = mysqli_query($con,$sql_sa_skill_txt);
+											$stmt = $con->query($r_sa_skill_txt);
 										} //end if txtSALange
 									}
 									elseif($pos == 'BA') {							//-----------------------------------------------------------------------------start insert BA
@@ -331,7 +331,7 @@ else{
 											$sql_ba_skill .= " create_date, update_date)";
 											$sql_ba_skill .= " VALUES ('$candidate_ID', '$pos ', '$radBACode', 'choice', ";
 											$sql_ba_skill .= " '$current_date', '$current_date')";
-											$r_ba_skill = mysqli_query($con,$sql_ba_skill);
+											$stmt = $con->query($sql_ba_skill);
 											if($radBACode == 'Y')
 												$radBACode_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
 											else
@@ -342,7 +342,7 @@ else{
 											$sql_ba_skill_txt .= " create_date, update_date)";
 											$sql_ba_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtBALange', 'text', ";
 											$sql_ba_skill_txt .= " '$current_date', '$current_date')";
-											$r_ba_skill_txt = mysqli_query($con,$sql_ba_skill_txt);
+											$stmt = $con->query($sql_ba_skill_txt);
 										} //end if txtBALange
 									}
 									elseif($pos == 'PM') {							//-----------------------------------------------------------------------------start insert PM
@@ -352,7 +352,7 @@ else{
 											$sql_proj_skill .= " create_date, update_date)";
 											$sql_proj_skill .= " VALUES ('$candidate_ID', '$pos ', '$radProjectManager', 'choice', ";
 											$sql_proj_skill .= " '$current_date', '$current_date')";
-											$r_proj_skill = mysqli_query($con,$sql_proj_skill);
+											$stmt = $con->query($sql_proj_skill);
 											if($radProjectManager == 'Y')
 												$radProjectManager_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
 											else
@@ -363,7 +363,7 @@ else{
 											$sql_proj_skill_txt .= " create_date, update_date)";
 											$sql_proj_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtProjectManagerLang', 'text', ";
 											$sql_proj_skill_txt .= " '$current_date', '$current_date')";
-											$r_proj_skill_txt = mysqli_query($con,$sql_proj_skill_txt);
+											$stmt = $con->query($sql_proj_skill_txt);
 										} //end if txtProjectManagerLang
 									}
 									elseif($pos == 'Tester') {				//-----------------------------------------------------------------------------start insert Tester
@@ -375,7 +375,7 @@ else{
 													$sql_tester_skill .= " create_date, update_date)";
 													$sql_tester_skill .= " VALUES ('$candidate_ID', '$pos ', '$tester_skill', 'choice', ";
 													$sql_tester_skill .= " '$current_date', '$current_date')";
-													$r_tester_skill = mysqli_query($con,$sql_tester_skill);
+													$stmt = $con->query($sql_tester_skill);
 													if ($tester_skill == 'Automate')
 														$pos_ind[5][1] =  '<img src="images/radioBtnC.png"> Automate';
 													if ($tester_skill == 'Manual')
@@ -391,7 +391,7 @@ else{
 											$sql_proa_skill_txt .= " create_date, update_date)";
 											$sql_proa_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtProjectAdminSkill', 'text', ";
 											$sql_proa_skill_txt .= " '$current_date', '$current_date')";
-											$r_proa_skill_txt = mysqli_query($con,$sql_proa_skill_txt);
+											$stmt = $con->query($sql_proa_skill_txt);
 										} //end if txtProjectManagerLang
 									}
 									elseif($pos == 'Other') {				//-----------------------------------------------------------------------------start insert Other
@@ -401,7 +401,7 @@ else{
 											$sql_other_skill_txt .= " create_date, update_date)";
 											$sql_other_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtPositionOtherSkill', 'text', ";
 											$sql_other_skill_txt .= " '$current_date', '$current_date')";
-											$r_other_skill_txt = mysqli_query($con,$sql_other_skill_txt);
+											$stmt = $con->query($sql_other_skill_txt);
 										} //end if txtPositionOtherSkill
 									} 											//-----------------------------------------------------------------------------end insert on each position
 								} //end if pos
@@ -417,7 +417,7 @@ else{
 									$sql_contact .= " create_date, update_date)";
 									$sql_contact .= " VALUES ('$candidate_ID', '$mail ', 'Email', ";
 									$sql_contact .= " '$current_date', '$current_date')";
-									$r_contact = mysqli_query($con,$sql_contact);
+									$stmt = $con->query($sql_contact);
 								}
 							}
 						} 
@@ -430,7 +430,7 @@ else{
 									$sql_contact .= " create_date, update_date)";
 									$sql_contact .= " VALUES ('$candidate_ID', '$tel ', 'Telephone', ";
 									$sql_contact .= " '$current_date', '$current_date')";
-									$r_contact = mysqli_query($con,$sql_contact);
+									$stmt = $con->query($sql_contact);
 								}
 							}
 						} 
@@ -441,7 +441,7 @@ else{
 							$sql_contact .= " create_date, update_date)";
 							$sql_contact .= " VALUES ('$candidate_ID', '$txtLineID ', 'LineID', ";
 							$sql_contact .= " '$current_date', '$current_date')";
-							$r_contact = mysqli_query($con,$sql_contact);	
+							$stmt = $con->query($sql_contact);
 						}
 						//-----------------------------------------------------------------------------end insert LineID
 						//-----------------------------------------------------------------------------start insert candidate
@@ -453,7 +453,7 @@ else{
 						$sql_candidate .= " '$txtIDcard', '$txtPassport', '$ddPassportCountry', '$txtAddress', '$ddSubDistrict_info', '$ddDistrict_info', '$ddProvince_info', '$txtZipcode', ";
 						$sql_candidate .= " '$radBlood', '$radGender', '$radContract', '$radExpStatus', '$txtExpStatus', '$radMarital', '$radNationality', '$txtNationality', '$radEthnicity', '$txtEthnicity', '$txtBDDate', ";
 						$sql_candidate .= " '$current_date', '$current_date')";
-						$r_candidate = mysqli_query($con,$sql_candidate);
+						$stmt = $con->query($sql_candidate);
 						//echo "sql_candidate - ".$sql_candidate."<br/>";
 						//echo "r_candidate - ".$r_candidate."<br/>";
 						//-----------------------------------------------------------------------------end insert candidate
@@ -479,7 +479,7 @@ else{
 										$sql_candidate_file="INSERT INTO candidate_file(candidate_ID, filename, filetype, size, data,create_date, update_date)";
 										$sql_candidate_file .= " VALUES ('$candidate_ID', '$filename','$file_type','$file_size','$content', ";
 										$sql_candidate_file .= " '$current_date', '$current_date')";
-										$r_candidate_file = mysqli_query($con,$sql_candidate_file);
+										$stmt = $con->query($sql_candidate_file);
 									}
 								} //end tmpname
 							}//end foreach
@@ -1011,7 +1011,7 @@ else{
 									$sql_callrecord .= " '$ddTypeEmp', '$txtPresentSalary', '$txtBonus', '$txtOtherIncome_notebook', '$txtOtherIncome_StandBy', '$txtOtherIncome_transportation', '$txtOtherIncome_ShiftWork', '$txtOtherIncome_OT', ";
 									$sql_callrecord .= " '$txtOtherIncome_Others', '$txtOtherIncome_Others_baht', '$txtBBSOfferCalculation', '$txtStartDateNewJob', '$txtExpectationSalary', '$txtBBSOffer', '$txtNote', '$txtCallRec_matchingNo', ";
 									$sql_callrecord .= " '$current_date', '$current_date')";
-									$r_callrecord = mysqli_query($con,$sql_callrecord);
+									$stmt = $con->query($sql_callrecord);
 									//-----------------------------------------------------------------------------end insert callrecord
 					?>
 					<tr>
@@ -1182,7 +1182,7 @@ else{
 									$sql_invrecord .= " create_date, update_date)";
 									$sql_invrecord .= " VALUES ('$candidate_ID', '$txtInterviewDate_ins', '$txtClientID', '$ddPass', '$ddSignContract', '$txtContractPeriod', '$txtStartDate', '$txtNote32', '$txtIntvRec_matchingNo',";
 									$sql_invrecord .= " '$current_date', '$current_date')";
-									$r_invrecord = mysqli_query($con,$sql_invrecord);
+									$stmt = $con->query($sql_invrecord);
 									//-----------------------------------------------------------------------------end insert invrecord
 					?>
 					<tr>
@@ -1274,10 +1274,9 @@ else{
 						<?php 
 							include_once 'db.php';
 							$sql_candidate_file_sel="SELECT * FROM candidate_file where candidate_ID = '$candidate_ID' ";
-							$result_set=mysqli_query($con,$sql_candidate_file_sel);
-							$r_candidate_file = mysqli_query($con,$sql_candidate_file_sel);
-							while (list($file_ID,$candidate_ID, $filename, $filetype, $size, $data) = mysqli_fetch_array($result_set)) {
-									echo "<div class='displayFile'>- <a href='download.php?id=".urlencode($file_ID)."'>".$filename."</a></div>";
+							$stmt = $con->query($sql_candidate_file_sel);
+							while ($result = $stmt->fetch()) {
+									echo "<div class='displayFile'>- <a href='download.php?id=".urlencode($result['file_ID'])."'>".$result['filename']."</a></div>";
 							}
 						?>
 					</div>
@@ -1432,6 +1431,6 @@ else{
 </body>
 </html>
 <?php
-if ($con)
-	mysqli_close($con);
+//if ($con)
+//	mysqli_close($con);
 ?>

@@ -82,11 +82,11 @@ else{
 					<h4 class="mb-4">Part 1 :  Information</h4>
 					<?php
 						$sql_candidate ="SELECT * FROM candidate where candidate_ID = '$id' ";
-						$query_candidate = mysqli_query($con,$sql_candidate);
-						$rows_candidate = mysqli_num_rows($query_candidate);
+						$stmt = $con->query($sql_candidate);
+						$rows_candidate = $stmt->rowCount();
 						//echo 'rows - '.$rows."<br/>";
 						if ($rows_candidate > 0){
-							while($result = mysqli_fetch_assoc($query_candidate)){
+							while ($result = $stmt->fetch()) {
 					?>
 					<table border="0" style="width: 100%" class="tabForm"> 
 						<tr>
@@ -193,20 +193,20 @@ else{
 											<optgroup label="ประเทศนิยม">
 												<?php
 													$sql_country = "SELECT country,country_val FROM passport_country Where country_pop=1 order by country";
-													$query_country = mysqli_query($con, $sql_country);
-													while($result_country = mysqli_fetch_assoc($query_country)):
+													$stmt = $con->query($sql_country);
+													while ($result_country = $stmt->fetch()) {
 												?>
 													<option value="<?php echo $result_country['country_val']?>"><?php echo $result_country['country']?></option>
-												<?php endwhile; ?>
+												<?php } ?>
 											</optgroup>
 											<optgroup label="ทั้งหมด">
 												<?php
 													$sql_country_all = "SELECT country,country_val FROM passport_country order by country";
-													$query_country_all = mysqli_query($con, $sql_country_all);
-													while($result_country_all = mysqli_fetch_assoc($query_country_all)):
+													$stmt = $con->query($sql_country_all);
+													while ($result_country_all = $stmt->fetch()) {
 												?>
 													<option value="<?php echo $result_country_all['country_val']?>" <?php echo ($result['passport_country'] == $result_country_all['country_val'] ? "selected" : "") ?>><?php echo $result_country_all['country']?></option>
-												<?php endwhile; ?>
+												<?php } ?>
 											</optgroup>
 										</select>
 										</div>
@@ -229,13 +229,13 @@ else{
 									<td style="width: 30%">
 										<?php
 											$sql_province = "SELECT provinceID,provinceThai FROM postalcode group by provinceID";
-											$query_province = mysqli_query($con, $sql_province);
+											$stmt = $con->query($query_province);
 										?>
 										<select name="ddProvince" id="ddProvince" class="ddStyle" style="width: 100%;cursor: pointer;">
 											<option value="">-เลือกจังหวัด-</option>
-											<?php while($result_province = mysqli_fetch_assoc($query_province)): ?>
+										<?php while ($result_province = $stmt->fetch()) { ?>
 											<option value="<?php echo $result_province['provinceID']?>" <?php echo ($result['province'] == $result_province['provinceThai'] ? "selected" : "") ?>><?php echo $result_province['provinceThai']?></option>
-											<?php endwhile; ?>
+										<?php }?>
 										 </select>
 										 <input type="hidden" name="ddProvince_info" id="ddProvince_info">
 									</td>
@@ -243,13 +243,13 @@ else{
 									<td style="width: 30%">
 										<?php
 											$sql_amphure = "SELECT provinceID,districtID,districtThai,districtThaiShort FROM postalcode WHERE provinceThai='".$result['province']."' group by districtID";
-											$query_amphure = mysqli_query($con, $sql_amphure);
+											$stmt = $con->query($sql_amphure);
 										?>
 										<select name="ddDistrict" id="ddDistrict" class="ddStyle" style="width: 100%;cursor: pointer;">
 											<option value="">-เลือกอำเภอ-</option>
-											<?php while($result_amphure = mysqli_fetch_assoc($query_amphure)): ?>
+											<?php while ($result_amphure = $stmt->fetch()) { ?>
 											<option value="<?php echo $result_amphure['districtID']?>" <?php echo ($result['district'] == $result_amphure['districtThai'] ? "selected" : "") ?>><?php echo $result_amphure['districtThai']?></option>
-											<?php endwhile; ?>
+										<?php }?>
 										 </select>
 										 <input type="hidden" name="ddDistrict_info" id="ddDistrict_info">
 									</td>
@@ -257,13 +257,13 @@ else{
 									<td style="width: 30%">
 										<?php
 											$sql_tambon = "SELECT provinceID,provinceThai,districtID,districtThai ,tambonID,tambonThai,tambonThaiShort,postCodeMain FROM postalcode WHERE districtThai='".$result['district']."' group by tambonID";
-											$query_tambon = mysqli_query($con, $sql_tambon);
+											$stmt = $con->query($sql_tambon);
 										?>
 										<select name="ddSubDistrict" id="ddSubDistrict" class="ddStyle" style="width: 100%;cursor: pointer;">
 											<option value="">-เลือกตำบล-</option>
-											<?php while($result_tambon = mysqli_fetch_assoc($query_tambon)): ?>
+											<?php while ($result_tambon = $stmt->fetch()) { ?>
 											<option value="<?php echo $result_tambon['provinceThai'].'|'.$result_tambon['districtThai'].'|'.$result_tambon['tambonID'].'|'.$result_tambon['tambonThai'].'|'.$result_tambon['postCodeMain']?>" <?php echo ($result['subdistrict'] == $result_tambon['tambonThai'] ? "selected" : "") ?>><?php echo $result_tambon['tambonThai']?></option>
-											<?php endwhile; ?>
+											<?php } ?>
 										 </select>
 										 <input type="hidden" name="ddSubDistrict_info" id="ddSubDistrict_info">
 									</td>
@@ -288,11 +288,11 @@ else{
 											<?php 
 												$LineID = '';
 												$sql_candidate_contact_line ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='LineID' ";
-												$query_candidate_contact_line =mysqli_query($con,$sql_candidate_contact_line);
-												$rows_candidate_contact_line = mysqli_num_rows($query_candidate_contact_line);
+												$stmt = $con->query($sql_candidate_contact_line);
+												$rows_candidate_contact_line = $stmt->rowCount();
 												//echo 'rows - '.$rows."<br/>";
 												if ($rows_candidate_contact_line > 0){
-													while($result_candidate_contact_line = mysqli_fetch_assoc($query_candidate_contact_line)){
+													while ($result_candidate_contact_line = $stmt->fetch()) {
 															$LineID = $result_candidate_contact_line['contact_info'] ; 
 													}
 												}
@@ -488,8 +488,8 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside tbleMail">
 									<?php 
 										$sql_candidate_contact_mail ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='Email' ";
-										$query_candidate_contact_mail =mysqli_query($con,$sql_candidate_contact_mail);
-										$rows_candidate_contact_mail = mysqli_num_rows($query_candidate_contact_mail);
+										$stmt = $con->query($sql_candidate_contact_mail);
+										$rows_candidate_contact_mail = $stmt->rowCount();
 										if ($rows_candidate_contact_mail == 0){
 									?>
 										<tr>
@@ -504,7 +504,7 @@ else{
 									<?php
 									}else {
 										$m =0;
-										while($result_candidate_contact_mail = mysqli_fetch_assoc($query_candidate_contact_mail)){
+										while ($result_candidate_contact_mail = $stmt->fetch()) {
 									?>
 										<tr>
 											<td style="text-align:right;width: 15%;height:40px">Email&nbsp;</td>
@@ -525,8 +525,8 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside tblTelephone">
 									<?php 
 										$sql_candidate_contact_tel ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='Telephone' ";
-										$query_candidate_contact_tel =mysqli_query($con,$sql_candidate_contact_tel);
-										$rows_candidate_contact_tel = mysqli_num_rows($query_candidate_contact_tel);
+										$stmt = $con->query($sql_candidate_contact_tel);
+										$rows_candidate_contact_tel = $stmt->rowCount();
 										if ($rows_candidate_contact_tel == 0){
 									?>
 										<tr>
@@ -541,7 +541,7 @@ else{
 									<?php
 									}else {
 										$t =0;
-										while($result_candidate_contact_tel = mysqli_fetch_assoc($query_candidate_contact_tel)){
+										while ($result_candidate_contact_tel = $stmt->fetch()) {
 									?>
 										<tr>
 											<td style="text-align:right;width: 22%;height:40px">Telephone&nbsp;</td>
@@ -591,22 +591,24 @@ else{
 					<?php
 						$sql_position_SAP ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='SAP' ";
 						//echo 'sql SAP - '.$sql_position_SAP;
-						$query_position_SAP = mysqli_query($con,$sql_position_SAP);
-						$rows_position_SAP = mysqli_num_rows($query_position_SAP);
+						$stmt = $con->query($sql_position_SAP);
+						$rows_position_SAP = $stmt->rowCount();
 						if ($rows_position_SAP > 0)
-							while($result_position_SAP = mysqli_fetch_assoc($query_position_SAP))
+							while ($result_position_SAP = $stmt->fetch()) {
 								$SAP = 'checked';
 						else	
 							$SAP = '';
 						
 						$sql_positionskill_SAP ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SAP' ";
 						//echo 'sql SAP - '.$sql_positionskill_SAP."<br/>";
-						$query_positionskill_SAP = mysqli_query($con,$sql_positionskill_SAP);
-						$rows_positionskill_SAP = mysqli_num_rows($query_positionskill_SAP);
+						
+						$stmt = $con->query($sql_positionskill_SAP);
+						$rows_positionskill_SAP = $stmt->rowCount();
+						
 						$SAP_skill = array();
 						if ($rows_positionskill_SAP > 0){
 							$sa = 0;
-							while($result_positionskill_SAP = mysqli_fetch_assoc($query_positionskill_SAP)){
+							while ($result_positionskill_SAP = $stmt->fetch()) {
 								$SAP_skill[$sa] = $result_positionskill_SAP['skill'];
 								$sa++;
 							}
@@ -621,33 +623,35 @@ else{
 							 <select name="ddModule[]" id="ddModule" class="ddStyle" style="width: 100%" multiple>
 								<?php
 									$sql_SAP = "SELECT SAP_module,SAP_moduleVal FROM sap_modules order by SAP_module";
-									$query_SAP = mysqli_query($con, $sql_SAP);
-									while($result_SAP = mysqli_fetch_assoc($query_SAP)):
+									$stmt = $con->query($sql_SAP);
+									while ($result_SAP = $stmt->fetch()) {
 								?>
 									<option value="<?php echo $result_SAP['SAP_moduleVal']?>" <?php echo (in_array($result_SAP['SAP_moduleVal'],$SAP_skill) ? "selected" : "") ?>><?php echo $result_SAP['SAP_module']?></option>
-								<?php endwhile; ?>
+									<?php } ?>
 							 </select>
 						</td>
 					</tr>
 					<?php
 						$sql_position_Programmer ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Programmer' ";
 						//echo 'sql Programmer - '.$sql_position_Programmer;
-						$query_position_Programmer = mysqli_query($con,$sql_position_Programmer);
-						$rows_position_Programmer = mysqli_num_rows($query_position_Programmer);
+						$stmt = $con->query($sql_position_Programmer);
+						$rows_position_Programmer = $stmt->rowCount();
+						
 						if ($rows_position_Programmer > 0)
-							while($result_position_Programmer = mysqli_fetch_assoc($query_position_Programmer))
+							while ($result_position_Programmer = $stmt->fetch()) 
 								$Programmer = 'checked';
 						else	
 							$Programmer = '';
 						
 						$sql_positionskill_Programmer ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Programmer' ";
 						//echo 'sql Programmer - '.$sql_positionskill_Programmer."<br/>";
-						$query_positionskill_Programmer = mysqli_query($con,$sql_positionskill_Programmer);
-						$rows_positionskill_Programmer = mysqli_num_rows($query_positionskill_Programmer);
+						$stmt = $con->query($sql_positionskill_Programmer);
+						$rows_positionskill_Programmer = $stmt->rowCount();
+						
 						$Programmer_skill = array();
 						if ($rows_positionskill_Programmer > 0){
 							$pg = 0;
-							while($result_positionskill_Programmer = mysqli_fetch_assoc($query_positionskill_Programmer)){
+							while ($result_positionskill_Programmer = $stmt->fetch()) {
 								$Programmer_skill[$pg] = $result_positionskill_Programmer['skill'];
 								$pg++;
 							}
@@ -662,41 +666,45 @@ else{
 							<select name="ddLanguage[]" id="ddLanguage" class="ddStyle" style="width: 100%" multiple>
 								<?php
 									$sql_lang = "SELECT lang,lang_val FROM prog_lang order by lang";
-									$query_lang = mysqli_query($con, $sql_lang);
-									while($result_lang = mysqli_fetch_assoc($query_lang)):
+									$stmt = $con->query($sql_lang);
+									while ($result_lang = $stmt->fetch()) {
 								?>
 									<option value="<?php echo $result_lang['lang_val']?>" <?php echo (in_array($result_lang['lang_val'],$Programmer_skill) ? "selected" : "") ?>><?php echo $result_lang['lang']?></option>
-								<?php endwhile; ?>
+								<?php } ?>
 							 </select>
 						</td>
 					</tr>
 					<?php
 						$sql_position_SA ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='SA' ";
 						//echo 'sql SA - '.$sql_position_SA;
-						$query_position_SA = mysqli_query($con,$sql_position_SA);
-						$rows_position_SA = mysqli_num_rows($query_position_SA);
+						
+						$stmt = $con->query($sql_position_SA);
+						$rows_position_SA = $stmt->rowCount();
+						
 						if ($rows_position_SA > 0)
-							while($result_position_SA = mysqli_fetch_assoc($query_position_SA))
+							while ($result_position_SA = $stmt->fetch())
 								$SA = 'checked';
 						else	
 							$SA = '';
 						
 						$sql_positionskill_SA ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SA' and skill_type='choice' ";
 						//echo 'sql SA - '.$sql_positionskill_SA."<br/>";
-						$query_positionskill_SA = mysqli_query($con,$sql_positionskill_SA);
-						$rows_positionskill_SA = mysqli_num_rows($query_positionskill_SA);
+						$stmt = $con->query($sql_positionskill_SA);
+						$rows_positionskill_SA = $stmt->rowCount();
+						
 						if ($rows_positionskill_SA > 0){
-							while($result_positionskill_SA = mysqli_fetch_assoc($query_positionskill_SA)){
+							while ($result_positionskill_SA = $stmt->fetch()){
 								$SA_skill = $result_positionskill_SA['skill'];
 							}
 						}
 						
 						$sql_positionskill_SA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SA' and skill_type='text' ";
 						//echo 'sql SA - '.$sql_positionskill_SA."<br/>";
-						$query_positionskill_SA_txt = mysqli_query($con,$sql_positionskill_SA_txt);
-						$rows_positionskill_SA_txt = mysqli_num_rows($query_positionskill_SA_txt);
+						$stmt = $con->query($sql_positionskill_SA_txt);
+						$rows_positionskill_SA_txt = $stmt->rowCount();
+						
 						if ($rows_positionskill_SA_txt > 0){
-							while($result_positionskill_SA_txt = mysqli_fetch_assoc($query_positionskill_SA_txt)){
+							while ($result_positionskill_SA_txt = $stmt->fetch()){
 								$SA_skill_txt = $result_positionskill_SA_txt['skill'];
 							}
 						}
@@ -722,30 +730,34 @@ else{
 					<?php
 						$sql_position_BA ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='BA' ";
 						//echo 'sql BA - '.$sql_position_BA;
-						$query_position_BA = mysqli_query($con,$sql_position_BA);
-						$rows_position_BA = mysqli_num_rows($query_position_BA);
+						
+						$stmt = $con->query($sql_position_BA);
+						$rows_position_BA = $stmt->rowCount();
+						
 						if ($rows_position_BA > 0)
-							while($result_position_BA = mysqli_fetch_assoc($query_position_BA))
+							while ($result_position_BA = $stmt->fetch())
 								$BA = 'checked';
 						else	
 							$BA = '';
 						
 						$sql_positionskill_BA ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='BA' and skill_type='choice' ";
 						//echo 'sql BA - '.$sql_positionskill_BA."<br/>";
-						$query_positionskill_BA = mysqli_query($con,$sql_positionskill_BA);
-						$rows_positionskill_BA = mysqli_num_rows($query_positionskill_BA);
+						$stmt = $con->query($sql_positionskill_BA);
+						$rows_positionskill_BA = $stmt->rowCount();
+						
 						if ($rows_positionskill_BA > 0){
-							while($result_positionskill_BA = mysqli_fetch_assoc($query_positionskill_BA)){
+							while ($result_positionskill_BA = $stmt->fetch()){
 								$BA_skill = $result_positionskill_BA['skill'];
 							}
 						}
 						
 						$sql_positionskill_BA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='BA' and skill_type='text' ";
 						//echo 'sql BA - '.$sql_positionskill_BA."<br/>";
-						$query_positionskill_BA_txt = mysqli_query($con,$sql_positionskill_BA_txt);
-						$rows_positionskill_BA_txt = mysqli_num_rows($query_positionskill_BA_txt);
+						$stmt = $con->query($sql_positionskill_BA_txt);
+						$rows_positionskill_BA_txt = $stmt->rowCount();
+						
 						if ($rows_positionskill_BA_txt > 0){
-							while($result_positionskill_BA_txt = mysqli_fetch_assoc($query_positionskill_BA_txt)){
+							while ($result_positionskill_BA_txt = $stmt->fetch()){
 								$BA_skill_txt = $result_positionskill_BA_txt['skill'];
 							}
 						}
@@ -771,22 +783,24 @@ else{
 					<?php
 						$sql_position_Tester ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Tester' ";
 						//echo 'sql Tester - '.$sql_position_Tester;
-						$query_position_Tester = mysqli_query($con,$sql_position_Tester);
-						$rows_position_Tester = mysqli_num_rows($query_position_Tester);
+						$stmt = $con->query($sql_position_Tester);
+						$rows_position_Tester = $stmt->rowCount();
+						
 						if ($rows_position_Tester > 0)
-							while($result_position_Tester = mysqli_fetch_assoc($query_position_Tester))
+							while ($result_position_Tester = $stmt->fetch())
 								$Tester = 'checked';
 						else	
 							$Tester = '';
 						
 						$sql_positionskill_Tester ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Tester' and skill_type='choice' ";
 						//echo 'sql Tester - '.$sql_positionskill_Tester."<br/>";
-						$query_positionskill_Tester = mysqli_query($con,$sql_positionskill_Tester);
-						$rows_positionskill_Tester = mysqli_num_rows($query_positionskill_Tester);
+						$stmt = $con->query($sql_positionskill_Tester);
+						$rows_positionskill_Tester = $stmt->rowCount();
+						
 						$Tester_skill = array();
 						if ($rows_positionskill_Tester > 0){
 							$tt = 0;
-							while($result_positionskill_Tester = mysqli_fetch_assoc($query_positionskill_Tester)){
+							while ($result_positionskill_Tester = $stmt->fetch()){
 								$Tester_skill[$tt] = $result_positionskill_Tester['skill'];
 								$tt++;
 							}
@@ -807,30 +821,32 @@ else{
 					<?php
 						$sql_position_PM ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='PM' ";
 						//echo 'sql PM - '.$sql_position_PM;
-						$query_position_PM = mysqli_query($con,$sql_position_PM);
-						$rows_position_PM = mysqli_num_rows($query_position_PM);
+						$stmt = $con->query($sql_position_PM);
+						$rows_position_PM = $stmt->rowCount();
+						
 						if ($rows_position_PM > 0)
-							while($result_position_PM = mysqli_fetch_assoc($query_position_PM))
+							while ($result_position_PM = $stmt->fetch())
 								$PM = 'checked';
 						else	
 							$PM = '';
 						
 						$sql_positionskill_PM ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='PM' and skill_type='choice' ";
 						//echo 'sql PM - '.$sql_positionskill_PM."<br/>";
-						$query_positionskill_PM = mysqli_query($con,$sql_positionskill_PM);
-						$rows_positionskill_PM = mysqli_num_rows($query_positionskill_PM);
+						$stmt = $con->query($sql_positionskill_PM);
+						$rows_positionskill_PM = $stmt->rowCount();
 						if ($rows_positionskill_PM > 0){
-							while($result_positionskill_PM = mysqli_fetch_assoc($query_positionskill_PM)){
+							while ($result_positionskill_PM = $stmt->fetch()){
 								$PM_skill = $result_positionskill_PM['skill'];
 							}
 						}
 						
 						$sql_positionskill_PM_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='PM' and skill_type='text' ";
 						//echo 'sql PM - '.$sql_positionskill_PM."<br/>";
-						$query_positionskill_PM_txt = mysqli_query($con,$sql_positionskill_PM_txt);
-						$rows_positionskill_PM_txt = mysqli_num_rows($query_positionskill_PM_txt);
+						$stmt = $con->query($sql_positionskill_PM_txt);
+						$rows_positionskill_PM_txt = $stmt->rowCount();
+						
 						if ($rows_positionskill_PM_txt > 0){
-							while($result_positionskill_PM_txt = mysqli_fetch_assoc($query_positionskill_PM_txt)){
+							while ($result_positionskill_PM_txt = $stmt->fetch()){
 								$PM_skill_txt = $result_positionskill_PM_txt['skill'];
 							}
 						}
@@ -856,20 +872,20 @@ else{
 					<?php
 						$sql_position_Admin ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Admin' ";
 						//echo 'sql Admin - '.$sql_position_Admin;
-						$query_position_Admin = mysqli_query($con,$sql_position_Admin);
-						$rows_position_Admin = mysqli_num_rows($query_position_Admin);
+						$stmt = $con->query($sql_position_Admin);
+						$rows_position_Admin = $stmt->rowCount();
 						if ($rows_position_Admin > 0)
-							while($result_position_Admin = mysqli_fetch_assoc($query_position_Admin))
+							while ($result_position_Admin = $stmt->fetch())
 								$Admin = 'checked';
 						else	
 							$Admin = '';
 						
 						$sql_positionskill_Admin_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Admin' and skill_type='text' ";
 						//echo 'sql Admin - '.$sql_positionskill_Admin."<br/>";
-						$query_positionskill_Admin_txt = mysqli_query($con,$sql_positionskill_Admin_txt);
-						$rows_positionskill_Admin_txt = mysqli_num_rows($query_positionskill_Admin_txt);
+						$stmt = $con->query($sql_positionskill_Admin_txt);
+						$rows_positionskill_Admin_txt = $stmt->rowCount();
 						if ($rows_positionskill_Admin_txt > 0){
-							while($result_positionskill_Admin_txt = mysqli_fetch_assoc($query_positionskill_Admin_txt)){
+							while ($result_positionskill_Admin_txt = $stmt->fetch()){
 								$Admin_skill_txt = $result_positionskill_Admin_txt['skill'];
 							}
 						}
@@ -888,10 +904,11 @@ else{
 					<?php
 						$sql_position_Other ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Other' ";
 						//echo 'sql Other - '.$sql_position_Other;
-						$query_position_Other = mysqli_query($con,$sql_position_Other);
-						$rows_position_Other = mysqli_num_rows($query_position_Other);
+						$stmt = $con->query($sql_position_Other);
+						$rows_position_Other = $stmt->rowCount();
+						
 						if ($rows_position_Other > 0)
-							while($result_position_Other = mysqli_fetch_assoc($query_position_Other)){
+							while ($result_position_Other = $stmt->fetch()){
 								$Other = 'checked';
 								$Other_txt = $result_position_Other['position_other'];
 							}
@@ -901,10 +918,11 @@ else{
 						}
 						$sql_positionskill_Other_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Other' and skill_type='text' ";
 						//echo 'sql Other - '.$sql_positionskill_Other."<br/>";
-						$query_positionskill_Other_txt = mysqli_query($con,$sql_positionskill_Other_txt);
-						$rows_positionskill_Other_txt = mysqli_num_rows($query_positionskill_Other_txt);
+						$stmt = $con->query($sql_positionskill_Other_txt);
+						$rows_positionskill_Other_txt = $stmt->rowCount();
+						
 						if ($rows_positionskill_Other_txt > 0){
-							while($result_positionskill_Other_txt = mysqli_fetch_assoc($query_positionskill_Other_txt)){
+							while ($result_positionskill_Other_txt = $stmt->fetch()){
 								$Other_skill_txt = $result_positionskill_Other_txt['skill'];
 							}
 						}
@@ -940,8 +958,8 @@ else{
 					<?php
 						$sql_callrecord ="SELECT * FROM candidate_callrecord where candidate_ID = '$id' order by call_date";
 						//echo 'sql_callrecord - '.$sql_callrecord.'<br>';
-						$query_callrecord = mysqli_query($con,$sql_callrecord);
-						$rows_callrecord = mysqli_num_rows($query_callrecord);
+						$stmt = $con->query($sql_callrecord);
+						$rows_callrecord = $stmt->rowCount();
 					?>
 					<div class="div_inline"><h4 class="mb-4 div_inline">Part 3-1 : Call Record</h4>&nbsp;&nbsp;
 					<button type="button" class="addrow btn btn-success" title="Add more call record" id="btn_add31" name="btn_add31" ><i class="fa fa-plus-square-o"></i> Add</button>
@@ -1112,7 +1130,7 @@ else{
 					<?php
 						}else{
 							$cr=0;
-							while($result_callrecord = mysqli_fetch_assoc($query_callrecord)){
+							while ($result_callrecord = $stmt->fetch()) {
 								$cr++;
 					?>
 						<tr>
@@ -1293,8 +1311,8 @@ else{
 					<?php
 						$sql_interviewrecord ="SELECT * FROM candidate_interviewrecord where candidate_ID = '$id' order by interview_date";
 						//echo 'sql_interviewrecord - '.$sql_interviewrecord.'<br>';
-						$query_interviewrecord= mysqli_query($con,$sql_interviewrecord);
-						$rows_interviewrecord = mysqli_num_rows($query_interviewrecord);
+						$stmt = $con->query($sql_interviewrecord);
+						$rows_interviewrecord = $stmt->rowCount();
 					?>
 					<div class="div_inline"><h4 class="mb-4 div_inline">Part 3-2 : Interview Record</h4>&nbsp;&nbsp;
 						<button type="button" class="addrow btn btn-success" title="Add interview record" id="btn_add32" name="btn_add32" ><i class="fa fa-plus-square-o"></i> Add</button>
@@ -1302,7 +1320,7 @@ else{
 					</div>
 					<table border="0" style="width: 100%;border-color:#DDDDDD" id="tab32" class="tbl32">
 					<?php
-						if ($rows_callrecord == 0){
+						if ($rows_interviewrecord == 0){
 					?>
 					<tr>
 						<td>
@@ -1428,7 +1446,7 @@ else{
 					<?php
 						}else{
 							$ir=0;
-							while($result_interviewrecord = mysqli_fetch_assoc($query_interviewrecord)){
+							while ($result_interviewrecord = $stmt->fetch()) {
 								$ir++;
 								$interview_date = explode(" ", $result_interviewrecord['interview_date']);
 								$interview_date[1] = substr($interview_date[1], 0, 5);
@@ -1507,14 +1525,14 @@ else{
 								<td colspan="2">
 									<?php
 										$sql_company ="SELECT * FROM client_company where client_ID = '".$result_interviewrecord['client_ID']."' ";
-										$query_company = mysqli_query($con,$sql_company);
-										$rows_company = mysqli_num_rows($query_company);
+										$stmt = $con->query($sql_company);
+										$rows_company = $stmt->rowCount();
 										//echo 'rows - '.$rows."<br/>";
 										$client_company = '';
 										$client_department = '';
 										$client_contact = '';
 										if ($rows_company > 0){
-											while($result_company = mysqli_fetch_assoc($query_company)){
+											while ($result_company = $stmt->fetch()) {
 												$client_company = $result_company['client_company'];
 												$client_department = $result_company['client_department'];
 												$client_contact = $result_company['client_contact'];
@@ -1586,10 +1604,10 @@ else{
 							echo "<div class='displayFile'  style='color:red'>Check for Delete</div>";
 							include_once 'db.php';
 							$sql_candidate_file_sel="SELECT * FROM candidate_file where candidate_ID = '$id' ";
-							$result_set=mysqli_query($con,$sql_candidate_file_sel);
-							$r_candidate_file = mysqli_query($con,$sql_candidate_file_sel);
-							while (list($file_ID,$candidate_ID, $filename, $filetype, $size, $data) = mysqli_fetch_array($result_set)) {
-									echo "<div class='displayFile'><input type='checkbox' class='checkbox label_inline lblcontainer' id='fileDelete' name='chkFileDelete[]' value='".$file_ID."'> <a href='download.php?id=".urlencode($file_ID)."'>".$filename."</a></div>";
+						
+							$stmt = $con->query($sql_candidate_file_sel);
+							while ($result_file = $stmt->fetch()) {
+									echo "<div class='displayFile'><input type='checkbox' class='checkbox label_inline lblcontainer' id='fileDelete' name='chkFileDelete[]' value='".$result_file['file_ID']."'> <a href='download.php?id=".urlencode($result_file['file_ID'])."'>".$result_file['filename']."</a></div>";
 							}
 						?>
 						<input type="file" style="cursor:pointer;" name="upload_file1" id="upload_file1" readonly="true" onchange="Filevalidation(1)"/>
@@ -2339,6 +2357,6 @@ else{
 <?php
 //if ($con)
 //	mysqli_close($con);
-if ($con)
-	mysqli_close($con);
+//if ($con)
+//	mysqli_close($con);
 ?>
