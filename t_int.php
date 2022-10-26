@@ -16,8 +16,8 @@ if (mysqli_connect_errno()){
 }
 return $connect;
 */
-$con = mysqli_connect($host_name, $user_name,$password,$database,$GCPort,$GCSocket );
-
+//$con = mysqli_connect($host_name, $user_name,$password,$database,$GCPort,$GCSocket );
+$con = mysqli($host_name, $user_name,$password,$database,$GCPort,$GCSocket );
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
