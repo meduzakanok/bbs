@@ -1,4 +1,5 @@
 <?php
+echo "TEST connect DB <br/>";
 $cloud_sql_connection_name = "bbsrecruit:asia-southeast1:ttinst";
 $database = "bbsrecruitdb";
 $username = "bbsusr";
