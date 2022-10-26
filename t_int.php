@@ -4,10 +4,7 @@ $cloud_sql_connection_name = "bbsrecruit:asia-southeast1:ttinst";
 $database = "bbsrecruitdb";
 $username = "bbsusr";
 $password = "bbs#pwd";
-$socket_dir = getenv('DB_SOCKET_DIR') ? :'/cloudsql';
-
-//$GCSocket ="/cloudsql/bbsrecruit:asia-southeast1:ttinst"; 
-//$GCPort='3306';
+$socket_dir = "/cloudsql";
 
 $dsn = sprintf(
 	'mysql:dbname=%s;unix_socket=%s/%s',
