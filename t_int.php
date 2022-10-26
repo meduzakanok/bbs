@@ -19,9 +19,9 @@ foreach ($result as $row){
 	echo "<li>".$row['rec_name']." ".$row['rec_sname']."</li>";
 }
 echo "<br>";
-$stmt = $pdo->query("SELECT * FROM sap_modules order by sap_module");
+$stmt = $pdo->query("SELECT * FROM sap_modules order by SAP_module");
 while ($row = $stmt->fetch()) {
-    echo $row['sap_module'].'('.$row['SAP_moduleVal'].")<br />\n";  	
+    echo $row['SAP_module'].'('.$row['SAP_moduleVal'].")<br />\n";  	
 }
 
 ?>
