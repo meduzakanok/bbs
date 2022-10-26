@@ -22,6 +22,7 @@ FROM php:8.0-apache
 # Configure PHP for Cloud Run.
 # Precompile PHP code with opcache.
 RUN docker-php-ext-install -j "$(nproc)" opcache
+RUN docker-php-ext-install -j "$(nproc)" pdo pdo_mysql
 RUN set -ex; \
   { \
     echo "; Cloud Run enforces memory & timeouts"; \
