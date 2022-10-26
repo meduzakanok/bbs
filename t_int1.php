@@ -15,5 +15,5 @@ $stmt = $con->query("SELECT * FROM sap_modules order by SAP_module");
 while ($row = $stmt->fetch()) {
     echo $row['SAP_module'].'('.$row['SAP_moduleVal'].")<br />\n";  	
 }
-
+$stmt->rowCount();
 ?>
