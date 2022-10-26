@@ -34,9 +34,9 @@ class DatabaseTcp
             // secure - consider a more secure solution such as
             // Cloud Secret Manager (https://cloud.google.com/secret-manager) to help
             // keep secrets safe.
-            $username = getenv('bbsusr'); // e.g. 'your_db_user'
-            $password = getenv('bbs#pwd'); // e.g. 'your_db_password'
-            $dbName = getenv('bbsrecruitdb'); // e.g. 'your_db_name'
+            $username = getenv('DB_USER'); // e.g. 'your_db_user'
+            $password = getenv('DB_PASS'); // e.g. 'your_db_password'
+            $dbName = getenv('DB_NAME'); // e.g. 'your_db_name'
             $instanceHost = getenv('INSTANCE_HOST'); // e.g. '127.0.0.1' ('172.17.0.1' for GAE Flex)
 
             // Connect using TCP
