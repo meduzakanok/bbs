@@ -6,6 +6,9 @@ $username = "bbsusr";
 $password = "bbs#pwd";
 $socket_dir = "/cloudsql";
 
+//$GCSocket ="/cloudsql/bbsrecruit:asia-southeast1:ttinst"; 
+//$GCPort='3306';
+
 $dsn = sprintf(
 	'mysql:dbname=%s;unix_socket=%s/%s',
 	$database,
@@ -13,10 +16,10 @@ $dsn = sprintf(
 	$cloud_sql_connection_name
 );
 $pdo = new PDO($dsn, $username,$password);
-$stmt = $pdo->quiery("SELECT rec_name,rec_sname FROM rec_user");
+$stmt = $pdo->query("SELECT rec_name,rec_sname FROM rec_user");
 $stmt->execute();
 $result = $stmt->fetchAll();
-foreach ($result as row){
+foreach ($result as $row){
 	echo "<li>{$row['rec_name']} {$row['rec_sname']}</li>"
 }
 ?>
