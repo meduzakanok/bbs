@@ -1,62 +1,17 @@
 <?php
+$host_name = "34.143.152.42";
+$database = "bbsrecruitdb";
+$user_name = "bbsusr";
+$password = "bbs#pwd";
+$GCSocket ="/cloudsql/bbsrecruit:asia-southeast1:ttinst"; $GCPort='3306';
 
-/**
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-namespace Google\Cloud\Samples\CloudSQL\MySQL\Tests;
-
-use Google\Cloud\Samples\CloudSQL\MySQL\DatabaseTcp;
-use Google\Cloud\Samples\CloudSQL\MySQL\DatabaseUnix;
-use Google\Cloud\Samples\CloudSQL\MySQL\Votes;
-use Google\Cloud\TestUtils\TestTrait;
-use Google\Cloud\TestUtils\CloudSqlProxyTrait;
-use PHPUnit\Framework\TestCase;
-
-/**
- * @runTestsInSeparateProcesses
- */
-class IntegrationTest extends TestCase
-{
-    use TestTrait;
-    use CloudSqlProxyTrait;
-
-    public static function setUpBeforeClass(): void
-    {
-        $connectionName = self::requireEnv('CLOUDSQL_CONNECTION_NAME_MYSQL');
-        $socketDir = self::requireEnv('DB_SOCKET_DIR');
-        // '3306' was not working on kokoro we probably just need to update cloud_sql_proxy
-        $port = null;
-
-        self::startCloudSqlProxy($connectionName, $socketDir, $port);
+$connect = mysqli_connect($host_name, $user_name,$password,$database,$GCPort,$GCSocket )
+	if (mysqli_connect_errno()){
+        echo "Failed to connect to MySQL: " . mysqli_connect_error() ."<br>";
+        echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL ."<br>";
+        echo "Debugging error: " . mysqli_connect_error() . PHP_EOL  ."<br><br>";
+	} else {
+		echo 'DB is connected..! <BR>';
     }
-
-    
-    public function testTcpConnection()
-    {
-        $instanceHost = $this->requireEnv('MYSQL_HOST');
-        $dbPass = $this->requireEnv('MYSQL_PASSWORD');
-        $dbName = $this->requireEnv('MYSQL_DATABASE');
-        $dbUser = $this->requireEnv('MYSQL_USER');
-
-        putenv("INSTANCE_HOST=$instanceHost");
-        putenv("DB_PASS=$dbPass");
-        putenv("DB_NAME=$dbName");
-        putenv("DB_USER=$dbUser");
-
-        $votes = new Votes(DatabaseTcp::initTcpDatabaseConnection());
-        $this->assertIsArray($votes->listVotes());
-    }
-}
+//return $connect;
+?>
