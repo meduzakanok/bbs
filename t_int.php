@@ -1,15 +1,25 @@
 <?php
-$hostname = null; //Defaults to mysqli.default_host
+//$host_name = "34.143.152.42";
+$cloud_sql_connection_name = "bbsrecruit:asia-southeast1:ttinst";
+$database = "bbsrecruitdb";
 $username = "bbsusr";
 $password = "bbs#pwd";
-$database = "bbsrecruitdb"; //Defaults to "" 
-$port = null; //Defaults to mysqli.default_port
-$socket = "/cloudsql/bbsrecruit:asia-southeast1:ttinst";
-$mysqli = mysqli($hostname, $username, $password, $database, $port, $socket);
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  exit();
-}else {
-	echo 'DB is connected..! <BR>';
+$socket_dir = getenv('DB_SOCKET_DIR') ? :'/cloudsql';
+
+//$GCSocket ="/cloudsql/bbsrecruit:asia-southeast1:ttinst"; 
+//$GCPort='3306';
+
+$dsn = sprintf(
+	'mysql:dbname=%s;unix_socket=%s/%s',
+	$database,
+	$socket_dir,
+	$cloud_sql_connection_name
+);
+$pdo = new PDO($dsn, $username,$password);
+$stmt = $pdo->quiery("SELECT rec_name,rec_sname FROM rec_user");
+$stmt->execute();
+$result = $stmt->fetchAll();
+foreach ($result as row){
+	echo "<li>{$row['rec_name']} {$row['rec_sname']}</li>"
 }
 ?>
