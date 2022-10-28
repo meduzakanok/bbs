@@ -3,9 +3,9 @@
 	include_once 'landing/function.php';
     $current_date = current_date();
     extract($_POST);
-	$sql = "INSERT INTO login_session(login_user ,login_name, login_sname , login_date ) VALUES('" . $txtUser . "','" . $fname . "', '" . $lname . "', '" . $current_date . "')";
+	$sql_login = "INSERT INTO login_session(login_user ,login_name, login_sname , login_date ) VALUES('" . $txtUser . "','" . $fname . "', '" . $lname . "', '" . $current_date . "')";
 	//$stmt = $con->query($sql);
-    if($con->query($sql)) 
+    if($con->query($sql_login)) 
 	{
 		//echo '1';
 		echo json_encode(array('success' => 1));
