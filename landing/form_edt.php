@@ -228,7 +228,7 @@ else{
 								<tr>
 									<td style="width: 30%">
 										<?php
-											$sql_province = "SELECT provinceID,provinceThai FROM postalcode group by provinceID";
+											$sql_province = "SELECT provinceID,provinceThai FROM v_province";
 											$stmt_province = $con->query($sql_province);
 										?>
 										<select name="ddProvince" id="ddProvince" class="ddStyle" style="width: 100%;cursor: pointer;">
@@ -242,7 +242,7 @@ else{
 									<td style="text-align:right">District&nbsp;</td>
 									<td style="width: 30%">
 										<?php
-											$sql_amphure = "SELECT provinceID,districtID,districtThai,districtThaiShort FROM postalcode WHERE provinceThai='".$result_candidate['province']."' group by districtID";
+											$sql_amphure = "SELECT provinceID,districtID,districtThai,districtThaiShort FROM v_district WHERE provinceThai='".$result_candidate['province']."' ";
 											$stmt_amphure = $con->query($sql_amphure);
 										?>
 										<select name="ddDistrict" id="ddDistrict" class="ddStyle" style="width: 100%;cursor: pointer;">
@@ -256,7 +256,7 @@ else{
 									<td style="text-align:right">SubDistrict&nbsp;</td>
 									<td style="width: 30%">
 										<?php
-											$sql_tambon = "SELECT provinceID,provinceThai,districtID,districtThai ,tambonID,tambonThai,tambonThaiShort,postCodeMain FROM postalcode WHERE districtThai='".$result_candidate['district']."' group by tambonID";
+											$sql_tambon = "SELECT provinceID,provinceThai,districtID,districtThai ,tambonID,tambonThai,tambonThaiShort,postCodeMain FROM v_sdistrict WHERE districtThai='".$result_candidate['district']."' ";
 											$stmt_tambon = $con->query($sql_tambon);
 										?>
 										<select name="ddSubDistrict" id="ddSubDistrict" class="ddStyle" style="width: 100%;cursor: pointer;">
