@@ -180,20 +180,20 @@ else{
 											<option value="">-Select-</option>
 											<optgroup label="ประเทศนิยม">
 												<?php
-													$sql = "SELECT country,country_val FROM passport_country Where country_pop=1 order by country";
-													$stmt = $con->query($sql);
-													while ($result = $stmt->fetch()) {
+													$sql_country= "SELECT country,country_val FROM passport_country Where country_pop=1 order by country";
+													$stmt_country = $con->query($sql_country);
+													while ($result_country = $stmt_country->fetch()) {
 												?>
-													<option value="<?php echo $result['country_val']?>"><?php echo $result['country']?></option>
+													<option value="<?php echo $result_country['country_val']?>"><?php echo $result_country['country']?></option>
 													<?php } ?>
 											</optgroup>
 											<optgroup label="ทั้งหมด">
 												<?php
-													$sql = "SELECT country,country_val FROM passport_country order by country";
-													$stmt = $con->query($sql);
-													while ($result = $stmt->fetch()) {
+													$sql_countrya = "SELECT country,country_val FROM passport_country order by country";
+													$stmt_countrya = $con->query($sql_countrya);
+													while ($result_countrya = $stmt_countrya->fetch()) {
 												?>
-													<option value="<?php echo $result['country_val']?>"><?php echo $result['country']?></option>
+													<option value="<?php echo $result_countrya['country_val']?>"><?php echo $result_countrya['country']?></option>
 													<?php } ?>
 											</optgroup>
 										</select>
@@ -216,13 +216,13 @@ else{
 								<tr>
 									<td style="width: 30%">
 										<?php
-											$sql = "SELECT provinceID,provinceThai FROM postalcode group by provinceID";
-											$stmt = $con->query($sql);	
+											$sql_province = "SELECT provinceID,provinceThai FROM postalcode group by provinceID";
+											$stmt_province = $con->query($sql_province);	
 										?>
 										<select name="ddProvince" id="ddProvince" class="ddStyle" style="width: 100%;cursor: pointer;">
 											<option value="">-เลือกจังหวัด-</option>
-											<?php while ($result = $stmt->fetch()) { ?>
-											<option value="<?php echo $result['provinceID']?>"><?php echo $result['provinceThai']?></option>
+											<?php while ($result_province = $stmt_province->fetch()) { ?>
+											<option value="<?php echo $result_province['provinceID']?>"><?php echo $result_province['provinceThai']?></option>
 											<?php } ?>
 										 </select>
 										 <input type="hidden" name="ddProvince_info" id="ddProvince_info">
@@ -506,11 +506,11 @@ else{
 						<td colspan="3" style="text-align:left;">
 							 <select name="ddModule[]" id="ddModule" class="ddStyle" style="width: 100%" multiple>
 								<?php
-									$sql = "SELECT SAP_module,SAP_moduleVal FROM sap_modules order by SAP_module";
-									$stmt = $con->query($sql);
-									while ($result = $stmt->fetch()) {
+									$sql_SAPm = "SELECT SAP_module,SAP_moduleVal FROM sap_modules order by SAP_module";
+									$stmt_SAPm = $con->query($sql_SAPm);
+									while ($result_SAPm = $stmt_SAPm->fetch()) {
 								?>
-									<option value="<?php echo $result['SAP_moduleVal']?>"><?php echo $result['SAP_module']?></option>
+									<option value="<?php echo $result_SAPm['SAP_moduleVal']?>"><?php echo $result_SAPm['SAP_module'].' ('.$result_SAPm['SAP_moduleVal'].')' ?></option>
 								<?php }?>
 							 </select>
 						</td>
@@ -523,11 +523,11 @@ else{
 						<td colspan="3" style="text-align:left;">
 							<select name="ddLanguage[]" id="ddLanguage" class="ddStyle" style="width: 100%" multiple>
 								<?php
-									$sql = "SELECT lang,lang_val FROM prog_lang order by lang";
-									$stmt = $con->query($sql);
-									while ($result = $stmt->fetch()) {
+									$sql_prolang = "SELECT lang,lang_val FROM prog_lang order by lang";
+									$stmt_prolang = $con->query($sql_prolang);
+									while ($result_prolang = $stmt_prolang->fetch()) {
 								?>
-									<option value="<?php echo $result['lang_val']?>"><?php echo $result['lang']?></option>
+									<option value="<?php echo $result_prolang['lang_val']?>"><?php echo $result_prolang['lang']?></option>
 								<?php } ?>
 							 </select>
 						</td>

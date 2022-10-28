@@ -25,9 +25,9 @@ include_once 'db.php';
 		<td>Download Link</td>
     </tr>
     <?php
-	$sql="SELECT * FROM candidate_file";
-	$stmt = $con->query($sql);
-	$rows_file = $stmt->rowCount();
+	$sql_viewFile = "SELECT * FROM candidate_file";
+	$stmt_viewFile = $con->query($sql_viewFile);
+	$rows_file = $stmt_viewFile->rowCount();
 	if ($rows_file == 0)
             echo "Not found!!! <br>";
 	else {

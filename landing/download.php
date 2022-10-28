@@ -5,14 +5,14 @@
 	    {
 			$id = $_GET['id'];
 			$query = "SELECT * FROM candidate_file WHERE file_id = '$id'";
-			$stmt = $con->query($query);
+			$stmt_cfile = $con->query($query);
 			 //list($fileid, $filename, $filetype, $size,$data) = mysqli_fetch_array($result);
 			//$row = mysqli_fetch_array($result);
-			$row = $stmt->fetch()
-			$data = $row["data"];
-			$size = $row["size"];
-			$filetype = $row["filetype"];
-			$filename = $row["filename"];
+			$row_cfile = $stmt_cfile->fetch();
+			$data = $row_cfile["data"];
+			$size = $row_cfile["size"];
+			$filetype = $row_cfile["filetype"];
+			$filename = $row_cfile["filename"];
 			
 			header("Content-length: strlen($data)");
 			header("Content-type: $filetype");

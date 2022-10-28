@@ -82,11 +82,11 @@ else{
 					<h4 class="mb-4">Part 1 :  Information</h4>
 					<?php
 						$sql_candidate ="SELECT * FROM candidate where candidate_ID = '$id' ";
-						$stmt = $con->query($sql_candidate);
-						$rows_candidate = $stmt->rowCount();
+						$stmt_candidate = $con->query($sql_candidate);
+						$rows_candidate = $stmt_candidate->rowCount();
 						//echo 'rows - '.$rows."<br/>";
 						if ($rows_candidate > 0){
-							while ($result = $stmt->fetch()) {
+							while ($result_candidate = $stmt_candidate->fetch()) {
 					?>
 					<table border="0" style="width: 100%" class="tabForm"> 
 						<tr>
@@ -98,9 +98,9 @@ else{
 										<div class="col-sm-5">
 											<select name="ddTitleEn" id="ddTitleEn" class="ddStyle" style="width: 100%">
 												<option value="">-Select-</option>
-												<option value="Mr." <?php echo ($result['title_en'] == "Mr." ? "selected" : "") ?>>Mr.</option>
-												<option value="Mrs." <?php echo ($result['title_en'] == "Mrs." ? "selected" : "") ?>>Mrs.</option>
-												<option value="Miss" <?php echo ($result['title_en'] == "Miss." ? "selected" : "") ?>>Miss</option>
+												<option value="Mr." <?php echo ($result_candidate['title_en'] == "Mr." ? "selected" : "") ?>>Mr.</option>
+												<option value="Mrs." <?php echo ($result_candidate['title_en'] == "Mrs." ? "selected" : "") ?>>Mrs.</option>
+												<option value="Miss" <?php echo ($result_candidate['title_en'] == "Miss" ? "selected" : "") ?>>Miss</option>
 											 </select>
 										</div>
 									</td>
@@ -111,11 +111,11 @@ else{
 								<table border="0" style="width: 100%" class="tabForm_inside">
 								<tr>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtNameEn" id="txtNameEn" value="<?php echo $result['name_en']?>"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtNameEn" id="txtNameEn" value="<?php echo $result_candidate['name_en']?>"></div>
 									</td>
 									<td style="text-align:right;">Surname&nbsp;</td>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtSNameEn" id="txtSNameEn" value="<?php echo $result['sname_en']?>"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtSNameEn" id="txtSNameEn" value="<?php echo $result_candidate['sname_en']?>"></div>
 									</td>
 								</tr>
 								</table>
@@ -125,7 +125,7 @@ else{
 								<tr>
 									<td style="text-align:right;width: 35%">ID Card&nbsp;</td>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtIDcard" id="txtIDcard" maxlength="13" value="<?php echo $result['idcard']?>"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtIDcard" id="txtIDcard" maxlength="13" value="<?php echo $result_candidate['idcard']?>"></div>
 									</td>
 								</tr>
 								</table>
@@ -135,7 +135,7 @@ else{
 								<tr>
 									<td style="text-align:right;width: 35%">Nickname&nbsp;</td>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtNickname" id="txtNickname" style="width: 100%" value="<?php echo $result['nickname']?>"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtNickname" id="txtNickname" style="width: 100%" value="<?php echo $result_candidate['nickname']?>"></div>
 									</td>
 								</tr>
 								</table>
@@ -150,9 +150,9 @@ else{
 										<div class="col-sm-5">
 											<select name="ddTitleTh" id="ddTitleTh" class="ddStyle" style="width: 100%">
 												<option value="">-เลือก-</option>
-												<option value="นาย" <?php echo ($result['title_th'] == "นาย" ? "selected" : "") ?>>นาย</option>
-												<option value="นาง" <?php echo ($result['title_th'] == "นาง" ? "selected" : "") ?>>นาง</option>
-												<option value="นางสาว" <?php echo ($result['title_th'] == "นางสาว" ? "selected" : "") ?>>นางสาว</option>
+												<option value="นาย" <?php echo ($result_candidate['title_th'] == "นาย" ? "selected" : "") ?>>นาย</option>
+												<option value="นาง" <?php echo ($result_candidate['title_th'] == "นาง" ? "selected" : "") ?>>นาง</option>
+												<option value="นางสาว" <?php echo ($result_candidate['title_th'] == "นางสาว" ? "selected" : "") ?>>นางสาว</option>
 											</select>
 										</div>
 									</td>
@@ -163,11 +163,11 @@ else{
 								<table border="0" style="width: 100%" class="tabForm_inside">
 								<tr>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtNameTh" id="txtNameTh" value="<?php echo $result['name_th']?>"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtNameTh" id="txtNameTh" value="<?php echo $result_candidate['name_th']?>"></div>
 									</td>
 									<td style="text-align:right;">นามสุกล&nbsp;</td>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtSNameTh" id="txtSNameTh" value="<?php echo $result['sname_th']?>"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtSNameTh" id="txtSNameTh" value="<?php echo $result_candidate['sname_th']?>"></div>
 									</td>
 								</tr>
 								</table>
@@ -177,7 +177,7 @@ else{
 								<tr>
 									<td style="text-align:right;width: 35%">Passport&nbsp;</td>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtPassport" id="txtPassport" maxlength="20" value="<?php echo $result['passport']?>"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtPassport" id="txtPassport" maxlength="20" value="<?php echo $result_candidate['passport']?>"></div>
 									</td>
 								</tr>
 								</table>
@@ -193,8 +193,8 @@ else{
 											<optgroup label="ประเทศนิยม">
 												<?php
 													$sql_country = "SELECT country,country_val FROM passport_country Where country_pop=1 order by country";
-													$stmt = $con->query($sql_country);
-													while ($result_country = $stmt->fetch()) {
+													$stmt_country = $con->query($sql_country);
+													while ($result_country = $stmt_country->fetch()) {
 												?>
 													<option value="<?php echo $result_country['country_val']?>"><?php echo $result_country['country']?></option>
 												<?php } ?>
@@ -202,10 +202,10 @@ else{
 											<optgroup label="ทั้งหมด">
 												<?php
 													$sql_country_all = "SELECT country,country_val FROM passport_country order by country";
-													$stmt = $con->query($sql_country_all);
-													while ($result_country_all = $stmt->fetch()) {
+													$stmt_country_all = $con->query($sql_country_all);
+													while ($result_country_all = $stmt_country_all->fetch()) {
 												?>
-													<option value="<?php echo $result_country_all['country_val']?>" <?php echo ($result['passport_country'] == $result_country_all['country_val'] ? "selected" : "") ?>><?php echo $result_country_all['country']?></option>
+													<option value="<?php echo $result_country_all['country_val']?>" <?php echo ($result_candidate['passport_country'] == $result_country_all['country_val'] ? "selected" : "") ?>><?php echo $result_country_all['country']?></option>
 												<?php } ?>
 											</optgroup>
 										</select>
@@ -218,7 +218,7 @@ else{
 						<tr>
 							<td colspan="2" style="text-align:right;">Address&nbsp;</td>
 							<td colspan="5">
-								<div class="col-sm-5"><input class="form-control" type="text" name="txtAddress" id="txtAddress" maxlength="300" value="<?php echo $result['address']?>"></div>
+								<div class="col-sm-5"><input class="form-control" type="text" name="txtAddress" id="txtAddress" maxlength="300" value="<?php echo $result_candidate['address']?>"></div>
 							</td>
 						</tr>
 						<tr>
@@ -229,12 +229,12 @@ else{
 									<td style="width: 30%">
 										<?php
 											$sql_province = "SELECT provinceID,provinceThai FROM postalcode group by provinceID";
-											$stmt = $con->query($query_province);
+											$stmt_province = $con->query($sql_province);
 										?>
 										<select name="ddProvince" id="ddProvince" class="ddStyle" style="width: 100%;cursor: pointer;">
 											<option value="">-เลือกจังหวัด-</option>
-										<?php while ($result_province = $stmt->fetch()) { ?>
-											<option value="<?php echo $result_province['provinceID']?>" <?php echo ($result['province'] == $result_province['provinceThai'] ? "selected" : "") ?>><?php echo $result_province['provinceThai']?></option>
+										<?php while ($result_province = $stmt_province->fetch()) { ?>
+											<option value="<?php echo $result_province['provinceID']?>" <?php echo ($result_candidate['province'] == $result_province['provinceThai'] ? "selected" : "") ?>><?php echo $result_province['provinceThai']?></option>
 										<?php }?>
 										 </select>
 										 <input type="hidden" name="ddProvince_info" id="ddProvince_info">
@@ -242,13 +242,13 @@ else{
 									<td style="text-align:right">District&nbsp;</td>
 									<td style="width: 30%">
 										<?php
-											$sql_amphure = "SELECT provinceID,districtID,districtThai,districtThaiShort FROM postalcode WHERE provinceThai='".$result['province']."' group by districtID";
-											$stmt = $con->query($sql_amphure);
+											$sql_amphure = "SELECT provinceID,districtID,districtThai,districtThaiShort FROM postalcode WHERE provinceThai='".$result_candidate['province']."' group by districtID";
+											$stmt_amphure = $con->query($sql_amphure);
 										?>
 										<select name="ddDistrict" id="ddDistrict" class="ddStyle" style="width: 100%;cursor: pointer;">
 											<option value="">-เลือกอำเภอ-</option>
-											<?php while ($result_amphure = $stmt->fetch()) { ?>
-											<option value="<?php echo $result_amphure['districtID']?>" <?php echo ($result['district'] == $result_amphure['districtThai'] ? "selected" : "") ?>><?php echo $result_amphure['districtThai']?></option>
+											<?php while ($result_amphure = $stmt_amphure->fetch()) { ?>
+											<option value="<?php echo $result_amphure['districtID']?>" <?php echo ($result_candidate['district'] == $result_amphure['districtThai'] ? "selected" : "") ?>><?php echo $result_amphure['districtThai']?></option>
 										<?php }?>
 										 </select>
 										 <input type="hidden" name="ddDistrict_info" id="ddDistrict_info">
@@ -256,13 +256,13 @@ else{
 									<td style="text-align:right">SubDistrict&nbsp;</td>
 									<td style="width: 30%">
 										<?php
-											$sql_tambon = "SELECT provinceID,provinceThai,districtID,districtThai ,tambonID,tambonThai,tambonThaiShort,postCodeMain FROM postalcode WHERE districtThai='".$result['district']."' group by tambonID";
-											$stmt = $con->query($sql_tambon);
+											$sql_tambon = "SELECT provinceID,provinceThai,districtID,districtThai ,tambonID,tambonThai,tambonThaiShort,postCodeMain FROM postalcode WHERE districtThai='".$result_candidate['district']."' group by tambonID";
+											$stmt_tambon = $con->query($sql_tambon);
 										?>
 										<select name="ddSubDistrict" id="ddSubDistrict" class="ddStyle" style="width: 100%;cursor: pointer;">
 											<option value="">-เลือกตำบล-</option>
-											<?php while ($result_tambon = $stmt->fetch()) { ?>
-											<option value="<?php echo $result_tambon['provinceThai'].'|'.$result_tambon['districtThai'].'|'.$result_tambon['tambonID'].'|'.$result_tambon['tambonThai'].'|'.$result_tambon['postCodeMain']?>" <?php echo ($result['subdistrict'] == $result_tambon['tambonThai'] ? "selected" : "") ?>><?php echo $result_tambon['tambonThai']?></option>
+											<?php while ($result_tambon = $stmt_tambon->fetch()) { ?>
+											<option value="<?php echo $result_tambon['provinceThai'].'|'.$result_tambon['districtThai'].'|'.$result_tambon['tambonID'].'|'.$result_tambon['tambonThai'].'|'.$result_tambon['postCodeMain']?>" <?php echo ($result_candidate['subdistrict'] == $result_tambon['tambonThai'] ? "selected" : "") ?>><?php echo $result_tambon['tambonThai']?></option>
 											<?php } ?>
 										 </select>
 										 <input type="hidden" name="ddSubDistrict_info" id="ddSubDistrict_info">
@@ -275,7 +275,7 @@ else{
 								<tr>
 									<td style="text-align:right;width: 30%">ZipCode&nbsp;</td>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtZipcode" id="txtZipcode" value="<?php echo $result['zipcode']?>"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtZipcode" id="txtZipcode" value="<?php echo $result_candidate['zipcode']?>"></div>
 									</td>
 								</tr>
 								</table>
@@ -288,11 +288,11 @@ else{
 											<?php 
 												$LineID = '';
 												$sql_candidate_contact_line ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='LineID' ";
-												$stmt = $con->query($sql_candidate_contact_line);
-												$rows_candidate_contact_line = $stmt->rowCount();
+												$stmt_candidate_contact_line = $con->query($sql_candidate_contact_line);
+												$rows_candidate_contact_line = $stmt_candidate_contact_line->rowCount();
 												//echo 'rows - '.$rows."<br/>";
 												if ($rows_candidate_contact_line > 0){
-													while ($result_candidate_contact_line = $stmt->fetch()) {
+													while ($result_candidate_contact_line = $stmt_candidate_contact_line->fetch()) {
 															$LineID = $result_candidate_contact_line['contact_info'] ; 
 													}
 												}
@@ -310,18 +310,18 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside">
 									<tr>
 										<td style="width: 50%">
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radBlood_O" name="radBlood" value="O" <?php echo ($result['blood'] == 'O' ? "checked" : "") ?>> O</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radBlood_O" name="radBlood" value="O" <?php echo ($result_candidate['blood'] == 'O' ? "checked" : "") ?>> O</label>
 										</td>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radBlood_A" name="radBlood" value="A" <?php echo ($result['blood'] == 'A' ? "checked" : "") ?>> A</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radBlood_A" name="radBlood" value="A" <?php echo ($result_candidate['blood'] == 'A' ? "checked" : "") ?>> A</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radBlood_AB" name="radBlood" value="AB" <?php echo ($result['blood'] == 'AB' ? "checked" : "") ?>> AB</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radBlood_AB" name="radBlood" value="AB" <?php echo ($result_candidate['blood'] == 'AB' ? "checked" : "") ?>> AB</label>
 										</td>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radBlood_B" name="radBlood" value="B" <?php echo ($result['blood'] == 'B' ? "checked" : "") ?>> B</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radBlood_B" name="radBlood" value="B" <?php echo ($result_candidate['blood'] == 'B' ? "checked" : "") ?>> B</label>
 										</td>
 									</tr>
 									<tr>
@@ -340,12 +340,12 @@ else{
 											<table border="0" style="width: 100%" class="tabForm_inside">
 											<tr>
 												<td>
-													<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radGender_male" name="radGender" value="Male" <?php echo ($result['gender'] == 'Male' ? "checked" : "") ?>> Male&nbsp;</label>
+													<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radGender_male" name="radGender" value="Male" <?php echo ($result_candidate['gender'] == 'Male' ? "checked" : "") ?>> Male&nbsp;</label>
 												</td>
 											</tr>
 											<tr>
 												<td>
-													<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radGender_female" name="radGender" value="Female" <?php echo ($result['gender'] == 'Female' ? "checked" : "") ?>> Female&nbsp;</label>
+													<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radGender_female" name="radGender" value="Female" <?php echo ($result_candidate['gender'] == 'Female' ? "checked" : "") ?>> Female&nbsp;</label>
 												</td>
 											</tr>
 											<tr>
@@ -360,12 +360,12 @@ else{
 											<table border="0" style="width: 100%" class="tabForm_inside">
 												<tr>
 													<td>
-														<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radContract_y" name="radContract" value="Y" <?php echo ($result['contract'] == 'Y' ? "checked" : "") ?>> Yes&nbsp;&nbsp;</label>
+														<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radContract_y" name="radContract" value="Y" <?php echo ($result_candidate['contract'] == 'Y' ? "checked" : "") ?>> Yes&nbsp;&nbsp;</label>
 													</td>
 												</tr>
 												<tr>
 													<td>
-														<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radContract_n" name="radContract" value="N" <?php echo ($result['contract'] == 'N' ? "checked" : "") ?>> No</label>
+														<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radContract_n" name="radContract" value="N" <?php echo ($result_candidate['contract'] == 'N' ? "checked" : "") ?>> No</label>
 													</td>
 												</tr>
 												<tr>
@@ -383,16 +383,16 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside">
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radExpStatus_normal" name="radExpStatus" value="Normal" <?php echo ($result['expstatus'] == 'Normal' ? "checked" : "") ?>> Normal&nbsp;</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radExpStatus_normal" name="radExpStatus" value="Normal" <?php echo ($result_candidate['expstatus'] == 'Normal' ? "checked" : "") ?>> Normal&nbsp;</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radExpStatus_blacklist" name="radExpStatus" value="Blacklist" <?php echo ($result['expstatus'] == 'Blacklist' ? "checked" : "") ?>> Blacklist&nbsp;</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radExpStatus_blacklist" name="radExpStatus" value="Blacklist" <?php echo ($result_candidate['expstatus'] == 'Blacklist' ? "checked" : "") ?>> Blacklist&nbsp;</label>
 										</td>
 									</tr>
 									<tr>
-										<td><label class="lblcontainer"><input class="form-control" type="text" id="txtExpStatus" name="txtExpStatus" maxlength="100" value="<?php echo $result['expstatus_info']?>"></label></td>
+										<td><label class="lblcontainer"><input class="form-control" type="text" id="txtExpStatus" name="txtExpStatus" maxlength="100" value="<?php echo $result_candidate['expstatus_info']?>"></label></td>
 									</tr>
 									</table>
 								</fieldset>
@@ -403,17 +403,17 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside">
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radMarital_single" name="radMarital" value="Single" <?php echo ($result['marital'] == 'Single' ? "checked" : "") ?>> Single&nbsp;</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radMarital_single" name="radMarital" value="Single" <?php echo ($result_candidate['marital'] == 'Single' ? "checked" : "") ?>> Single&nbsp;</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radMarital_married" name="radMarital" value="Married" <?php echo ($result['marital'] == 'Married' ? "checked" : "") ?>> Married</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radMarital_married" name="radMarital" value="Married" <?php echo ($result_candidate['marital'] == 'Married' ? "checked" : "") ?>> Married</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radMarital_widowed" name="radMarital" value="Widowed" <?php echo ($result['marital'] == 'Widowed' ? "checked" : "") ?>> Widowed&nbsp;</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radMarital_widowed" name="radMarital" value="Widowed" <?php echo ($result_candidate['marital'] == 'Widowed' ? "checked" : "") ?>> Widowed&nbsp;</label>
 										</td>
 									</tr>
 									</table>
@@ -425,16 +425,16 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside">
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radNationality_thai" name="radNationality" value="Thai" <?php echo ($result['nationality'] == 'Thai' ? "checked" : "") ?>> Thai&nbsp;</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radNationality_thai" name="radNationality" value="Thai" <?php echo ($result_candidate['nationality'] == 'Thai' ? "checked" : "") ?>> Thai&nbsp;</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radNationality_Other" name="radNationality" value="Other" <?php echo ($result['nationality'] == 'Other' ? "checked" : "") ?>> Other&nbsp;</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radNationality_Other" name="radNationality" value="Other" <?php echo ($result_candidate['nationality'] == 'Other' ? "checked" : "") ?>> Other&nbsp;</label>
 										</td>
 									</tr>
 									<tr>
-										<td><label class="lblcontainer"><input class="form-control" type="text" name="txtNationality" id="txtNationality" maxlength="100" value="<?php echo $result['nationality_info']?>"></label></td>
+										<td><label class="lblcontainer"><input class="form-control" type="text" name="txtNationality" id="txtNationality" maxlength="100" value="<?php echo $result_candidate['nationality_info']?>"></label></td>
 									</tr>
 									</table>
 								</fieldset>
@@ -446,16 +446,16 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside">
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radEthnicity_thai" name="radEthnicity" value="Thai" <?php echo ($result['ethnicity'] == 'Thai' ? "checked" : "") ?>> Thai&nbsp;</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radEthnicity_thai" name="radEthnicity" value="Thai" <?php echo ($result_candidate['ethnicity'] == 'Thai' ? "checked" : "") ?>> Thai&nbsp;</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radEthnicity_other" name="radEthnicity" value="Other" <?php echo ($result['ethnicity'] == 'Other' ? "checked" : "") ?>> Other&nbsp;</label>
+											<label class="lblcontainer"><input type="radio" class="lblcontainer" id="radEthnicity_other" name="radEthnicity" value="Other" <?php echo ($result_candidate['ethnicity'] == 'Other' ? "checked" : "") ?>> Other&nbsp;</label>
 										</td>
 									</tr>
 									<tr>
-										<td><label class="lblcontainer"><input class="form-control" type="text" name="txtEthnicity" id="txtEthnicity" maxlength="100" value="<?php echo $result['ethnicity_info']?>"></label></td>
+										<td><label class="lblcontainer"><input class="form-control" type="text" name="txtEthnicity" id="txtEthnicity" maxlength="100" value="<?php echo $result_candidate['ethnicity_info']?>"></label></td>
 									</tr>
 									</table>
 								</fieldset>
@@ -469,7 +469,7 @@ else{
 								<tr>
 									<td style="width: 15%;height:40px">
 										<!--<div class="col-sm-5"><input id="txtBDDate" name="txtBDDate"  class="input-group date" type="text" style="width: 200px"></div>-->
-										<input class="datepicker form-control" id="txtBDDate" name="txtBDDate" size="16" type="text" style="width: 200px" value="<?php echo $result['birthdate']?>">
+										<input class="datepicker form-control" id="txtBDDate" name="txtBDDate" size="16" type="text" style="width: 200px" value="<?php echo $result_candidate['birthdate']?>">
 									</td>
 									<td style="text-align:right;width: 10%;">Age&nbsp;</td>
 									<td style="text-align:center;width: 15%;"><div class="divLast" name="txtAgeYear" id="txtAgeYear">&nbsp;</div><input type="hidden" id="txtAgeYear_val" name="txtAgeYear_val"></td>
@@ -488,8 +488,8 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside tbleMail">
 									<?php 
 										$sql_candidate_contact_mail ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='Email' ";
-										$stmt = $con->query($sql_candidate_contact_mail);
-										$rows_candidate_contact_mail = $stmt->rowCount();
+										$stmt_candidate_contact_mail = $con->query($sql_candidate_contact_mail);
+										$rows_candidate_contact_mail = $stmt_candidate_contact_mail->rowCount();
 										if ($rows_candidate_contact_mail == 0){
 									?>
 										<tr>
@@ -504,7 +504,7 @@ else{
 									<?php
 									}else {
 										$m =0;
-										while ($result_candidate_contact_mail = $stmt->fetch()) {
+										while ($result_candidate_contact_mail = $stmt_candidate_contact_mail->fetch()) {
 									?>
 										<tr>
 											<td style="text-align:right;width: 15%;height:40px">Email&nbsp;</td>
@@ -525,8 +525,8 @@ else{
 									<table border="0" style="width: 100%" class="tabForm_inside tblTelephone">
 									<?php 
 										$sql_candidate_contact_tel ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='Telephone' ";
-										$stmt = $con->query($sql_candidate_contact_tel);
-										$rows_candidate_contact_tel = $stmt->rowCount();
+										$stmt_candidate_contact_tel = $con->query($sql_candidate_contact_tel);
+										$rows_candidate_contact_tel = $stmt_candidate_contact_tel->rowCount();
 										if ($rows_candidate_contact_tel == 0){
 									?>
 										<tr>
@@ -541,7 +541,7 @@ else{
 									<?php
 									}else {
 										$t =0;
-										while ($result_candidate_contact_tel = $stmt->fetch()) {
+										while ($result_candidate_contact_tel = $stmt_candidate_contact_tel->fetch()) {
 									?>
 										<tr>
 											<td style="text-align:right;width: 22%;height:40px">Telephone&nbsp;</td>
@@ -591,10 +591,10 @@ else{
 					<?php
 						$sql_position_SAP ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='SAP' ";
 						//echo 'sql SAP - '.$sql_position_SAP;
-						$stmt = $con->query($sql_position_SAP);
-						$rows_position_SAP = $stmt->rowCount();
+						$stmt_position_SAP = $con->query($sql_position_SAP);
+						$rows_position_SAP = $stmt_position_SAP->rowCount();
 						if ($rows_position_SAP > 0)
-							while ($result_position_SAP = $stmt->fetch()) {
+							while ($result_position_SAP = $stmt_position_SAP->fetch()) 
 								$SAP = 'checked';
 						else	
 							$SAP = '';
@@ -602,13 +602,13 @@ else{
 						$sql_positionskill_SAP ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SAP' ";
 						//echo 'sql SAP - '.$sql_positionskill_SAP."<br/>";
 						
-						$stmt = $con->query($sql_positionskill_SAP);
-						$rows_positionskill_SAP = $stmt->rowCount();
+						$stmt_positionskill_SAP = $con->query($sql_positionskill_SAP);
+						$rows_positionskill_SAP = $stmt_positionskill_SAP->rowCount();
 						
 						$SAP_skill = array();
 						if ($rows_positionskill_SAP > 0){
 							$sa = 0;
-							while ($result_positionskill_SAP = $stmt->fetch()) {
+							while ($result_positionskill_SAP = $stmt_positionskill_SAP->fetch()) {
 								$SAP_skill[$sa] = $result_positionskill_SAP['skill'];
 								$sa++;
 							}
@@ -623,10 +623,10 @@ else{
 							 <select name="ddModule[]" id="ddModule" class="ddStyle" style="width: 100%" multiple>
 								<?php
 									$sql_SAP = "SELECT SAP_module,SAP_moduleVal FROM sap_modules order by SAP_module";
-									$stmt = $con->query($sql_SAP);
-									while ($result_SAP = $stmt->fetch()) {
+									$stmt_SAP = $con->query($sql_SAP);
+									while ($result_SAP = $stmt_SAP->fetch()) {
 								?>
-									<option value="<?php echo $result_SAP['SAP_moduleVal']?>" <?php echo (in_array($result_SAP['SAP_moduleVal'],$SAP_skill) ? "selected" : "") ?>><?php echo $result_SAP['SAP_module']?></option>
+									<option value="<?php echo $result_SAP['SAP_moduleVal']?>" <?php echo (in_array($result_SAP['SAP_moduleVal'],$SAP_skill) ? "selected" : "") ?>><?php echo $result_SAP['SAP_module'].' ('.$result_SAP['SAP_moduleVal'].')'?></option>
 									<?php } ?>
 							 </select>
 						</td>
@@ -634,24 +634,24 @@ else{
 					<?php
 						$sql_position_Programmer ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Programmer' ";
 						//echo 'sql Programmer - '.$sql_position_Programmer;
-						$stmt = $con->query($sql_position_Programmer);
-						$rows_position_Programmer = $stmt->rowCount();
+						$stmt_position_Programmer  = $con->query($sql_position_Programmer);
+						$rows_position_Programmer = $stmt_position_Programmer ->rowCount();
 						
 						if ($rows_position_Programmer > 0)
-							while ($result_position_Programmer = $stmt->fetch()) 
+							while ($result_position_Programmer = $stmt_position_Programmer ->fetch()) 
 								$Programmer = 'checked';
 						else	
 							$Programmer = '';
 						
 						$sql_positionskill_Programmer ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Programmer' ";
 						//echo 'sql Programmer - '.$sql_positionskill_Programmer."<br/>";
-						$stmt = $con->query($sql_positionskill_Programmer);
-						$rows_positionskill_Programmer = $stmt->rowCount();
+						$stmt_positionskill_Programmer = $con->query($sql_positionskill_Programmer);
+						$rows_positionskill_Programmer = $stmt_positionskill_Programmer->rowCount();
 						
 						$Programmer_skill = array();
 						if ($rows_positionskill_Programmer > 0){
 							$pg = 0;
-							while ($result_positionskill_Programmer = $stmt->fetch()) {
+							while ($result_positionskill_Programmer = $stmt_positionskill_Programmer->fetch()) {
 								$Programmer_skill[$pg] = $result_positionskill_Programmer['skill'];
 								$pg++;
 							}
@@ -666,8 +666,8 @@ else{
 							<select name="ddLanguage[]" id="ddLanguage" class="ddStyle" style="width: 100%" multiple>
 								<?php
 									$sql_lang = "SELECT lang,lang_val FROM prog_lang order by lang";
-									$stmt = $con->query($sql_lang);
-									while ($result_lang = $stmt->fetch()) {
+									$stmt_lang = $con->query($sql_lang);
+									while ($result_lang = $stmt_lang->fetch()) {
 								?>
 									<option value="<?php echo $result_lang['lang_val']?>" <?php echo (in_array($result_lang['lang_val'],$Programmer_skill) ? "selected" : "") ?>><?php echo $result_lang['lang']?></option>
 								<?php } ?>
@@ -678,36 +678,32 @@ else{
 						$sql_position_SA ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='SA' ";
 						//echo 'sql SA - '.$sql_position_SA;
 						
-						$stmt = $con->query($sql_position_SA);
-						$rows_position_SA = $stmt->rowCount();
+						$stmt_position_SA = $con->query($sql_position_SA);
+						$rows_position_SA = $stmt_position_SA->rowCount();
 						
 						if ($rows_position_SA > 0)
-							while ($result_position_SA = $stmt->fetch())
+							while ($result_position_SA = $stmt_position_SA->fetch())
 								$SA = 'checked';
 						else	
 							$SA = '';
 						
 						$sql_positionskill_SA ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SA' and skill_type='choice' ";
 						//echo 'sql SA - '.$sql_positionskill_SA."<br/>";
-						$stmt = $con->query($sql_positionskill_SA);
-						$rows_positionskill_SA = $stmt->rowCount();
+						$stmt_positionskill_SA = $con->query($sql_positionskill_SA);
+						$rows_positionskill_SA = $stmt_positionskill_SA->rowCount();
 						
-						if ($rows_positionskill_SA > 0){
-							while ($result_positionskill_SA = $stmt->fetch()){
+						if ($rows_positionskill_SA > 0)
+							while ($result_positionskill_SA = $stmt_positionskill_SA->fetch())
 								$SA_skill = $result_positionskill_SA['skill'];
-							}
-						}
-						
+
 						$sql_positionskill_SA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SA' and skill_type='text' ";
 						//echo 'sql SA - '.$sql_positionskill_SA."<br/>";
-						$stmt = $con->query($sql_positionskill_SA_txt);
-						$rows_positionskill_SA_txt = $stmt->rowCount();
+						$stmt_positionskill_SA_txt = $con->query($sql_positionskill_SA_txt);
+						$rows_positionskill_SA_txt = $stmt_positionskill_SA_txt->rowCount();
 						
-						if ($rows_positionskill_SA_txt > 0){
-							while ($result_positionskill_SA_txt = $stmt->fetch()){
+						if ($rows_positionskill_SA_txt > 0)
+							while ($result_positionskill_SA_txt = $stmt_positionskill_SA_txt->fetch())
 								$SA_skill_txt = $result_positionskill_SA_txt['skill'];
-							}
-						}
 						else
 							$SA_skill_txt ='';
 					?>
@@ -731,36 +727,34 @@ else{
 						$sql_position_BA ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='BA' ";
 						//echo 'sql BA - '.$sql_position_BA;
 						
-						$stmt = $con->query($sql_position_BA);
-						$rows_position_BA = $stmt->rowCount();
+						$stmt_position_BA = $con->query($sql_position_BA);
+						$rows_position_BA = $stmt_position_BA->rowCount();
 						
 						if ($rows_position_BA > 0)
-							while ($result_position_BA = $stmt->fetch())
+							while ($result_position_BA = $stmt_position_BA->fetch())
 								$BA = 'checked';
 						else	
 							$BA = '';
 						
 						$sql_positionskill_BA ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='BA' and skill_type='choice' ";
 						//echo 'sql BA - '.$sql_positionskill_BA."<br/>";
-						$stmt = $con->query($sql_positionskill_BA);
-						$rows_positionskill_BA = $stmt->rowCount();
+						$stmt_positionskill_BA  = $con->query($sql_positionskill_BA);
+						$rows_positionskill_BA = $stmt_positionskill_BA ->rowCount();
 						
-						if ($rows_positionskill_BA > 0){
-							while ($result_positionskill_BA = $stmt->fetch()){
+						if ($rows_positionskill_BA > 0)
+							while ($result_positionskill_BA = $stmt_positionskill_BA ->fetch())
 								$BA_skill = $result_positionskill_BA['skill'];
-							}
-						}
+						else	
+							$BA_skill = 'N';
 						
 						$sql_positionskill_BA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='BA' and skill_type='text' ";
 						//echo 'sql BA - '.$sql_positionskill_BA."<br/>";
-						$stmt = $con->query($sql_positionskill_BA_txt);
-						$rows_positionskill_BA_txt = $stmt->rowCount();
+						$stmt_positionskill_BA_txt = $con->query($sql_positionskill_BA_txt);
+						$rows_positionskill_BA_txt = $stmt_positionskill_BA_txt->rowCount();
 						
-						if ($rows_positionskill_BA_txt > 0){
-							while ($result_positionskill_BA_txt = $stmt->fetch()){
+						if ($rows_positionskill_BA_txt > 0)
+							while ($result_positionskill_BA_txt = $stmt_positionskill_BA_txt->fetch())
 								$BA_skill_txt = $result_positionskill_BA_txt['skill'];
-							}
-						}
 						else
 							$BA_skill_txt ='';
 					?>
@@ -783,24 +777,24 @@ else{
 					<?php
 						$sql_position_Tester ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Tester' ";
 						//echo 'sql Tester - '.$sql_position_Tester;
-						$stmt = $con->query($sql_position_Tester);
-						$rows_position_Tester = $stmt->rowCount();
+						$stmt_position_Tester = $con->query($sql_position_Tester);
+						$rows_position_Tester = $stmt_position_Tester->rowCount();
 						
 						if ($rows_position_Tester > 0)
-							while ($result_position_Tester = $stmt->fetch())
+							while ($result_position_Tester = $stmt_position_Tester->fetch())
 								$Tester = 'checked';
 						else	
 							$Tester = '';
 						
 						$sql_positionskill_Tester ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Tester' and skill_type='choice' ";
 						//echo 'sql Tester - '.$sql_positionskill_Tester."<br/>";
-						$stmt = $con->query($sql_positionskill_Tester);
-						$rows_positionskill_Tester = $stmt->rowCount();
+						$stmt_positionskill_Teste = $con->query($sql_positionskill_Tester);
+						$rows_positionskill_Tester = $stmt_positionskill_Teste->rowCount();
 						
 						$Tester_skill = array();
 						if ($rows_positionskill_Tester > 0){
 							$tt = 0;
-							while ($result_positionskill_Tester = $stmt->fetch()){
+							while ($result_positionskill_Tester = $stmt_positionskill_Teste->fetch()){
 								$Tester_skill[$tt] = $result_positionskill_Tester['skill'];
 								$tt++;
 							}
@@ -821,35 +815,33 @@ else{
 					<?php
 						$sql_position_PM ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='PM' ";
 						//echo 'sql PM - '.$sql_position_PM;
-						$stmt = $con->query($sql_position_PM);
-						$rows_position_PM = $stmt->rowCount();
+						$stmt_position_PM = $con->query($sql_position_PM);
+						$rows_position_PM = $stmt_position_PM->rowCount();
 						
 						if ($rows_position_PM > 0)
-							while ($result_position_PM = $stmt->fetch())
+							while ($result_position_PM = $stmt_position_PM->fetch())
 								$PM = 'checked';
 						else	
 							$PM = '';
 						
 						$sql_positionskill_PM ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='PM' and skill_type='choice' ";
 						//echo 'sql PM - '.$sql_positionskill_PM."<br/>";
-						$stmt = $con->query($sql_positionskill_PM);
-						$rows_positionskill_PM = $stmt->rowCount();
-						if ($rows_positionskill_PM > 0){
-							while ($result_positionskill_PM = $stmt->fetch()){
+						$stmt_positionskill_PM = $con->query($sql_positionskill_PM);
+						$rows_positionskill_PM = $stmt_positionskill_PM->rowCount();
+						if ($rows_positionskill_PM > 0)
+							while ($result_positionskill_PM = $stmt_positionskill_PM->fetch())
 								$PM_skill = $result_positionskill_PM['skill'];
-							}
-						}
+						else
+							$PM_skill = 'N';
 						
 						$sql_positionskill_PM_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='PM' and skill_type='text' ";
 						//echo 'sql PM - '.$sql_positionskill_PM."<br/>";
-						$stmt = $con->query($sql_positionskill_PM_txt);
-						$rows_positionskill_PM_txt = $stmt->rowCount();
+						$stmt_positionskill_PM_txt = $con->query($sql_positionskill_PM_txt);
+						$rows_positionskill_PM_txt = $stmt_positionskill_PM_txt->rowCount();
 						
-						if ($rows_positionskill_PM_txt > 0){
-							while ($result_positionskill_PM_txt = $stmt->fetch()){
+						if ($rows_positionskill_PM_txt > 0)
+							while ($result_positionskill_PM_txt = $stmt_positionskill_PM_txt->fetch())
 								$PM_skill_txt = $result_positionskill_PM_txt['skill'];
-							}
-						}
 						else
 							$PM_skill_txt ='';
 					?>
@@ -872,23 +864,21 @@ else{
 					<?php
 						$sql_position_Admin ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Admin' ";
 						//echo 'sql Admin - '.$sql_position_Admin;
-						$stmt = $con->query($sql_position_Admin);
-						$rows_position_Admin = $stmt->rowCount();
+						$stmt_position_Admin = $con->query($sql_position_Admin);
+						$rows_position_Admin = $stmt_position_Admin->rowCount();
 						if ($rows_position_Admin > 0)
-							while ($result_position_Admin = $stmt->fetch())
+							while ($result_position_Admin = $stmt_position_Admin->fetch())
 								$Admin = 'checked';
 						else	
 							$Admin = '';
 						
 						$sql_positionskill_Admin_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Admin' and skill_type='text' ";
 						//echo 'sql Admin - '.$sql_positionskill_Admin."<br/>";
-						$stmt = $con->query($sql_positionskill_Admin_txt);
-						$rows_positionskill_Admin_txt = $stmt->rowCount();
-						if ($rows_positionskill_Admin_txt > 0){
-							while ($result_positionskill_Admin_txt = $stmt->fetch()){
+						$stmt_positionskill_Admin_txt= $con->query($sql_positionskill_Admin_txt);
+						$rows_positionskill_Admin_txt = $stmt_positionskill_Admin_txt->rowCount();
+						if ($rows_positionskill_Admin_txt > 0)
+							while ($result_positionskill_Admin_txt = $stmt_positionskill_Admin_txt->fetch())
 								$Admin_skill_txt = $result_positionskill_Admin_txt['skill'];
-							}
-						}
 						else
 							$Admin_skill_txt ='';
 					?>
@@ -904,11 +894,11 @@ else{
 					<?php
 						$sql_position_Other ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Other' ";
 						//echo 'sql Other - '.$sql_position_Other;
-						$stmt = $con->query($sql_position_Other);
-						$rows_position_Other = $stmt->rowCount();
+						$stmt_position_Other  = $con->query($sql_position_Other);
+						$rows_position_Other = $stmt_position_Other ->rowCount();
 						
 						if ($rows_position_Other > 0)
-							while ($result_position_Other = $stmt->fetch()){
+							while ($result_position_Other = $stmt_position_Other ->fetch()){
 								$Other = 'checked';
 								$Other_txt = $result_position_Other['position_other'];
 							}
@@ -918,11 +908,11 @@ else{
 						}
 						$sql_positionskill_Other_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Other' and skill_type='text' ";
 						//echo 'sql Other - '.$sql_positionskill_Other."<br/>";
-						$stmt = $con->query($sql_positionskill_Other_txt);
-						$rows_positionskill_Other_txt = $stmt->rowCount();
+						$stmt_positionskill_Other_txt = $con->query($sql_positionskill_Other_txt);
+						$rows_positionskill_Other_txt = $stmt_positionskill_Other_txt->rowCount();
 						
 						if ($rows_positionskill_Other_txt > 0){
-							while ($result_positionskill_Other_txt = $stmt->fetch()){
+							while ($result_positionskill_Other_txt = $stmt_positionskill_Other_txt->fetch()){
 								$Other_skill_txt = $result_positionskill_Other_txt['skill'];
 							}
 						}
@@ -958,8 +948,8 @@ else{
 					<?php
 						$sql_callrecord ="SELECT * FROM candidate_callrecord where candidate_ID = '$id' order by call_date";
 						//echo 'sql_callrecord - '.$sql_callrecord.'<br>';
-						$stmt = $con->query($sql_callrecord);
-						$rows_callrecord = $stmt->rowCount();
+						$stmt_callrecord= $con->query($sql_callrecord);
+						$rows_callrecord = $stmt_callrecord->rowCount();
 					?>
 					<div class="div_inline"><h4 class="mb-4 div_inline">Part 3-1 : Call Record</h4>&nbsp;&nbsp;
 					<button type="button" class="addrow btn btn-success" title="Add more call record" id="btn_add31" name="btn_add31" ><i class="fa fa-plus-square-o"></i> Add</button>
@@ -1130,7 +1120,7 @@ else{
 					<?php
 						}else{
 							$cr=0;
-							while ($result_callrecord = $stmt->fetch()) {
+							while ($result_callrecord = $stmt_callrecord->fetch()) {
 								$cr++;
 					?>
 						<tr>
@@ -1311,8 +1301,8 @@ else{
 					<?php
 						$sql_interviewrecord ="SELECT * FROM candidate_interviewrecord where candidate_ID = '$id' order by interview_date";
 						//echo 'sql_interviewrecord - '.$sql_interviewrecord.'<br>';
-						$stmt = $con->query($sql_interviewrecord);
-						$rows_interviewrecord = $stmt->rowCount();
+						$stmt_interviewrecord = $con->query($sql_interviewrecord);
+						$rows_interviewrecord = $stmt_interviewrecord->rowCount();
 					?>
 					<div class="div_inline"><h4 class="mb-4 div_inline">Part 3-2 : Interview Record</h4>&nbsp;&nbsp;
 						<button type="button" class="addrow btn btn-success" title="Add interview record" id="btn_add32" name="btn_add32" ><i class="fa fa-plus-square-o"></i> Add</button>
@@ -1446,7 +1436,7 @@ else{
 					<?php
 						}else{
 							$ir=0;
-							while ($result_interviewrecord = $stmt->fetch()) {
+							while ($result_interviewrecord = $stmt_interviewrecord->fetch()) {
 								$ir++;
 								$interview_date = explode(" ", $result_interviewrecord['interview_date']);
 								$interview_date[1] = substr($interview_date[1], 0, 5);
@@ -1525,14 +1515,14 @@ else{
 								<td colspan="2">
 									<?php
 										$sql_company ="SELECT * FROM client_company where client_ID = '".$result_interviewrecord['client_ID']."' ";
-										$stmt = $con->query($sql_company);
-										$rows_company = $stmt->rowCount();
+										$stmt_company = $con->query($sql_company);
+										$rows_company = $stmt_company->rowCount();
 										//echo 'rows - '.$rows."<br/>";
 										$client_company = '';
 										$client_department = '';
 										$client_contact = '';
 										if ($rows_company > 0){
-											while ($result_company = $stmt->fetch()) {
+											while ($result_company = $stmt_company->fetch()) {
 												$client_company = $result_company['client_company'];
 												$client_department = $result_company['client_department'];
 												$client_contact = $result_company['client_contact'];
@@ -1605,8 +1595,8 @@ else{
 							include_once 'db.php';
 							$sql_candidate_file_sel="SELECT * FROM candidate_file where candidate_ID = '$id' ";
 						
-							$stmt = $con->query($sql_candidate_file_sel);
-							while ($result_file = $stmt->fetch()) {
+							$stmt_candidate_file_sel = $con->query($sql_candidate_file_sel);
+							while ($result_file = $stmt_candidate_file_sel->fetch()) {
 									echo "<div class='displayFile'><input type='checkbox' class='checkbox label_inline lblcontainer' id='fileDelete' name='chkFileDelete[]' value='".$result_file['file_ID']."'> <a href='download.php?id=".urlencode($result_file['file_ID'])."'>".$result_file['filename']."</a></div>";
 							}
 						?>

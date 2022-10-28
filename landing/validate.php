@@ -16,14 +16,14 @@ if($action=="validate-candidate"){
 function validate_condidate($candidate_ID, $name_th,$sname_th,$name_en,$sname_en){
 	global $con;
 	//$sql = "SELECT * FROM candidate where flag_delete ='N' and idcard ='".$txtIDcard."'";
-	$sql = "SELECT * FROM candidate where flag_delete ='N' and candidate_ID != '".$candidate_ID."' and ((name_th ='".$name_th."' and sname_th ='".$sname_th."') OR (name_en ='".$name_en."' and sname_en ='".$sname_en."') )";
-	$stmt = $con->query($sql);
-	$rows = $stmt->rowCount();
-	if ($rows == 0) 
+	$sql_vCandidate = "SELECT * FROM candidate where flag_delete ='N' and candidate_ID != '".$candidate_ID."' and ((name_th ='".$name_th."' and sname_th ='".$sname_th."') OR (name_en ='".$name_en."' and sname_en ='".$sname_en."') )";
+	$stmt_vCandidate = $con->query($sql_vCandidate);
+	$rows_vCandidate = $stmt_vCandidate->rowCount();
+	if ($rows_vCandidate == 0) 
 		 $res = 1;
 	else
 		$res = 0;
-	//$res = $sql;
+	//$res = $sql_vCandidate;
 	return $res;
 }
 //mysqli_close($con);

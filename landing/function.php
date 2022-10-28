@@ -13,15 +13,15 @@ function getLogin($enc, $ind) {
 	{												//-----------------return dec l with Name
 		$str_l = trim(decrypt($str_l));
 		$chk=0;
-		$sql = "SELECT * FROM login_session WHERE login_user='".$str_l."' and login_flag='Y' order by login_date desc";
-		$stmt = $con->query($sql);
-		$rows = $stmt->rowCount();
+		$sql_usrSess = "SELECT * FROM login_session WHERE login_user='".$str_l."' and login_flag='Y' order by login_date desc";
+		$stmt_usrSess = $con->query($sql_usrSess);
+		$rows_usrSess = $stmt_usrSess->rowCount();
 										
-		if ($rows>0){
-			while ($result = $stmt->fetch()) {
+		if ($rows_usrSess>0){
+			while ($result_usrSess = $stmt_usrSess->fetch()) {
 				if ($chk>0)
 					break;
-				$r_enc = $str_l.'/'.$result['login_name']." ".$result['login_sname'];
+				$r_enc = $str_l.'/'.$result_usrSess['login_name']." ".$result_usrSess['login_sname'];
 				$chk++;
 			}
 		}
@@ -30,15 +30,15 @@ function getLogin($enc, $ind) {
 	{															//-----------------return Login
 		$str_l = trim(decrypt($str_l));
 		$chk=0;
-		$sql = "SELECT * FROM login_session WHERE login_user='".$str_l."' and login_flag='N' order by login_date desc";
-		$stmt = $con->query($sql);
-		$rows = $stmt->rowCount();
+		$sql_usrSessN = "SELECT * FROM login_session WHERE login_user='".$str_l."' and login_flag='N' order by login_date desc";
+		$stmt_usrSessN= $con->query($sql_usrSessN);
+		$rows_usrSessN = $stmt_usrSessN->rowCount();
 		
-		if ($rows>0){
-			while ($result = $stmt->fetch()) {
+		if ($rows_usrSessN>0){
+			while ($result_usrSessN = $stmt_usrSessN->fetch()) {
 				//if ($chk>0)
 				//	break;
-				$r_enc = 'Last Access '.$result['login_date'];
+				$r_enc = 'Last Access '.$result_usrSessN['login_date'];
 				$chk++;
 			}
 		}

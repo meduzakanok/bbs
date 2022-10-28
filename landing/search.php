@@ -110,19 +110,19 @@ else{
 							//echo 'ddInterestedPosition - '.$ddInterestedPosition."<br/><br/>";
 							//echo 'ddClientCompany - '.$ddClientCompany."<br/><br/>";
 							if (isset($txtName) && ($txtName!='')){
-								$sql = "SELECT candidate_ID FROM candidate ";
-								$sql .= " where 1 ";
-								$sql .= " and (flag_delete ='N') ";
-								$sql .= " and ((name_en LIKE '%".trim($txtName)."%') or (sname_en LIKE '%".trim($txtName)."%') ";
-								$sql .= " or (name_th LIKE '%".trim($txtName)."%') or (sname_th LIKE '%".trim($txtName)."%'))";
-								$sql .= " group by candidate_ID";
+								$sql_searchN = "SELECT candidate_ID FROM candidate ";
+								$sql_searchN .= " where 1 ";
+								$sql_searchN .= " and (flag_delete ='N') ";
+								$sql_searchN .= " and ((name_en LIKE '%".trim($txtName)."%') or (sname_en LIKE '%".trim($txtName)."%') ";
+								$sql_searchN .= " or (name_th LIKE '%".trim($txtName)."%') or (sname_th LIKE '%".trim($txtName)."%'))";
+								$sql_searchN .= " group by candidate_ID";
 								//echo 'sql candidate - '.$sql."<br/>";
-								$stmt = $con->query($sql);
+								$stmt_searchN = $con->query($sql_searchN);
 								//$rows = mysqli_num_rows($query);
 								$candidate_rec = '(';
-								while ($result = $stmt->fetch()) {
-									$candidate_rec .= "'".$result['candidate_ID']."',";
-								} //end while
+								while ($result_searchN = $stmt_searchN->fetch()) 
+									$candidate_rec .= "'".$result_searchN['candidate_ID']."',";
+								
 								if ($candidate_rec  != '('){
 									$candidate_rec = substr($candidate_rec,0, -1).")";
 									$candidate_record = $candidate_rec;
@@ -132,23 +132,23 @@ else{
 								//echo 'candidate_rec - '.$candidate_rec."<br/><br/>";
 							}
 							if (isset($ddPosition) && ($ddPosition!='')){
-								$sql = "SELECT candidate_ID FROM candidate_position ";
-								$sql .= " where 1 ";
-								$sql .= " and position in (";
+								$sql_position = "SELECT candidate_ID FROM candidate_position ";
+								$sql_position .= " where 1 ";
+								$sql_position .= " and position in (";
 								foreach( $ddPosition as $key => $pos ){
-									$sql .= "'".$pos."',";
+									$sql_position .= "'".$pos."',";
 									$arrpos[$pos] = 'selected';
 								}
-								$sql = substr($sql,0, -1).")";
+								$sql_position = substr($sql,0, -1).")";
 								if ($candidate_rec != '')
-									$sql .= " and (candidate_ID in ".$candidate_rec.")";
-								$sql .= " group by candidate_ID";
+									$sql_position .= " and (candidate_ID in ".$candidate_rec.")";
+								$sql_position .= " group by candidate_ID";
 								//echo 'sql candidate_position - '.$sql."<br/>";
-								$stmt = $con->query($sql);
+								$stmt_position = $con->query($sql_position);
 								//$rows = mysqli_num_rows($query);
 								$candidate_pos = '(';
-								while ($result = $stmt->fetch()) {
-									$candidate_pos .= "'".$result['candidate_ID']."',";
+								while ($result_position = $stmt_position->fetch()) {
+									$candidate_pos .= "'".$result_position['candidate_ID']."',";
 								} //end while
 								if ($candidate_pos  != '('){
 									$candidate_pos = substr($candidate_pos,0, -1).")";
@@ -158,22 +158,22 @@ else{
 								//echo 'candidate_pos - '.$candidate_pos."<br/><br/>";
 							}
 							if (($chkCalldate =='checked') || ($ddInterestedPosition!='')){
-								$sql = "SELECT candidate_ID FROM candidate_callrecord WHERE 1 ";
+								$sql_callrecord = "SELECT candidate_ID FROM candidate_callrecord WHERE 1 ";
 								if ($chkCalldate =='checked')
-									$sql .= " and (call_date BETWEEN '".$txtCallDate_start." 00:00:00' AND '".$txtCallDate_end." 23:59:59')";
+									$sql_callrecord .= " and (call_date BETWEEN '".$txtCallDate_start." 00:00:00' AND '".$txtCallDate_end." 23:59:59')";
 								if ($ddInterestedPosition != '')
-									$sql .= " and (interested_position = '".$ddInterestedPosition."')";
+									$sql_callrecord .= " and (interested_position = '".$ddInterestedPosition."')";
 								if ($candidate_rec != '')
-									$sql .= " and (candidate_ID in ".$candidate_rec.")";
+									$sql_callrecord .= " and (candidate_ID in ".$candidate_rec.")";
 								if ($candidate_pos != '')
-									$sql .= " and (candidate_ID in ".$candidate_pos.")";
-								$sql .= " group by candidate_ID";
+									$sql_callrecord .= " and (candidate_ID in ".$candidate_pos.")";
+								$sql_callrecord .= " group by candidate_ID";
 								//echo 'sql candidate_callrecord - '.$sql."<br/>";
-								$stmt = $con->query($sql);
+								$stmt_callrecord = $con->query($sql_callrecord);
 								//$rows = mysqli_num_rows($query);
 								$candidate_call = '(';
-								while ($result = $stmt->fetch()) {
-									$candidate_call .= "'".$result['candidate_ID']."',";
+								while ($result_callrecord = $stmt_callrecord->fetch()) {
+									$candidate_call .= "'".$result_callrecord['candidate_ID']."',";
 								} //end while
 								if ($candidate_call  != '('){
 									$candidate_call = substr($candidate_call,0, -1).")";
@@ -183,24 +183,24 @@ else{
 								//echo 'candidate_call - '.$candidate_call."<br/><br/>";
 							}
 							if (($chkIntdate =='checked') || ($ddClientCompany != '')){
-								$sql = "SELECT candidate_ID FROM candidate_interviewrecord WHERE 1 ";
+								$sql_interviewrecord = "SELECT candidate_ID FROM candidate_interviewrecord WHERE 1 ";
 								if ($chkIntdate =='checked')
-									$sql .= " and (interview_date BETWEEN '".$txtInterviewDate_start." 00:00:00' AND '".$txtInterviewDate_end." 23:59:59')";
+									$sql_interviewrecord .= " and (interview_date BETWEEN '".$txtInterviewDate_start." 00:00:00' AND '".$txtInterviewDate_end." 23:59:59')";
 								if ($ddClientCompany != '')
-									$sql .= " and (client_ID = ".$ddClientCompany.")";
+									$sql_interviewrecord .= " and (client_ID = ".$ddClientCompany.")";
 								if ($candidate_rec != '')
-									$sql .= " and (candidate_ID in ".$candidate_rec.")";
+									$sql_interviewrecord .= " and (candidate_ID in ".$candidate_rec.")";
 								if ($candidate_pos != '')
-									$sql .= " and (candidate_ID in ".$candidate_pos.")";
+									$sql_interviewrecord .= " and (candidate_ID in ".$candidate_pos.")";
 								if ($candidate_call != '')
-									$sql .= " and (candidate_ID in ".$candidate_call.")";
-								$sql .= " group by candidate_ID";
+									$sql_interviewrecord .= " and (candidate_ID in ".$candidate_call.")";
+								$sql_interviewrecord .= " group by candidate_ID";
 								//echo 'sql candidate_callrecord - '.$sql."<br/>";
-								$stmt = $con->query($sql);
+								$stmt_interviewrecord = $con->query($sql_interviewrecord);
 								//$rows = mysqli_num_rows($query);
 								$candidate_int = '(';
-								while ($result = $stmt->fetch()) {
-									$candidate_int .= "'".$result['candidate_ID']."',";
+								while ($result_interviewrecord = $stmt_interviewrecord->fetch()) {
+									$candidate_int .= "'".$result_interviewrecord['candidate_ID']."',";
 								} //end while
 								if ($candidate_int  != '('){
 									$candidate_int = substr($candidate_int,0, -1).")";
@@ -263,45 +263,47 @@ else{
 				<input type="text" id="txtKeySearch" onkeyup="myFunction()" placeholder="Search.." style="width:100%;">
 				<table  style="width:100%;" id="tabRecord">
 				<tr class="header">
+					<th style="width:5%;">ID</th>
 					<th style="width:15%;">Name Surname</th>
 					<th style="width:15%;">ชื่อ นามสกุล</th>
 					<th style="width:30%;">Position / Skill</th>
 					<th style="width:10%;">Telephone</th>
 					<th style="width:10%;">E-mail</th>
-					<th style="width:10%;">LineID</th>
+					<th style="width:5%;">LineID</th>
 					<th>Actions</th>
 				</tr>
 				<?php
-					$sql = "SELECT * FROM candidate ";
-					$sql .= " where 1 ";
-					$sql .= " and (flag_delete ='N') ";
-					$sql .= " and (candidate_ID in ".$candidate_record.")";
+					$sql_candidateShow = "SELECT * FROM candidate ";
+					$sql_candidateShow .= " where 1 ";
+					$sql_candidateShow .= " and (flag_delete ='N') ";
+					$sql_candidateShow .= " and (candidate_ID in ".$candidate_record.")";
 					
 					//echo 'candidate_record - '.$candidate_record."<br>";
 					//echo 'SQL - '.$sql."<br>";
-					$stmt = $con->query($sql);
+					$stmt_candidateShow = $con->query($sql_candidateShow);
 					//$rows = mysqli_num_rows($query);
-					while ($result = $stmt->fetch()) {
+					while ($result_candidateShow = $stmt_candidateShow->fetch()) {
 				?>
 				<tr>
-					<td style="vertical-align: top;"><?php echo $result['title_en'].$result['name_en'].' '.$result['sname_en']?></td>
-					<td style="vertical-align: top;"><?php echo $result['title_th'].$result['name_th'].' '.$result['sname_th']?></td>
+					<td style="vertical-align: top;"><?php echo $result_candidateShow['candidate_ID']?></td>
+					<td style="vertical-align: top;"><?php echo $result_candidateShow['title_en'].$result_candidateShow['name_en'].' '.$result_candidateShow['sname_en']?></td>
+					<td style="vertical-align: top;"><?php echo $result_candidateShow['title_th'].$result_candidateShow['name_th'].' '.$result_candidateShow['sname_th']?></td>
 					<td style="vertical-align: top;">
 						<?php
 							$sql_pos = "SELECT * FROM candidate_position ";
 							$sql_pos .= " where 1 ";
-							$sql_pos .= " and (candidate_ID ='".$result['candidate_ID']."') ";
-							$stmt = $con->query($sql_pos);
-							while ($result_pos = $stmt->fetch()) {
+							$sql_pos .= " and (candidate_ID ='".$result_candidateShow['candidate_ID']."') ";
+							$stmt_pos = $con->query($sql_pos);
+							while ($result_pos = $stmt_pos->fetch()) {
 								echo '<table style="width:100%;" id="tabRecord_inside"><tr>';
 								echo "<td style='width:150px;vertical-align: top;text-align: left;'>".$result_pos['position']."</td>";
 								$sql_posskill = "SELECT * FROM candidate_positionskill ";
 								$sql_posskill .= " where 1 ";
-								$sql_posskill .= " and (candidate_ID ='".$result['candidate_ID']."') ";
+								$sql_posskill .= " and (candidate_ID ='".$result_candidateShow['candidate_ID']."') ";
 								$sql_posskill .= " and (position ='".$result_pos['position']."') ";
-								$stmt = $con->query($sql_posskill);
+								$stmt_posskill = $con->query($sql_posskill);
 								echo '<td style="vertical-align: top;">';
-								while ($result_posskill = $stmt->fetch()) {
+								while ($result_posskill = $stmt_posskill->fetch()) {
 									echo "- ".$result_posskill['skill']."<br/>";
 								}
 								echo "</td>";
@@ -313,9 +315,9 @@ else{
 						<?php
 							$sql_cMail = "SELECT * FROM candidate_contact ";
 							$sql_cMail .= " where contact_type='Email' ";
-							$sql_cMail .= " and (candidate_ID ='".$result['candidate_ID']."') ";
-							$stmt = $con->query($sql_cMail);
-							while ($result_cMail = $stmt->fetch()) {
+							$sql_cMail .= " and (candidate_ID ='".$result_candidateShow['candidate_ID']."') ";
+							$stmt_cMail = $con->query($sql_cMail);
+							while ($result_cMail = $stmt_cMail->fetch()) {
 								echo "- ".$result_cMail['contact_info']."<br/>";
 							}
 						?>
@@ -324,9 +326,9 @@ else{
 						<?php
 							$sql_cTel = "SELECT * FROM candidate_contact ";
 							$sql_cTel .= " where contact_type='Telephone' ";
-							$sql_cTel .= " and (candidate_ID ='".$result['candidate_ID']."') ";
-							$stmt = $con->query($sql_cTel);
-							while ($result_cTel = $stmt->fetch()) {
+							$sql_cTel .= " and (candidate_ID ='".$result_candidateShow['candidate_ID']."') ";
+							$stmt_cTel = $con->query($sql_cTel);
+							while ($result_cTel = $stmt_cTel->fetch()) {
 								echo "- ".$result_cTel['contact_info']."<br/>";
 							}
 						?>
@@ -335,16 +337,16 @@ else{
 						<?php
 							$sql_cLine = "SELECT * FROM candidate_contact ";
 							$sql_cLine .= " where contact_type='LineID' ";
-							$sql_cLine .= " and (candidate_ID ='".$result['candidate_ID']."') ";
-							$stmt = $con->query($sql_cLine);
-							while ($result_cLine = $stmt->fetch()) {
+							$sql_cLine .= " and (candidate_ID ='".$result_candidateShow['candidate_ID']."') ";
+							$stmt_cLine = $con->query($sql_cLine);
+							while ($result_cLine = $stmt_cLine->fetch()) {
 								echo $result_cLine['contact_info']."<br/>";
 							}
 						?>
 					</td>
 					<td style="vertical-align: top;">
-						<button type="button" class="btn btn-lg btn-success" title="Edit Recruit" id="btn_edt" onclick="setID('<?php echo $result['candidate_ID']?>');edtSubmit()"><i class="fa fa-edit"></i></button>
-						<button type="button" class="btn btn-lg btn-danger" title="Delete Recruit" data-toggle="modal" data-target="#modalDelRecruit" onclick="setID('<?php echo $result['candidate_ID']?>')"><i class="fa fa-trash-o"></i></button>
+						<button type="button" class="btn btn-lg btn-success" title="Edit Recruit" id="btn_edt" onclick="setID('<?php echo $result_candidateShow['candidate_ID']?>');edtSubmit()"><i class="fa fa-edit"></i></button>
+						<button type="button" class="btn btn-lg btn-danger" title="Delete Recruit" data-toggle="modal" data-target="#modalDelRecruit" onclick="setID('<?php echo $result_candidateShow['candidate_ID']?>')"><i class="fa fa-trash-o"></i></button>
 					</td>
 				</tr>
 				<?php } ?>

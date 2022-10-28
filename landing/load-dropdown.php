@@ -23,20 +23,20 @@ else if($_POST["action"]=="load-client"){
 //load country and return country list
 function loadPosition($act,$position_id){
 	global $con;
-	$sql = "SELECT position_ID, position, position_val FROM position order by position";
-	$stmt = $con->query($sql);
-	$rows = $stmt->rowCount();
+	$sql_pos = "SELECT position_ID, position, position_val FROM position order by position";
+	$stmt_pos = $con->query($sql_pos);
+	$rows_pos = $stmt_pos->rowCount();
 										
 	//$result = $conn->query($sql);
 	$options="<option value=''>--Select Position--</option>";
-	if ($rows > 0) {
+	if ($rows_pos > 0) {
 	  // output data of each row
 	  
-	while ($result = $stmt->fetch()) {
-		if ($position_id == $result['position_val'])
-			$options.= "<option value='".$result['position_val']."' selected>".$result['position']."</option>";
+	while ($result_pos = $stmt_pos->fetch()) {
+		if ($position_id == $result_pos['position_val'])
+			$options.= "<option value='".$result_pos['position_val']."' selected>".$result_pos['position']."</option>";
 		else 
-			$options.= "<option value='".$result['position_val']."'>".$result['position']."</option>";
+			$options.= "<option value='".$result_pos['position_val']."'>".$result_pos['position']."</option>";
 	  }
 	} 
 	return $options;
@@ -44,27 +44,27 @@ function loadPosition($act,$position_id){
 
 function loadClient($act,$position_id){
 	global $con;
-	$sql = "SELECT * FROM client_company order by client_company ";
-	$stmt = $con->query($sql);
-	$rows = $stmt->rowCount();
+	$sql_comp = "SELECT * FROM client_company order by client_company ";
+	$stmt_comp = $con->query($sql_comp);
+	$rows_comp = $stmt_comp->rowCount();
 	//$result = $conn->query($sql);
 	$options="<option value=''>--Select Company--</option>";
-	if ($rows > 0) {
+	if ($rows_comp > 0) {
 		// output data of each row
-		 while ($result = $stmt->fetch()) {
+		 while ($result_comp = $stmt_comp->fetch()) {
 			if ($act == '1')
-				$options.= "<option value='".$result['client_ID']."|".$result['client_department']."|".$result['client_contact']."|".$result['client_company']."'>".$result['client_company']."</option>";
+				$options.= "<option value='".$result_comp['client_ID']."|".$result_comp['client_department']."|".$result_comp['client_contact']."|".$result_comp['client_company']."'>".$result_comp['client_company']."</option>";
 			elseif ($act == '2'){
-				if ($position_id == $result['client_ID'])
-					$options.= "<option value='".$result['client_ID']."' selected>".$result['client_company']."</option>";
+				if ($position_id == $result_comp['client_ID'])
+					$options.= "<option value='".$result_comp['client_ID']."' selected>".$result_comp['client_company']."</option>";
 				else
-					$options.= "<option value='".$result['client_ID']."'>".$result['client_company']."</option>";
+					$options.= "<option value='".$result_comp['client_ID']."'>".$result_comp['client_company']."</option>";
 			}
 			elseif ($act == '3'){
-				if ($position_id == $result['client_ID'])
-					$options.= "<option value='".$result['client_ID']."|".$result['client_department']."|".$result['client_contact']."|".$result['client_company']."' selected>".$result['client_company']."</option>";
+				if ($position_id == $result_comp['client_ID'])
+					$options.= "<option value='".$result_comp['client_ID']."|".$result_comp['client_department']."|".$result_comp['client_contact']."|".$result_comp['client_company']."' selected>".$result_comp['client_company']."</option>";
 				else
-					$options.= "<option value='".$result['client_ID']."|".$result['client_department']."|".$result['client_contact']."|".$result['client_company']."'>".$result['client_company']."</option>";
+					$options.= "<option value='".$result_comp['client_ID']."|".$result_comp['client_department']."|".$result_comp['client_contact']."|".$result_comp['client_company']."'>".$result_comp['client_company']."</option>";
 			}
 		  }//end while
 	}//end if 
@@ -74,8 +74,8 @@ function loadClient($act,$position_id){
 //load state and return state list 
 /*function loadState($country_id){
 	global $con;
-	$sql = "SELECT id, name FROM states where country_id='$country_id'";
-	$result = $con->query($sql);
+	//$sql = "SELECT id, name FROM states where country_id='$country_id'";
+	//$result = $con->query($sql);
 	$options='<option>select state</option>';
 	if ($result->num_rows > 0) {
 	  // output data of each row

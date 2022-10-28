@@ -9,9 +9,9 @@ if($frm=="candidate"){
 
 function Delcandidate($id){
 	global $con;
-	$sql = "UPDATE candidate SET flag_delete='Y' WHERE candidate_ID ='".$id."'";
-	$stmt = $con->query($sql);
-	if($query) 
+	$sql_updFlag = "UPDATE candidate SET flag_delete='Y' WHERE candidate_ID ='".$id."'";
+	$stmt_updFlag = $con->query($sql_updFlag);
+	if($stmt_updFlag) 
 		$res = 1;
 	else
 		$res = 0;
