@@ -8503,3 +8503,22 @@ label{display:block;}
 border-bottom: 2px dotted gray !important;
 width: 100%;
 }
+
+/*-------------------------------------------------result of search skill*/
+* {
+  box-sizing: border-box;
+}
+.list {
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.list li {
+  vertical-align: top;
+  flex: 0 0 50%;
+  border: 1px solid #B2B2B2;
+  padding: 1em;
+  display: flex;
+}
+/*--------------------------------------*/
