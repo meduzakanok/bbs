@@ -1332,7 +1332,7 @@ else{
 								<td style="text-align:right;">Client Customer Company : </td>
 								<td>
 									<select id="ddClientCompany1" name="ddClientCompany1" class="ddStyle ddSearch" style="width: 100%"></select>
-									<input type="hidden" id="txtClientID1" name="txtClientID1" style="width: 20px">
+									<input type="text" id="txtClientID1" name="txtClientID1" style="width: 20px">
 									<input type="hidden" id="txtClientCompany1" name="txtClientCompany1" style="width: 20px">
 								</td>
 								<td>
