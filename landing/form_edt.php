@@ -237,7 +237,7 @@ else{
 											<option value="<?php echo $result_province['provinceID']?>" <?php echo ($result_candidate['province'] == $result_province['provinceThai'] ? "selected" : "") ?>><?php echo $result_province['provinceThai']?></option>
 										<?php }?>
 										 </select>
-										 <input type="hidden" name="ddProvince_info" id="ddProvince_info">
+										 <input type="hidden" name="ddProvince_info" id="ddProvince_info" value="<?php echo $result_candidate['province'] ?>">
 									</td>
 									<td style="text-align:right">District&nbsp;</td>
 									<td style="width: 30%">
@@ -251,7 +251,7 @@ else{
 											<option value="<?php echo $result_amphure['districtID']?>" <?php echo ($result_candidate['district'] == $result_amphure['districtThai'] ? "selected" : "") ?>><?php echo $result_amphure['districtThai']?></option>
 										<?php }?>
 										 </select>
-										 <input type="hidden" name="ddDistrict_info" id="ddDistrict_info">
+										 <input type="hidden" name="ddDistrict_info" id="ddDistrict_info" value="<?php echo $result_candidate['district'] ?>">
 									</td>
 									<td style="text-align:right">SubDistrict&nbsp;</td>
 									<td style="width: 30%">
@@ -265,7 +265,7 @@ else{
 											<option value="<?php echo $result_tambon['provinceThai'].'|'.$result_tambon['districtThai'].'|'.$result_tambon['tambonID'].'|'.$result_tambon['tambonThai'].'|'.$result_tambon['postCodeMain']?>" <?php echo ($result_candidate['subdistrict'] == $result_tambon['tambonThai'] ? "selected" : "") ?>><?php echo $result_tambon['tambonThai']?></option>
 											<?php } ?>
 										 </select>
-										 <input type="hidden" name="ddSubDistrict_info" id="ddSubDistrict_info">
+										 <input type="hidden" name="ddSubDistrict_info" id="ddSubDistrict_info" value="<?php echo $result_candidate['subdistrict'] ?>">
 									</td>
 								</tr>
 								</table>
@@ -695,7 +695,9 @@ else{
 						if ($rows_positionskill_SA > 0)
 							while ($result_positionskill_SA = $stmt_positionskill_SA->fetch())
 								$SA_skill = $result_positionskill_SA['skill'];
-
+						else	
+							$SA_skill = 'N';
+						
 						$sql_positionskill_SA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SA' and skill_type='text' ";
 						//echo 'sql SA - '.$sql_positionskill_SA."<br/>";
 						$stmt_positionskill_SA_txt = $con->query($sql_positionskill_SA_txt);
@@ -706,6 +708,7 @@ else{
 								$SA_skill_txt = $result_positionskill_SA_txt['skill'];
 						else
 							$SA_skill_txt ='';
+						
 					?>
 					<tr> <!--SA-->
 						<td colspan="2">
