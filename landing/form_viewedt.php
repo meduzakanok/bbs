@@ -282,6 +282,7 @@ else{
 									if ($pos=='Other' && isset($txtPositionOther))
 										$sql_position .= " '$txtPositionOther', ";
 									$sql_position .= " '$current_date', '$current_date','$current_login')";
+									echo 'sql_position = '.$sql_position.'<br>';
 									$stmt_position = $con->query($sql_position);
 									
 									if($pos == 'SAP') {								//-----------------------------------------------------------------------------start insert SAP
