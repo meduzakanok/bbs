@@ -217,6 +217,7 @@ else{
 									<td style="width: 30%">
 										<?php
 											$sql_province = "SELECT provinceID,provinceThai FROM v_province";
+											echo $sql_province."<br>";
 											$stmt_province = $con->query($sql_province);	
 										?>
 										<select name="ddProvince" id="ddProvince" class="ddStyle" style="width: 100%;cursor: pointer;">
