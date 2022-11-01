@@ -168,7 +168,7 @@ else{
 								if ($candidate_pos != '')
 									$sql_callrecord .= " and (candidate_ID in ".$candidate_pos.")";
 								$sql_callrecord .= " group by candidate_ID";
-								//echo 'sql candidate_callrecord - '.$sql."<br/>";
+								//echo 'sql candidate_callrecord - '.$sql_callrecord."<br/>";
 								$stmt_callrecord = $con->query($sql_callrecord);
 								//$rows = mysqli_num_rows($query);
 								$candidate_call = '(';
@@ -294,21 +294,37 @@ else{
 							$sql_pos .= " where 1 ";
 							$sql_pos .= " and (candidate_ID ='".$result_candidateShow['candidate_ID']."') ";
 							$stmt_pos = $con->query($sql_pos);
+							echo '<ul class="list">';
+							//$first_col = '<li>';
+							//$sec_col = '<li>';
 							while ($result_pos = $stmt_pos->fetch()) {
-								echo '<table style="width:100%;" id="tabRecord_inside"><tr>';
-								echo "<td style='width:150px;vertical-align: top;text-align: left;'>".$result_pos['position']."</td>";
+								
+								//$first_col .= '<span class="name">'.$result_pos['position'].'</span>';
+								echo "<li style='width: 30%;'>".$result_pos['position']."</li>";
+								//echo '<table style="width:100%;" border=1 id="tabRecord_inside"><tr>';
+								//echo "<td style='width:150px;vertical-align: top;text-align: left;'>".$result_pos['position']."</td>";
+								
 								$sql_posskill = "SELECT * FROM candidate_positionskill ";
 								$sql_posskill .= " where 1 ";
 								$sql_posskill .= " and (candidate_ID ='".$result_candidateShow['candidate_ID']."') ";
 								$sql_posskill .= " and (position ='".$result_pos['position']."') ";
 								$stmt_posskill = $con->query($sql_posskill);
-								echo '<td style="vertical-align: top;">';
+								//echo '<td style="vertical-align: top;">';
+								//$sec_col .= '<span class="name">';
+								echo "<li>";
 								while ($result_posskill = $stmt_posskill->fetch()) {
 									echo "- ".$result_posskill['skill']."<br/>";
+									//$sec_col .= '-'.$result_posskill['skill'].'<br/>';
 								}
-								echo "</td>";
-								echo "</tr></table>";
+								echo "</li>";
+								//$sec_col .='</span> ';
+								//echo "</td>";
+								//echo "</tr></table>";
 							}
+							//$first_col .= '</li>';
+							//$sec_col .= '</li>';
+							//echo $first_col.$sec_col ;
+							echo '</ul>';
 						?>
 					</td>
 					<td style="vertical-align: top;">
@@ -499,7 +515,7 @@ else{
 		  filter = input.value.toUpperCase();
 		  table = document.getElementById("tabRecord");
 		  tr = table.getElementsByTagName("tr");
-
+		//alert(tr.length);
 		  // Loop through all table rows, and hide those who don't match the search query
 		  for (i = 0; i < tr.length; i++) {
 				td0 = tr[i].getElementsByTagName("td")[0];
@@ -509,6 +525,7 @@ else{
 				td4 = tr[i].getElementsByTagName("td")[4];
 				td5 = tr[i].getElementsByTagName("td")[5];
 				td6 = tr[i].getElementsByTagName("td")[6];
+				
 				
 				if (td0 || td1 || td2 || td3 || td4 || td5 || td6) {
 						txtValue0 = td0.textContent || td0.innerText;
@@ -526,7 +543,7 @@ else{
 						||(txtValue5.toUpperCase().indexOf(filter) > -1) 
 						||(txtValue6.toUpperCase().indexOf(filter) > -1) )
 						{
-							tr[i].style.display = "";
+							tr[i].style.display = "vertical-align: top;";
 						} 
 						else {
 							tr[i].style.display = "none";
