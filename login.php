@@ -23,20 +23,20 @@
 		$chk_res ='';
 	if ($chk_res <> ''){
 		
-		$sql_usrDel = "Delete FROM login_session WHERE login_user='".$rec_usr."' and login_date < now() - interval 1 week";
+		$sql_usrDel = "Delete FROM record_login WHERE login_user='".$rec_usr."' and login_date < now() - interval 1 week";
 		$stmt_usrDel = $con->query($sql_usrDel);
 		
-		$sql_usrSess = "SELECT * FROM login_session WHERE login_user='".$rec_usr."' and login_flag='Y' and DATE(login_date) = CURDATE()";
+		$sql_usrSess = "SELECT * FROM record_login WHERE login_user='".$rec_usr."' and login_flag='Y' and DATE(login_date) = CURDATE()";
 		$stmt_usrSess = $con->query($sql_usrSess);
 		$rows_usrSess = $stmt_usrSess->rowCount();
 		if ($rows_usrSess>0){
-			$sql_usrUpd = "UPDATE login_session SET
+			$sql_usrUpd = "UPDATE record_login SET
 				  login_flag='N'
 				  WHERE login_user  = '".$rec_usr."' and login_flag='Y' ";
 			$stmt_usrUpd = $con->query($sql_usrUpd);
 		}
 		
-		$sql_usrIns  = "INSERT INTO login_session(login_user ,login_name, login_sname , login_date , browser_agent, browser_ip) ";
+		$sql_usrIns  = "INSERT INTO record_login(login_user ,login_name, login_sname , login_date , browser_agent, browser_ip) ";
 		$sql_usrIns .= "VALUES('" . $rec_usr . "','" . $rec_name . "', '" . $rec_sname . "', '" . $current_date . "','".$_SERVER['HTTP_USER_AGENT']."','".get_client_ip()."')";
 		$stmt_usrIns = $con->query($sql_usrIns);
 		
