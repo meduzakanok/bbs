@@ -13,7 +13,7 @@ function getLogin($enc, $ind) {
 	{												//-----------------return dec l with Name
 		$str_l = trim(decrypt($str_l));
 		$chk=0;
-		$sql_usrSess = "SELECT * FROM login_session WHERE login_user='".$str_l."' and login_flag='Y' order by login_date desc";
+		$sql_usrSess = "SELECT * FROM record_login WHERE login_user='".$str_l."' and login_flag='Y' order by login_date desc";
 		$stmt_usrSess = $con->query($sql_usrSess);
 		$rows_usrSess = $stmt_usrSess->rowCount();
 										
@@ -27,10 +27,10 @@ function getLogin($enc, $ind) {
 		}
 	}
 	elseif ($ind ==2)
-	{															//-----------------return Login
+	{															//-----------------return login_date
 		$str_l = trim(decrypt($str_l));
 		$chk=0;
-		$sql_usrSessN = "SELECT * FROM login_session WHERE login_user='".$str_l."' and login_flag='N' order by login_date desc";
+		$sql_usrSessN = "SELECT * FROM record_login WHERE login_user='".$str_l."' and login_flag='N' order by login_date desc";
 		$stmt_usrSessN= $con->query($sql_usrSessN);
 		$rows_usrSessN = $stmt_usrSessN->rowCount();
 		
