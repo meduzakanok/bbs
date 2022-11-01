@@ -12,8 +12,8 @@ $database = "bbsrecruitdb";
 $username = "bbsusr";
 $password = "bbs#pwd";
 $socket_dir = "/cloudsql";
-$dsn = sprintf('mysql:dbname=%s;unix_socket=%s/%s',$database,$socket_dir,$cloud_sql_connection_name);
-//$dsn = sprintf('mysql:dbname=%s;host=%s',$database,$dbhost);
+//$dsn = sprintf('mysql:dbname=%s;unix_socket=%s/%s',$database,$socket_dir,$cloud_sql_connection_name);
+$dsn = sprintf('mysql:dbname=%s;host=%s',$database,$dbhost);
 $con = new PDO($dsn, $username,$password);
 $con->exec("set names utf8mb4");
 ?>
