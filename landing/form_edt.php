@@ -1478,7 +1478,7 @@ else{
 								<td style="text-align:right;">Client Customer Company :</td>
 								<td>
 									<select id="ddClientCompany<?php echo $ir?>" name="ddClientCompany<?php echo $ir?>" class="ddStyle ddSearch" style="width: 100%"></select>
-									<input type="hidden" id="txtClientID<?php echo $ir?>" name="txtClientID<?php echo $ir?>" style="width: 20px">
+									<input type="text" id="txtClientID<?php echo $ir?>" name="txtClientID<?php echo $ir?>" style="width: 20px">
 									<input type="hidden" id="txtClientCompany<?php echo $ir?>" name="txtClientCompany<?php echo $ir?>" style="width: 20px">
 									<script type="text/javascript">
 										$(function(){
@@ -2166,7 +2166,7 @@ else{
 				addrow32 +="<td style=\"text-align:right;\">Client Customer Company : </td>";
 				addrow32 +="<td>";
 				addrow32 +="<select id=\"ddClientCompany"+txtPart32ID+"\" name=\"ddClientCompany"+txtPart32ID+"\" class=\"ddStyle ddSearch\" style=\"width: 100%\">";
-				addrow32 +="</select><input type=\"hidden\" id=\"txtClientID"+txtPart32ID+"\" name=\"txtClientID"+txtPart32ID+"\" style=\"width: 20px\">";
+				addrow32 +="</select><input type=\"text\" id=\"txtClientID"+txtPart32ID+"\" name=\"txtClientID"+txtPart32ID+"\" style=\"width: 20px\">";
 				addrow32 +="<input type=\"hidden\" id=\"txtClientCompany"+txtPart32ID+"\" name=\"txtClientCompany"+txtPart32ID+"\" style=\"width: 20px\">";
 				addrow32 +="</td>";
 				addrow32 +="<td>";
