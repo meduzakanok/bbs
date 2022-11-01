@@ -4,7 +4,7 @@
 	    if (isset($_GET['id'])) 
 	    {
 			$id = $_GET['id'];
-			$query = "SELECT * FROM candidate_file WHERE file_id = '$id'";
+			$query = "SELECT * FROM candidate_file WHERE file_id = '".$id."'";
 			$stmt_cfile = $con->query($query);
 			 //list($fileid, $filename, $filetype, $size,$data) = mysqli_fetch_array($result);
 			//$row = mysqli_fetch_array($result);

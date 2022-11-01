@@ -278,10 +278,10 @@ else{
 									if ($pos=='Other' && isset($txtPositionOther))
 										$sql_position .= " position_other, ";
 									$sql_position .= " create_date,update_date, update_by)";
-									$sql_position .= " VALUES ('$candidate_ID', '$pos', ";
+									$sql_position .= " VALUES ('".$candidate_ID."', '".$pos."', ";
 									if ($pos=='Other' && isset($txtPositionOther))
-										$sql_position .= " '$txtPositionOther', ";
-									$sql_position .= " '$current_date', '$current_date','$current_login')";
+										$sql_position .= " '".$txtPositionOther."', ";
+									$sql_position .= " '".$current_date."', '".$current_date."','".$current_login."')";
 									echo 'sql_position = '.$sql_position.'<br>';
 									$stmt_position = $con->query($sql_position);
 									
@@ -292,8 +292,8 @@ else{
 												if($sap_skill != '') {
 													$sql_sap_skill  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 													$sql_sap_skill .= " create_date,update_date, update_by)";
-													$sql_sap_skill .= " VALUES ('$candidate_ID', '$pos ', '$sap_skill', 'text', ";
-													$sql_sap_skill .= " '$current_date', '$current_date','$current_login')";
+													$sql_sap_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$sap_skill."', 'text', ";
+													$sql_sap_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
 													$stmt_sap_skill = $con->query($sql_sap_skill);
 													$pos_ind[0][1] .= '- '.$sap_skill.'<br/>';
 												} //end if sap_skill
@@ -307,8 +307,8 @@ else{
 												if($prog_skill != '') {
 													$sql_prog_skill  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 													$sql_prog_skill .= " create_date,update_date, update_by)";
-													$sql_prog_skill .= " VALUES ('$candidate_ID', '$pos ', '$prog_skill', 'text', ";
-													$sql_prog_skill .= " '$current_date', '$current_date','$current_login')";
+													$sql_prog_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$prog_skill."', 'text', ";
+													$sql_prog_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
 													$stmt_prog_skill = $con->query($sql_prog_skill);
 													$pos_ind[1][1] .= '- '.$prog_skill.'<br/>';
 												} //end if sql_prog_skill
@@ -320,8 +320,8 @@ else{
 										if (isset($radSACode)){
 											$sql_sa_skill  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 											$sql_sa_skill .= " create_date,update_date, update_by)";
-											$sql_sa_skill .= " VALUES ('$candidate_ID', '$pos ', '$radSACode', 'choice', ";
-											$sql_sa_skill .= " '$current_date', '$current_date','$current_login')";
+											$sql_sa_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$radSACode."', 'choice', ";
+											$sql_sa_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
 											$stmt_sa_skill = $con->query($sql_sa_skill);
 											if($radSACode == 'Y')
 												$radSACode_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
@@ -331,8 +331,8 @@ else{
 										if (isset($txtSALange) && ($txtSALange !='')){
 											$sql_sa_skill_txt  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 											$sql_sa_skill_txt .= " create_date,update_date, update_by)";
-											$sql_sa_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtSALange', 'text', ";
-											$sql_sa_skill_txt .= " '$current_date', '$current_date','$current_login')";
+											$sql_sa_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtSALange."', 'text', ";
+											$sql_sa_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
 											$stmt_sa_skill_txt = $con->query($sql_sa_skill_txt);
 										} //end if txtSALange
 									}
@@ -341,8 +341,8 @@ else{
 										if (isset($radBACode)){
 											$sql_ba_skill  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 											$sql_ba_skill .= " create_date,update_date, update_by)";
-											$sql_ba_skill .= " VALUES ('$candidate_ID', '$pos ', '$radBACode', 'choice', ";
-											$sql_ba_skill .= " '$current_date', '$current_date','$current_login')";
+											$sql_ba_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$radBACode."', 'choice', ";
+											$sql_ba_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
 											$stmt_ba_skill = $con->query($sql_ba_skill);
 											if($radBACode == 'Y')
 												$radBACode_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
@@ -352,8 +352,8 @@ else{
 										if (isset($txtBALange) && ($txtBALange !='')){
 											$sql_ba_skill_txt  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 											$sql_ba_skill_txt .= " create_date,update_date, update_by)";
-											$sql_ba_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtBALange', 'text', ";
-											$sql_ba_skill_txt .= " '$current_date', '$current_date','$current_login')";
+											$sql_ba_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtBALange."', 'text', ";
+											$sql_ba_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
 											$stmt_ba_skill_txt = $con->query($sql_ba_skill_txt);
 										} //end if txtBALange
 									}
@@ -362,8 +362,8 @@ else{
 										if (isset($radProjectManager)){
 											$sql_proj_skill  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 											$sql_proj_skill .= " create_date,update_date, update_by)";
-											$sql_proj_skill .= " VALUES ('$candidate_ID', '$pos ', '$radProjectManager', 'choice', ";
-											$sql_proj_skill .= " '$current_date', '$current_date','$current_login')";
+											$sql_proj_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$radProjectManager."', 'choice', ";
+											$sql_proj_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
 											$stmt_proj_skill = $con->query($sql_proj_skill);
 											if($radProjectManager == 'Y')
 												$radProjectManager_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
@@ -373,8 +373,8 @@ else{
 										if (isset($txtProjectManagerLang) && ($txtProjectManagerLang !='')){
 											$sql_proj_skill_txt  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 											$sql_proj_skill_txt .= " create_date,update_date, update_by)";
-											$sql_proj_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtProjectManagerLang', 'text', ";
-											$sql_proj_skill_txt .= " '$current_date', '$current_date','$current_login')";
+											$sql_proj_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtProjectManagerLang."', 'text', ";
+											$sql_proj_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
 											$stmt_proj_skill_txt = $con->query($sql_proj_skill_txt);
 										} //end if txtProjectManagerLang
 									}
@@ -385,8 +385,8 @@ else{
 												if($tester_skill != '') {
 													$sql_tester_skill  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 													$sql_tester_skill .= " create_date,update_date, update_by)";
-													$sql_tester_skill .= " VALUES ('$candidate_ID', '$pos ', '$tester_skill', 'choice', ";
-													$sql_tester_skill .= " '$current_date', '$current_date','$current_login')";
+													$sql_tester_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$tester_skill."', 'choice', ";
+													$sql_tester_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
 													$stmt_tester_skill = $con->query($sql_tester_skill);
 													if ($tester_skill == 'Automate')
 														$pos_ind[5][1] =  '<img src="images/radioBtnC.png"> Automate';
@@ -401,8 +401,8 @@ else{
 										if (isset($txtProjectAdminSkill) && ($txtProjectAdminSkill !='')){
 											$sql_proa_skill_txt  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 											$sql_proa_skill_txt .= " create_date,update_date, update_by)";
-											$sql_proa_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtProjectAdminSkill', 'text', ";
-											$sql_proa_skill_txt .= " '$current_date', '$current_date','$current_login')";
+											$sql_proa_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtProjectAdminSkill."', 'text', ";
+											$sql_proa_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
 											$stmt_proa_skill_txt = $con->query($sql_proa_skill_txt);
 										} //end if txtProjectManagerLang
 									}
@@ -411,8 +411,8 @@ else{
 										if (isset($txtPositionOtherSkill) && ($txtPositionOtherSkill !='')){
 											$sql_other_skill_txt  = "INSERT INTO candidate_positionskill (candidate_ID, position, skill, skill_type, ";
 											$sql_other_skill_txt .= " create_date,update_date, update_by)";
-											$sql_other_skill_txt .= " VALUES ('$candidate_ID', '$pos ', '$txtPositionOtherSkill', 'text', ";
-											$sql_other_skill_txt .= " '$current_date', '$current_date','$current_login')";
+											$sql_other_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtPositionOtherSkill."', 'text', ";
+											$sql_other_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
 											$stmt_other_skill_txt = $con->query($sql_other_skill_txt);
 										} //end if txtPositionOtherSkill
 									} 											//-----------------------------------------------------------------------------end insert on each position
@@ -430,8 +430,8 @@ else{
 								if($mail != '') {
 									$sql_contactMail  = "INSERT INTO candidate_contact (candidate_ID, contact_info, contact_type, ";
 									$sql_contactMail .= " create_date,update_date, update_by)";
-									$sql_contactMail .= " VALUES ('$candidate_ID', '$mail ', 'Email', ";
-									$sql_contactMail .= " '$current_date', '$current_date','$current_login')";
+									$sql_contactMail .= " VALUES ('".$candidate_ID."', '".$mail."', 'Email', ";
+									$sql_contactMail .= " '".$current_date."', '".$current_date."','".$current_login."')";
 									$stmt_contactMail = $con->query($sql_contactMail);
 								}
 							}//end for mail
@@ -446,8 +446,8 @@ else{
 								if($tel != '') {
 									$sql_contactTel  = "INSERT INTO candidate_contact (candidate_ID, contact_info, contact_type, ";
 									$sql_contactTel .= " create_date,update_date, update_by)";
-									$sql_contactTel .= " VALUES ('$candidate_ID', '$tel ', 'Telephone', ";
-									$sql_contactTel .= " '$current_date', '$current_date','$current_login')";
+									$sql_contactTel .= " VALUES ('".$candidate_ID."', '".$tel."', 'Telephone', ";
+									$sql_contactTel .= " '".$current_date."', '".$current_date."','".$current_login."')";
 									$stmt_contactTel = $con->query($sql_contactTel);
 								}
 							}
@@ -460,15 +460,15 @@ else{
 							
 							$sql_contactLine  = "INSERT INTO candidate_contact (candidate_ID, contact_info, contact_type, ";
 							$sql_contactLine .= " create_date,update_date, update_by)";
-							$sql_contactLine .= " VALUES ('$candidate_ID', '$txtLineID ', 'LineID', ";
-							$sql_contactLine .= " '$current_date', '$current_date','$current_login')";
+							$sql_contactLine .= " VALUES ('".$candidate_ID."', '".$txtLineID."', 'LineID', ";
+							$sql_contactLine .= " '".$current_date."', '".$current_date."','".$current_login."')";
 							$stmt_contactLine = $con->query($sql_contactLine);
 						}
 						//-----------------------------------------------------------------------------end insert LineID
 						$sql_updDel = "Delete FROM record_update WHERE candidate_ID='".$candidate_ID."' and update_date < now() - interval 1 week";
 						$stmt_updDel = $con->query($sql_updDel);
 						$sql_updIns  = "INSERT INTO record_update(candidate_ID ,update_by, update_date) ";
-						$sql_updIns .= "VALUES('" . $candidate_ID . "', '" . $current_login . "', '" . $current_date . "') ";
+						$sql_updIns .= "VALUES('".$candidate_ID."', '".$current_login."', '".$current_date . "') ";
 						$stmt_updIns = $con->query($sql_updIns);
 						//-----------------------------------------------------------------------------start insert candidate
 						$sql_candidate_upd = "UPDATE candidate SET
@@ -514,8 +514,8 @@ else{
 									{ 
 										include_once 'db.php';
 										$sql_candidate_file="INSERT INTO candidate_file(candidate_ID, filename, filetype, size, data,create_date,update_date, update_by)";
-										$sql_candidate_file .= " VALUES ('$candidate_ID', '$filename','$file_type','$file_size','$content', ";
-										$sql_candidate_file .= " '$current_date', '$current_date','$current_login')";
+										$sql_candidate_file .= " VALUES ('".$candidate_ID."', '".$filename."','".$file_type."','".$file_size."','".$content."', ";
+										$sql_candidate_file .= " '".$current_date."', '".$current_date."','".$current_login."')";
 										$stmt_candidate_file = $con->query($sql_candidate_file);
 									}
 								} //end tmpname
@@ -1046,10 +1046,10 @@ else{
 									$sql_callrecord .= " present_empType, present_salary, bonus_month, otherIncome_notebook, otherIncome_standby, otherIncome_transportation, otherIncome_shiftwork , otherIncome_ot , ";
 									$sql_callrecord .= " otherIncome_others, otherIncome_others_baht, BBSOffer_calculation, startdate_newjob, expectation_salary, BBSOffer_salary, call_note, call_reqNo, ";
 									$sql_callrecord .= " create_date,update_date, update_by)";
-									$sql_callrecord .= " VALUES ('$candidate_ID', '$txtCallDate', '$txtCallBy', '$ddCurrentPosition', '$ddInterestedPosition', '$txtYearExp', '$txtMonthExp', '$txtDayExp', ";
-									$sql_callrecord .= " '$ddTypeEmp', '$txtPresentSalary', '$txtBonus', '$txtOtherIncome_notebook', '$txtOtherIncome_StandBy', '$txtOtherIncome_transportation', '$txtOtherIncome_ShiftWork', '$txtOtherIncome_OT', ";
-									$sql_callrecord .= " '$txtOtherIncome_Others', '$txtOtherIncome_Others_baht', '$txtBBSOfferCalculation', '$txtStartDateNewJob', '$txtExpectationSalary', '$txtBBSOffer', '$txtNote', '$txtCallRec_matchingNo', ";
-									$sql_callrecord .= " '$current_date', '$current_date','$current_login')";
+									$sql_callrecord .= " VALUES ('".$candidate_ID."', '".$txtCallDate."', '".$txtCallBy."', '".$ddCurrentPosition."', '".$ddInterestedPosition."', '".$txtYearExp."', '".$txtMonthExp."', '".$txtDayExp."', ";
+									$sql_callrecord .= " '".$ddTypeEmp."', '".$txtPresentSalary."', '".$txtBonus."', '".$txtOtherIncome_notebook."', '".$txtOtherIncome_StandBy."', '".$txtOtherIncome_transportation."', '".$txtOtherIncome_ShiftWork."', '".$txtOtherIncome_OT."', ";
+									$sql_callrecord .= " '".$txtOtherIncome_Others."', '".$txtOtherIncome_Others_baht."', '".$txtBBSOfferCalculation."', '".$txtStartDateNewJob."', '".$txtExpectationSalary."', '".$txtBBSOffer."', '".$txtNote."', '".$txtCallRec_matchingNo."', ";
+									$sql_callrecord .= " '".$current_date."', '".$current_date."','".$current_login."')";
 									$stmt_callrecord = $con->query($sql_callrecord);
 									//-----------------------------------------------------------------------------end insert callrecord
 					?>
@@ -1223,8 +1223,8 @@ else{
 									//-----------------------------------------------------------------------------start insert invrecord
 									$sql_invrecord  = "INSERT INTO candidate_interviewrecord (candidate_ID, interview_date, client_ID , pass , sign_contract , contract_period, startdate , interview_note , interview_reqNo , ";
 									$sql_invrecord .= " create_date,update_date, update_by)";
-									$sql_invrecord .= " VALUES ('$candidate_ID', '$txtInterviewDate_ins', '$txtClientID', '$ddPass', '$ddSignContract', '$txtContractPeriod', '$txtStartDate', '$txtNote32', '$txtIntvRec_matchingNo',";
-									$sql_invrecord .= " '$current_date', '$current_date','$current_login')";
+									$sql_invrecord .= " VALUES ('".$candidate_ID."', '".$txtInterviewDate_ins."', '".$txtClientID."', '".$ddPass."', '".$ddSignContract."', '".$txtContractPeriod."', '".$txtStartDate."', '".$txtNote32."', '".$txtIntvRec_matchingNo."',";
+									$sql_invrecord .= " '".$current_date."', '".$current_date."','".$current_login."')";
 									$stmt_invrecord = $con->query($sql_invrecord);
 									//-----------------------------------------------------------------------------end insert invrecord
 					?>
@@ -1316,7 +1316,7 @@ else{
 						<label for="formFile" class="form-label"><h4 class="mb-4 div_inline">Upload document </h4><b>max 2mb</b> (doc, docx, jpg, jpeg, pdf, png, ppt, pptx, xls, xlsx, xlsm)</label>
 						<?php 
 							include_once 'db.php';
-							$sql_candidate_file_sel="SELECT * FROM candidate_file where candidate_ID = '$candidate_ID' ";
+							$sql_candidate_file_sel="SELECT * FROM candidate_file where candidate_ID = '".$candidate_ID."' ";
 							$stmt_candidate_file_sel = $con->query($sql_candidate_file_sel);
 							while ($result_file = $stmt_candidate_file_sel->fetch()) {
 									echo "<div class='displayFile'>- <a href='download.php?id=".urlencode($result_file['file_ID'])."'>".$result_file['filename']."</a></div>";

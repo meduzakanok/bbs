@@ -81,7 +81,7 @@ else{
 				<div class="part_form">
 					<h4 class="mb-4">Part 1 :  Information</h4>
 					<?php
-						$sql_candidate ="SELECT * FROM candidate where candidate_ID = '$id' ";
+						$sql_candidate ="SELECT * FROM candidate where candidate_ID = '".$id."' ";
 						$stmt_candidate = $con->query($sql_candidate);
 						$rows_candidate = $stmt_candidate->rowCount();
 						//echo 'rows - '.$rows."<br/>";
@@ -287,7 +287,7 @@ else{
 										<td>
 											<?php 
 												$LineID = '';
-												$sql_candidate_contact_line ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='LineID' ";
+												$sql_candidate_contact_line ="SELECT * FROM candidate_contact where candidate_ID = '".$id."' and contact_type='LineID' ";
 												$stmt_candidate_contact_line = $con->query($sql_candidate_contact_line);
 												$rows_candidate_contact_line = $stmt_candidate_contact_line->rowCount();
 												//echo 'rows - '.$rows."<br/>";
@@ -487,7 +487,7 @@ else{
 								<td>
 									<table border="0" style="width: 100%" class="tabForm_inside tbleMail">
 									<?php 
-										$sql_candidate_contact_mail ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='Email' ";
+										$sql_candidate_contact_mail ="SELECT * FROM candidate_contact where candidate_ID = '".$id."' and contact_type='Email' ";
 										$stmt_candidate_contact_mail = $con->query($sql_candidate_contact_mail);
 										$rows_candidate_contact_mail = $stmt_candidate_contact_mail->rowCount();
 										if ($rows_candidate_contact_mail == 0){
@@ -524,7 +524,7 @@ else{
 								<td>
 									<table border="0" style="width: 100%" class="tabForm_inside tblTelephone">
 									<?php 
-										$sql_candidate_contact_tel ="SELECT * FROM candidate_contact where candidate_ID = '$id' and contact_type='Telephone' ";
+										$sql_candidate_contact_tel ="SELECT * FROM candidate_contact where candidate_ID = '".$id."' and contact_type='Telephone' ";
 										$stmt_candidate_contact_tel = $con->query($sql_candidate_contact_tel);
 										$rows_candidate_contact_tel = $stmt_candidate_contact_tel->rowCount();
 										if ($rows_candidate_contact_tel == 0){
@@ -589,7 +589,7 @@ else{
 						<td colspan="3" style="background: #0891f8;color: #fff;"></td>
 					</tr>
 					<?php
-						$sql_position_SAP ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='SAP' ";
+						$sql_position_SAP ="SELECT * FROM candidate_position where candidate_ID = '".$id."' and position='SAP' ";
 						//echo 'sql SAP - '.$sql_position_SAP;
 						$stmt_position_SAP = $con->query($sql_position_SAP);
 						$rows_position_SAP = $stmt_position_SAP->rowCount();
@@ -599,7 +599,7 @@ else{
 						else	
 							$SAP = '';
 						
-						$sql_positionskill_SAP ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SAP' ";
+						$sql_positionskill_SAP ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='SAP' ";
 						//echo 'sql SAP - '.$sql_positionskill_SAP."<br/>";
 						
 						$stmt_positionskill_SAP = $con->query($sql_positionskill_SAP);
@@ -632,7 +632,7 @@ else{
 						</td>
 					</tr>
 					<?php
-						$sql_position_Programmer ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Programmer' ";
+						$sql_position_Programmer ="SELECT * FROM candidate_position where candidate_ID = '".$id."' and position='Programmer' ";
 						//echo 'sql Programmer - '.$sql_position_Programmer;
 						$stmt_position_Programmer  = $con->query($sql_position_Programmer);
 						$rows_position_Programmer = $stmt_position_Programmer ->rowCount();
@@ -643,7 +643,7 @@ else{
 						else	
 							$Programmer = '';
 						
-						$sql_positionskill_Programmer ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Programmer' ";
+						$sql_positionskill_Programmer ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='Programmer' ";
 						//echo 'sql Programmer - '.$sql_positionskill_Programmer."<br/>";
 						$stmt_positionskill_Programmer = $con->query($sql_positionskill_Programmer);
 						$rows_positionskill_Programmer = $stmt_positionskill_Programmer->rowCount();
@@ -675,7 +675,7 @@ else{
 						</td>
 					</tr>
 					<?php
-						$sql_position_SA ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='SA' ";
+						$sql_position_SA ="SELECT * FROM candidate_position where candidate_ID = '".$id."' and position='SA' ";
 						//echo 'sql SA - '.$sql_position_SA;
 						
 						$stmt_position_SA = $con->query($sql_position_SA);
@@ -687,7 +687,7 @@ else{
 						else	
 							$SA = '';
 						
-						$sql_positionskill_SA ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SA' and skill_type='choice' ";
+						$sql_positionskill_SA ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='SA' and skill_type='choice' ";
 						//echo 'sql SA - '.$sql_positionskill_SA."<br/>";
 						$stmt_positionskill_SA = $con->query($sql_positionskill_SA);
 						$rows_positionskill_SA = $stmt_positionskill_SA->rowCount();
@@ -698,7 +698,7 @@ else{
 						else	
 							$SA_skill = 'N';
 						
-						$sql_positionskill_SA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='SA' and skill_type='text' ";
+						$sql_positionskill_SA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='SA' and skill_type='text' ";
 						//echo 'sql SA - '.$sql_positionskill_SA."<br/>";
 						$stmt_positionskill_SA_txt = $con->query($sql_positionskill_SA_txt);
 						$rows_positionskill_SA_txt = $stmt_positionskill_SA_txt->rowCount();
@@ -727,7 +727,7 @@ else{
 						</td>
 					</tr>
 					<?php
-						$sql_position_BA ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='BA' ";
+						$sql_position_BA ="SELECT * FROM candidate_position where candidate_ID = '".$id."' and position='BA' ";
 						//echo 'sql BA - '.$sql_position_BA;
 						
 						$stmt_position_BA = $con->query($sql_position_BA);
@@ -739,7 +739,7 @@ else{
 						else	
 							$BA = '';
 						
-						$sql_positionskill_BA ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='BA' and skill_type='choice' ";
+						$sql_positionskill_BA ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='BA' and skill_type='choice' ";
 						//echo 'sql BA - '.$sql_positionskill_BA."<br/>";
 						$stmt_positionskill_BA  = $con->query($sql_positionskill_BA);
 						$rows_positionskill_BA = $stmt_positionskill_BA ->rowCount();
@@ -750,7 +750,7 @@ else{
 						else	
 							$BA_skill = 'N';
 						
-						$sql_positionskill_BA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='BA' and skill_type='text' ";
+						$sql_positionskill_BA_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='BA' and skill_type='text' ";
 						//echo 'sql BA - '.$sql_positionskill_BA."<br/>";
 						$stmt_positionskill_BA_txt = $con->query($sql_positionskill_BA_txt);
 						$rows_positionskill_BA_txt = $stmt_positionskill_BA_txt->rowCount();
@@ -778,7 +778,7 @@ else{
 						</td>
 					</tr>
 					<?php
-						$sql_position_Tester ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Tester' ";
+						$sql_position_Tester ="SELECT * FROM candidate_position where candidate_ID = '".$id."' and position='Tester' ";
 						//echo 'sql Tester - '.$sql_position_Tester;
 						$stmt_position_Tester = $con->query($sql_position_Tester);
 						$rows_position_Tester = $stmt_position_Tester->rowCount();
@@ -789,7 +789,7 @@ else{
 						else	
 							$Tester = '';
 						
-						$sql_positionskill_Tester ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Tester' and skill_type='choice' ";
+						$sql_positionskill_Tester ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='Tester' and skill_type='choice' ";
 						//echo 'sql Tester - '.$sql_positionskill_Tester."<br/>";
 						$stmt_positionskill_Teste = $con->query($sql_positionskill_Tester);
 						$rows_positionskill_Tester = $stmt_positionskill_Teste->rowCount();
@@ -816,7 +816,7 @@ else{
 						</td>
 					</tr>
 					<?php
-						$sql_position_PM ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='PM' ";
+						$sql_position_PM ="SELECT * FROM candidate_position where candidate_ID = '".$id."' and position='PM' ";
 						//echo 'sql PM - '.$sql_position_PM;
 						$stmt_position_PM = $con->query($sql_position_PM);
 						$rows_position_PM = $stmt_position_PM->rowCount();
@@ -827,7 +827,7 @@ else{
 						else	
 							$PM = '';
 						
-						$sql_positionskill_PM ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='PM' and skill_type='choice' ";
+						$sql_positionskill_PM ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='PM' and skill_type='choice' ";
 						//echo 'sql PM - '.$sql_positionskill_PM."<br/>";
 						$stmt_positionskill_PM = $con->query($sql_positionskill_PM);
 						$rows_positionskill_PM = $stmt_positionskill_PM->rowCount();
@@ -837,7 +837,7 @@ else{
 						else
 							$PM_skill = 'N';
 						
-						$sql_positionskill_PM_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='PM' and skill_type='text' ";
+						$sql_positionskill_PM_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='PM' and skill_type='text' ";
 						//echo 'sql PM - '.$sql_positionskill_PM."<br/>";
 						$stmt_positionskill_PM_txt = $con->query($sql_positionskill_PM_txt);
 						$rows_positionskill_PM_txt = $stmt_positionskill_PM_txt->rowCount();
@@ -865,7 +865,7 @@ else{
 						</td>
 					</tr>
 					<?php
-						$sql_position_Admin ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Admin' ";
+						$sql_position_Admin ="SELECT * FROM candidate_position where candidate_ID = '".$id."' and position='Admin' ";
 						//echo 'sql Admin - '.$sql_position_Admin;
 						$stmt_position_Admin = $con->query($sql_position_Admin);
 						$rows_position_Admin = $stmt_position_Admin->rowCount();
@@ -875,7 +875,7 @@ else{
 						else	
 							$Admin = '';
 						
-						$sql_positionskill_Admin_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Admin' and skill_type='text' ";
+						$sql_positionskill_Admin_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='Admin' and skill_type='text' ";
 						//echo 'sql Admin - '.$sql_positionskill_Admin."<br/>";
 						$stmt_positionskill_Admin_txt= $con->query($sql_positionskill_Admin_txt);
 						$rows_positionskill_Admin_txt = $stmt_positionskill_Admin_txt->rowCount();
@@ -895,7 +895,7 @@ else{
 						</td>
 					</tr>
 					<?php
-						$sql_position_Other ="SELECT * FROM candidate_position where candidate_ID = '$id' and position='Other' ";
+						$sql_position_Other ="SELECT * FROM candidate_position where candidate_ID = '".$id."' and position='Other' ";
 						//echo 'sql Other - '.$sql_position_Other;
 						$stmt_position_Other  = $con->query($sql_position_Other);
 						$rows_position_Other = $stmt_position_Other ->rowCount();
@@ -909,7 +909,7 @@ else{
 							$Other = '';
 							$Other_txt = '';
 						}
-						$sql_positionskill_Other_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '$id' and position='Other' and skill_type='text' ";
+						$sql_positionskill_Other_txt ="SELECT skill FROM candidate_positionskill where candidate_ID = '".$id."' and position='Other' and skill_type='text' ";
 						//echo 'sql Other - '.$sql_positionskill_Other."<br/>";
 						$stmt_positionskill_Other_txt = $con->query($sql_positionskill_Other_txt);
 						$rows_positionskill_Other_txt = $stmt_positionskill_Other_txt->rowCount();
@@ -949,7 +949,7 @@ else{
 				<!--Start Part3-1-->
 				<div class="part_form">
 					<?php
-						$sql_callrecord ="SELECT * FROM candidate_callrecord where candidate_ID = '$id' order by call_date";
+						$sql_callrecord ="SELECT * FROM candidate_callrecord where candidate_ID = '".$id."' order by call_date";
 						//echo 'sql_callrecord - '.$sql_callrecord.'<br>';
 						$stmt_callrecord= $con->query($sql_callrecord);
 						$rows_callrecord = $stmt_callrecord->rowCount();
@@ -1302,7 +1302,7 @@ else{
 				<!--Start Part3-2-->
 				<div class="part_form">
 					<?php
-						$sql_interviewrecord ="SELECT * FROM candidate_interviewrecord where candidate_ID = '$id' order by interview_date";
+						$sql_interviewrecord ="SELECT * FROM candidate_interviewrecord where candidate_ID = '".$id."' order by interview_date";
 						//echo 'sql_interviewrecord - '.$sql_interviewrecord.'<br>';
 						$stmt_interviewrecord = $con->query($sql_interviewrecord);
 						$rows_interviewrecord = $stmt_interviewrecord->rowCount();
@@ -1596,7 +1596,7 @@ else{
 						<?php 
 							echo "<div class='displayFile'  style='color:red'>Check for Delete</div>";
 							include_once 'db.php';
-							$sql_candidate_file_sel="SELECT * FROM candidate_file where candidate_ID = '$id' ";
+							$sql_candidate_file_sel="SELECT * FROM candidate_file where candidate_ID = '".$id."' ";
 						
 							$stmt_candidate_file_sel = $con->query($sql_candidate_file_sel);
 							while ($result_file = $stmt_candidate_file_sel->fetch()) {
