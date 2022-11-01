@@ -154,77 +154,76 @@ else{
 					if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['btn_submit'])) {
 						
 						//-----------------------------------------------------------------------------start part1
-						$ddTitleEn 				= $_POST['ddTitleEn'];
-						$txtNameEn 				= $_POST['txtNameEn'];
-						$txtSNameEn 			= $_POST['txtSNameEn'];
+						$ddTitleEn 					= $_POST['ddTitleEn'];
+						isset( $_POST['txtNameEn'] ) 							? $txtNameEn = $_POST['txtNameEn'] 									: $txtNameEn = "";
+						isset( $_POST['txtSNameEn'] ) 						? $txtSNameEn = $_POST['txtSNameEn'] 								: $txtSNameEn = "";
 						
-						$ddTitleTh 				= $_POST['ddTitleTh'];
-						$txtNameTh 				= $_POST['txtNameTh'];
-						$txtSNameTh 			= $_POST['txtSNameTh'];
+						$ddTitleTh 					= $_POST['ddTitleTh'];
+						isset( $_POST['txtNameTh'] ) 							? $txtNameTh = $_POST['txtNameTh'] 									: $txtNameTh = "";
+						isset( $_POST['txtSNameTh'] ) 						? $txtSNameTh = $_POST['txtSNameTh'] 								: $txtSNameTh = "";
 						
-						$txtNickname 			= $_POST['txtNickname'];
-						
-						$txtIDcard 				= $_POST['txtIDcard'];
-						$txtPassport 				= $_POST['txtPassport'];
+						isset( $_POST['txtNickname'] ) 						? $txtNickname = $_POST['txtNickname'] 								: $txtNickname = "";
+						isset( $_POST['txtIDcard'] ) 							? $txtIDcard = $_POST['txtIDcard'] 										: $txtIDcard = "";
+						isset( $_POST['txtPassport'] ) 						? $txtPassport = $_POST['txtPassport'] 									: $txtPassport = "";
 						$ddPassportCountry 		= $_POST['ddPassportCountry'];
 						
-						$txtAddress 				= $_POST['txtAddress'];
-						$ddSubDistrict 			= $_POST['ddSubDistrict'];
-						$ddDistrict 				= $_POST['ddDistrict'];
-						$ddProvince 				= $_POST['ddProvince'];
+						isset( $_POST['txtAddress'] ) 							? $txtAddress = $_POST['txtAddress'] 									: $txtAddress = "";
 						
-						$ddSubDistrict_info 		= $_POST['ddSubDistrict_info'];
-						$ddDistrict_info 			= $_POST['ddDistrict_info'];
-						$ddProvince_info 		= $_POST['ddProvince_info'];
+						$ddSubDistrict 				= $_POST['ddSubDistrict'];
+						$ddDistrict 					= $_POST['ddDistrict'];
+						$ddProvince 					= $_POST['ddProvince'];
 						
-						$txtZipcode 				= $_POST['txtZipcode'];
+						$ddSubDistrict_info 			= $_POST['ddSubDistrict_info'];
+						$ddDistrict_info 				= $_POST['ddDistrict_info'];
+						$ddProvince_info 			= $_POST['ddProvince_info'];
 						
-						$radBlood 				= $_POST['radBlood'];
-						$radGender 				= $_POST['radGender'];
+						isset( $_POST['txtZipcode'] ) 							? $txtZipcode = $_POST['txtZipcode'] 										: $txtZipcode = "";
+						
+						$radBlood 					= $_POST['radBlood'];
+						$radGender 					= $_POST['radGender'];
 						$radContract 				= $_POST['radContract'];
 						
-						$radExpStatus 			= $_POST['radExpStatus'];
-						$txtExpStatus 			= $_POST['txtExpStatus'];
+						$radExpStatus 				= $_POST['radExpStatus'];
+						isset( $_POST['txtExpStatus'] ) 						? $txtExpStatus = $_POST['txtExpStatus'] 								: $txtExpStatus = "";
 						
-						$radMarital 				= $_POST['radMarital'];
+						$radMarital 					= $_POST['radMarital'];
 						
-						$radNationality 			= $_POST['radNationality'];
-						$txtNationality 			= $_POST['txtNationality'];
+						$radNationality 				= $_POST['radNationality'];
+						isset( $_POST['txtNationality'] ) 						? $txtNationality = $_POST['txtNationality'] 								: $txtNationality = "";
 						
-						$radEthnicity 				= $_POST['radEthnicity'];
-						$txtEthnicity 				= $_POST['txtEthnicity'];
+						$radEthnicity 					= $_POST['radEthnicity'];
+						isset( $_POST['txtEthnicity'] ) 							? $txtEthnicity = $_POST['txtEthnicity'] 									: $txtEthnicity = "";
 						
-						$txtBDDate 				= $_POST['txtBDDate'];
+						$txtBDDate 					= $_POST['txtBDDate'];
 						//if (isset($txtBDDate)){
 						//	$txtBDDate_date		= substr($txtBDDate,6,4)."-".substr($txtBDDate,3,2)."-".substr($txtBDDate,0,2); 
 						//}
-						$txtAgeYear 				= $_POST['txtAgeYear_val'];
-						$txtAgeMonth 			= $_POST['txtAgeMonth_val'];
-						$txtAgeDay 				= $_POST['txtAgeDay_val'];
+						isset( $_POST['txtAgeYear_val'] ) 					? $txtAgeYear = $_POST['txtAgeYear_val'] 								: $txtAgeYear = "0";
+						isset( $_POST['txtAgeMonth_val'] ) 					? $txtAgeMonth = $_POST['txtAgeMonth_val'] 							: $txtAgeMonth = "0";
+						isset( $_POST['txtAgeDay_val'] ) 						? $txtAgeDay = $_POST['txtAgeDay_val'] 									: $txtAgeDay = "0";
 						
-						$txtLineID					= $_POST['txtLineID'];
-						$txtEmail					= $_POST['txtEmail'];
-						$txtTelephone			= $_POST['txtTelephone'];
+						isset( $_POST['txtLineID'] ) 							? $txtLineID = $_POST['txtLineID'] 										: $txtLineID = "";
+						$txtEmail						= $_POST['txtEmail'];
+						$txtTelephone				= $_POST['txtTelephone'];
 						//-----------------------------------------------------------------------------end part1
 						//-----------------------------------------------------------------------------start part2
-						isset( $_POST['chkPosition'] ) ? $chkPosition = $_POST['chkPosition'] : $chkPosition = "";
-						$txtPositionOther			= $_POST['txtPositionOther'];
+						isset( $_POST['chkPosition'] ) 						? $chkPosition = $_POST['chkPosition'] 									: $chkPosition = "";
+						isset( $_POST['txtPositionOther'] ) 					? $txtPositionOther = $_POST['txtPositionOther'] 						: $txtPositionOther = "";
+						isset( $_POST['ddModule'] ) 							? $ddModule = $_POST['ddModule'] 										: $ddModule = "";
+						isset( $_POST['ddLanguage'] ) 						? $ddLanguage = $_POST['ddLanguage'] 								: $ddLanguage = "";
 						
-						isset( $_POST['ddModule'] ) ? $ddModule = $_POST['ddModule'] : $ddModule = "";
-						isset( $_POST['ddLanguage'] ) ? $ddLanguage = $_POST['ddLanguage'] : $ddLanguage = "";
+						$radSACode 					= $_POST['radSACode']; 
+						isset( $_POST['txtSALange'] ) 						? $txtSALange = $_POST['txtSALange'] 									: $txtSALange = "";
 						
-						$radSACode 				= $_POST['radSACode']; 
-						$txtSALange 				= $_POST['txtSALange'];
+						$radBACode 					= $_POST['radBACode'];
+						isset( $_POST['txtBALange'] ) 						? $txtBALange = $_POST['txtBALange'] 									: $txtBALange = "";
 						
-						$radBACode 				= $_POST['radBACode'];
-						$txtBALange 				= $_POST['txtBALange'];
+						$radProjectManager			= $_POST['radProjectManager'];
+						isset( $_POST['txtProjectManagerLang'] ) 			? $txtProjectManagerLang = $_POST['txtProjectManagerLang'] 		: $txtProjectManagerLang = "";
 						
-						$radProjectManager		= $_POST['radProjectManager'];
-						$txtProjectManagerLang	= $_POST['txtProjectManagerLang'];
-						
-						isset( $_POST['chkTester'] ) ? $chkTester = $_POST['chkTester'] : $chkTester = "";
-						$txtProjectAdminSkill		= $_POST['txtProjectAdminSkill'];
-						$txtPositionOtherSkill		= $_POST['txtPositionOtherSkill'];
+						isset( $_POST['chkTester'] ) 							? $chkTester = $_POST['chkTester'] 										: $chkTester = "";
+						isset( $_POST['txtProjectAdminSkill'] ) 				? $txtProjectAdminSkill = $_POST['txtProjectAdminSkill'] 				: $txtProjectAdminSkill = "";
+						isset( $_POST['txtPositionOtherSkill'] ) 				? $txtPositionOtherSkill = $_POST['txtPositionOtherSkill'] 				: $txtPositionOtherSkill = "";
 						//-----------------------------------------------------------------------------end part2
 						
 						//-----------------------------------------------------------------------------start part3-1 3-2
@@ -279,7 +278,7 @@ else{
 									if ($pos=='Other' && isset($txtPositionOther))
 										$sql_position .= " position_other, ";
 									$sql_position .= " create_date,update_date, update_by)";
-									$sql_position .= " VALUES ('$candidate_ID', '$pos ', ";
+									$sql_position .= " VALUES ('$candidate_ID', '$pos', ";
 									if ($pos=='Other' && isset($txtPositionOther))
 										$sql_position .= " '$txtPositionOther', ";
 									$sql_position .= " '$current_date', '$current_date','$current_login')";
