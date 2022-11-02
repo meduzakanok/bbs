@@ -1332,7 +1332,7 @@ else{
 								<td style="text-align:right;">Client Customer Company : </td>
 								<td>
 									<select id="ddClientCompany1" name="ddClientCompany1" class="ddStyle ddSearch" style="width: 100%"></select>
-									<input type="text" id="txtClientID1" name="txtClientID1" style="width: 20px">
+									<input type="hidden" id="txtClientID1" name="txtClientID1" style="width: 20px">
 									<input type="hidden" id="txtClientCompany1" name="txtClientCompany1" style="width: 20px">
 								</td>
 								<td>
@@ -1478,12 +1478,16 @@ else{
 								<td style="text-align:right;">Client Customer Company :</td>
 								<td>
 									<select id="ddClientCompany<?php echo $ir?>" name="ddClientCompany<?php echo $ir?>" class="ddStyle ddSearch" style="width: 100%"></select>
-									<input type="text" id="txtClientID<?php echo $ir?>" name="txtClientID<?php echo $ir?>" style="width: 20px">
+									<input type="hidden" id="txtClientID<?php echo $ir?>" name="txtClientID<?php echo $ir?>" style="width: 20px" value="<?php echo $result_interviewrecord['client_ID']?>">
 									<input type="hidden" id="txtClientCompany<?php echo $ir?>" name="txtClientCompany<?php echo $ir?>" style="width: 20px">
 									<script type="text/javascript">
 										$(function(){
 											$.post("load-dropdown.php",{position_id:"<?php echo $result_interviewrecord['client_ID']?>",action:"load-client",act:'3'},function(data){
 												$("#ddClientCompany<?php echo $ir?>").html(data);
+											});
+											
+											$.post("getVal.php",{act:"client_company", id:"<?php echo $result_interviewrecord['client_ID']?>",rfield:"client_company",ifield:"client_ID"},function(data){
+												$("#txtClientCompany<?php echo $ir?>").val(data);	
 											});
 										}); //end function load drop down
 										$("#ddClientCompany<?php echo $ir?>").change(function() {
@@ -1760,7 +1764,7 @@ else{
 		});
 		
 		$("#btn_reset").click(function(){
-			location.replace('form.php?l=<?php echo $l?>');
+			location.replace('search.php?l=<?php echo $l?>');
 		});
 		$.validator.setDefaults( {
 			submitHandler: function () {
@@ -2166,7 +2170,7 @@ else{
 				addrow32 +="<td style=\"text-align:right;\">Client Customer Company : </td>";
 				addrow32 +="<td>";
 				addrow32 +="<select id=\"ddClientCompany"+txtPart32ID+"\" name=\"ddClientCompany"+txtPart32ID+"\" class=\"ddStyle ddSearch\" style=\"width: 100%\">";
-				addrow32 +="</select><input type=\"text\" id=\"txtClientID"+txtPart32ID+"\" name=\"txtClientID"+txtPart32ID+"\" style=\"width: 20px\">";
+				addrow32 +="</select><input type=\"hidden\" id=\"txtClientID"+txtPart32ID+"\" name=\"txtClientID"+txtPart32ID+"\" style=\"width: 20px\">";
 				addrow32 +="<input type=\"hidden\" id=\"txtClientCompany"+txtPart32ID+"\" name=\"txtClientCompany"+txtPart32ID+"\" style=\"width: 20px\">";
 				addrow32 +="</td>";
 				addrow32 +="<td>";

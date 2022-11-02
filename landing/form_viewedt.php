@@ -1225,7 +1225,7 @@ else{
 									$sql_invrecord .= " create_date,update_date, update_by)";
 									$sql_invrecord .= " VALUES ('".$candidate_ID."', '".trim($txtInterviewDate_ins)."', '".$txtClientID."', '".$ddPass."', '".$ddSignContract."', '".$txtContractPeriod."', '".$txtStartDate."', '".$txtNote32."', '".$txtIntvRec_matchingNo."',";
 									$sql_invrecord .= " '".$current_date."', '".$current_date."','".$current_login."')";
-									echo "sql_invrecord - ".$sql_invrecord."<br>";
+									//echo "sql_invrecord - ".$sql_invrecord."<br>";
 									$stmt_invrecord = $con->query($sql_invrecord);
 									//-----------------------------------------------------------------------------end insert invrecord
 					?>
