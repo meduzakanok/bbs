@@ -517,7 +517,7 @@ else{
 										$sql_candidate_file .= " VALUES ('".$candidate_ID."', '".$filename."','".$file_type."','".$file_size."','".$content."', ";
 										$sql_candidate_file .= " '".$current_date."', '".$current_date."','".$current_login."')";
 										$stmt_candidate_file = $con->query($sql_candidate_file);
-										echo "sql_candidate_file = ".$sql_candidate_file."<br>";
+										//echo "sql_candidate_file = ".$sql_candidate_file."<br>";
 									}
 								} //end tmpname
 							}//end foreach
