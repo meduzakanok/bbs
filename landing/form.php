@@ -74,7 +74,7 @@ else{
 				<form id="frmRecruit" name="frmRecruit" method="POST" action="form_view.php" enctype="multipart/form-data"><input type="hidden" id="l" name="l" value="<?php echo $l?>">
 				<!--Start Part1-->
 				<div class="part_form">
-					<h4 class="mb-4">Part 1 :  Information</h4><input type="hidden" id="candidate_ID" name="candidate_ID" value="">
+					<h4 class="mb-4">Part 1 :  Information</h4><input type="text" id="candidate_ID" name="candidate_ID" value="">
 					<table border="0" style="width: 100%" class="tabForm"> 
 						<tr>
 							<td colspan="2" style="text-align:right;">
@@ -1003,7 +1003,8 @@ else{
 		var d_st = nowTemp.getDate().toString();
 		if (d_st.length ==1)
 			d_st = '0'+d_st;
-		const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+$('#txtNameEn').val().substring(0,2)+$('#txtSNameEn').val().substring(0,2);
+		
+		const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+$('#txtNameEn').val().substring(0,4)+$('#txtSNameEn').val().substring(0,4);
 		$("#candidate_ID").val(candidate_ID);
 		
 		$(".datepicker").datepicker({format: "yyyy-mm-dd"});
@@ -1055,7 +1056,7 @@ else{
 		
 		$("#txtNameEn").keyup(function(){
 			//var m = nowTemp.getMonth()+1;
-			const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+this.value.substring(0,2)+$('#txtSNameEn').val().substring(0,2);
+			const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+this.value.substring(0,4)+$('#txtSNameEn').val().substring(0,4);
 			$("#candidate_ID").val(candidate_ID);
 			
 			var dateStr = $("#candidate_ID").val()+'-'+$('#txtCallDate1').val().substring(0,4)+$('#txtCallDate1').val().substring(5,7)+$('#txtCallDate1').val().substring(8,10)+'-'+$('#callRow1').val();
@@ -1063,7 +1064,7 @@ else{
 		});
 		$("#txtSNameEn").keyup(function(){
 			//var m = nowTemp.getMonth()+1;
-			const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+$('#txtNameEn').val().substring(0,2)+this.value.substring(0,2);
+			const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+$('#txtNameEn').val().substring(0,4)+this.value.substring(0,4);
 			$("#candidate_ID").val(candidate_ID);
 			
 			var dateStr = $("#candidate_ID").val()+'-'+$('#txtCallDate1').val().substring(0,4)+$('#txtCallDate1').val().substring(5,7)+$('#txtCallDate1').val().substring(8,10)+'-'+$('#callRow1').val();

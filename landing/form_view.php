@@ -226,7 +226,7 @@ else{
 						$invRow						= $_POST['invRow'];
 						//-----------------------------------------------------------------------------end part3-1 3-2
 						date_default_timezone_set('Asia/Bangkok');
-						$candidate_ID = date("Y").date("m").date("d").strtolower(trim(substr($txtNameEn,0,2))).strtolower(trim(substr($txtSNameEn,0,2)));
+						$candidate_ID = date("Y").date("m").date("d").strtolower(trim(substr($txtNameEn,0,4))).strtolower(trim(substr($txtSNameEn,0,4)));
 						//echo  "candidateID = ".$candidateID."<br/>";
 						//echo "File size = ".$_FILES['upload_file1']['size']."<br/>";
 						
