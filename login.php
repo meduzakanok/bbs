@@ -8,7 +8,7 @@
 	$rec_usr = '';
 	$rec_name = '';
 	$rec_sname = '';
-	$sql_usrPass = "SELECT * FROM rec_user where rec_usr='".$txtUser."' and rec_pass='".$txtPass."'";
+	$sql_usrPass = "SELECT * FROM rec_user where status ='Active' and rec_usr='".$txtUser."' and rec_pass='".$txtPass."'";
 	$stmt_usrPass = $con->query($sql_usrPass);
 	$rows_usrPass = $stmt_usrPass->rowCount();
 	if ($rows_usrPass>0){
