@@ -997,7 +997,13 @@ else{
 		//alert( nowTemp.getDate());
 		var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 		var m = nowTemp.getMonth()+1;
-		const candidate_ID = nowTemp.getFullYear().toString()+m.toString()+nowTemp.getDate().toString()+$('#txtNameEn').val().substring(0,2)+$('#txtSNameEn').val().substring(0,2);
+		var m_st = m.toString();
+		if (m_st.length ==1)
+			m_st = '0'+m_st;
+		var d_st = nowTemp.getDate().toString();
+		if (d_st.length ==1)
+			d_st = '0'+d_st;
+		const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+$('#txtNameEn').val().substring(0,2)+$('#txtSNameEn').val().substring(0,2);
 		$("#candidate_ID").val(candidate_ID);
 		
 		$(".datepicker").datepicker({format: "yyyy-mm-dd"});
@@ -1048,16 +1054,16 @@ else{
 		}); //end function load drop down
 		
 		$("#txtNameEn").keyup(function(){
-			var m = nowTemp.getMonth()+1;
-			const candidate_ID = nowTemp.getFullYear().toString()+m.toString()+nowTemp.getDate().toString()+this.value.substring(0,2)+$('#txtSNameEn').val().substring(0,2);
+			//var m = nowTemp.getMonth()+1;
+			const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+this.value.substring(0,2)+$('#txtSNameEn').val().substring(0,2);
 			$("#candidate_ID").val(candidate_ID);
 			
 			var dateStr = $("#candidate_ID").val()+'-'+$('#txtCallDate1').val().substring(0,4)+$('#txtCallDate1').val().substring(5,7)+$('#txtCallDate1').val().substring(8,10)+'-'+$('#callRow1').val();
 			$("#txtCallRec_matchingNo"+$('#callRow1').val()).val(dateStr);
 		});
 		$("#txtSNameEn").keyup(function(){
-			var m = nowTemp.getMonth()+1;
-			const candidate_ID = nowTemp.getFullYear().toString()+m.toString()+nowTemp.getDate().toString()+$('#txtNameEn').val().substring(0,2)+this.value.substring(0,2);
+			//var m = nowTemp.getMonth()+1;
+			const candidate_ID = nowTemp.getFullYear().toString()+m_st+d_st+$('#txtNameEn').val().substring(0,2)+this.value.substring(0,2);
 			$("#candidate_ID").val(candidate_ID);
 			
 			var dateStr = $("#candidate_ID").val()+'-'+$('#txtCallDate1').val().substring(0,4)+$('#txtCallDate1').val().substring(5,7)+$('#txtCallDate1').val().substring(8,10)+'-'+$('#callRow1').val();
