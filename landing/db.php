@@ -8,7 +8,8 @@ $dbname = "bbsrecruitdb";
 //mysqli_query($con,"set character set utf8");
 */
 
-$cloud_sql_connection_name = "bbsrecruit:asia-southeast1:ttinst";
+//$cloud_sql_connection_name = "bbsrecruit:asia-southeast1:bbsinst";
+$cloud_sql_connection_name = "bbsrecruit-368020:asia-southeast1:bbsinst";
 $database = "bbsrecruitdb";
 $username = "bbsusr";
 $password = "bbs#pwd";
