@@ -26,7 +26,7 @@ if ($id == 1){
 	$str_alert = '<div class="green-color" style="text-align: center">แก้ไขข้อมูลเรียบร้อยแล้ว !!</div>';
 }else{
 	$str_header = '<i class="fa fa-warning fa-2x red-color"></i> Warning';
-	$str_alert = '<div class="orange-color" style="text-align: center">Something went wrong !, please try again later.</div>';
+	$str_alert = '<div class="orange-color" style="text-align: center">Something went wrong!, please try again later/or call to admin.</div>';
 }
 ?>
 <style>

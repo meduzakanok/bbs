@@ -43,7 +43,6 @@ else{
 					<li class="active"><a href="index.php?l=<?php echo $l?>"><span class="fa fa-home"></span> Home</a></li>
 					<li><a href="form.php?l=<?php echo $l?>"><span class="fa fa-sticky-note"></span> FORM</a></li>
 					<li><a href="search.php?l=<?php echo $l?>"><span class="fa fa-search"></span> SEARCH</a></li>
-					<li><a href="jobs.html?l=<?php echo $l?>"><span class="fa fa-id-card-o"></span> JOBS</a></li>
 					<li><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
 					<li><a href="report.html?l=<?php echo $l?>"><span class="fa fa-folder-open"></span> REPORT</a></li>
 					<li><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>

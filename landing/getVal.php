@@ -11,12 +11,14 @@ isset( $_POST['id'] ) 			? $id = $_POST['id'] 			: $id = "";
 isset( $_POST['ifield'] ) 		? $ifield = $_POST['ifield'] 	: $ifield = "";
 isset( $_POST['rfield'] ) 		? $rfield = $_POST['rfield'] 	: $rfield = "";
 //check which action response accordingly
-
+/*
 if($_POST["act"]=="client_company"){    
 	echo getPosition($act,$id,$rfield,$ifield);
 }
 else
 	echo "";
+*/
+echo getPosition($act,$id,$rfield,$ifield);
 
 //load country and return country list
 function getPosition($act,$id,$rfield,$ifield){

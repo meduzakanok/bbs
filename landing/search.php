@@ -46,7 +46,6 @@ else{
 					<li><a href="index.php?l=<?php echo $l?>"><span class="fa fa-home"></span> Home</a></li>
 					<li><a href="form.php?l=<?php echo $l?>"><span class="fa fa-sticky-note"></span> FORM</a></li>
 					<li class="active"><a href="search.php?l=<?php echo $l?>"><span class="fa fa-search"></span> SEARCH</a></li>
-					<li><a href="jobs.php?l=<?php echo $l?>"><span class="fa fa-id-card-o"></span> JOBS</a></li>
 					<li><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
 					<li><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>
 					<li><a href="report.php?l=<?php echo $l?>"><span class="fa fa-folder-open"></span> REPORT</a></li>
@@ -376,13 +375,13 @@ else{
 				<div class="modal-dialog modal-confirm">
 					<div class="modal-content">
 						<div class="modal-header flex-column">
-							<div class="icon-box">
-								<i class="fa fa-close fa-2x"></i>Are you sure?
-							</div>						
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<div class="icon-box">
+								<font color="#dc3545"><i class="fa fa-close fa-2x"></i> <font size="5px"><b> Delete</b></font></font>
+							</div>
 						</div>
 						<div class="modal-body">
-							<p>Do you really want to delete these records? This process cannot be undone.</p>
+							<p>Do you really want to delete this record? <br/><font color="#dc3545">This process cannot be undo.</font></p>
 						</div>
 						<div class="modal-footer justify-content-center">
 							<button type="button" id="btn_del" class="btn btn-lg btn-danger" data-dismiss="modal">Delete</button>
@@ -422,7 +421,7 @@ else{
 			var id = $('#id').val();
 			event.preventDefault(); 
 			//alert(id);
-			$.post("delete.php",{id:id ,frm:"candidate"},function(data){
+			$.post("delete.php",{f:"candidate_ID",id:id ,frm:"candidate"},function(data){
 				//alert(data);
 				if (data == '1'){
 					//dataURL = 'alert.php?id=5&l=<?php echo $l?>';

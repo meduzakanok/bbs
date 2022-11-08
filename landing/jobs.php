@@ -47,8 +47,8 @@ else{
 					<li><a href="index.php?l=<?php echo $l?>"><span class="fa fa-home"></span> Home</a></li>
 					<li><a href="form.php?l=<?php echo $l?>"><span class="fa fa-sticky-note"></span> FORM</a></li>
 					<li><a href="search.php?l=<?php echo $l?>"><span class="fa fa-search"></span> SEARCH</a></li>
-					<li><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
-					<li class="active"><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>
+					<li class="active"><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
+					<li><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>
 					<li><a href="report.html?l=<?php echo $l?>"><span class="fa fa-folder-open"></span> REPORT</a></li>
 					<li><a href="../"><span class="fa fa-sign-out"></span> LOGOUT</a></li>
 				</ul>
@@ -62,7 +62,10 @@ else{
 					<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
-								<li class="nav-item active"><a class="nav-link" href="search.html"><font color="#0891f8">User List</font></a></li>
+								<li class="nav-item"><a class="nav-link" href="admin.php?l=<?php echo $l?>">[ Company ]</a></li>
+								<li class="nav-item active"><a class="nav-link" href="jobs.php?l=<?php echo $l?>"><font color="#0891f8">[ Position ]</font></a></li>
+								<li class="nav-item"><a class="nav-link" href="admin_language.php?l=<?php echo $l?>">[ Programming Language ]</a></li>
+								<li class="nav-item"><a class="nav-link" href="admin_module.php?l=<?php echo $l?>">[ SAP Modules ]</a></li>
 							</ul>
 					</div>
 				</div>
@@ -71,43 +74,33 @@ else{
 				<tr>
 					<td style="width:90%;"><input type="text" id="txtKeySearch" onkeyup="myFunction()" placeholder="Search.." style="width:100%;"></td>
 					<td style="text-align:center">
-						<button type="button" class="btn btn-primary" title="Add User" id="btn_add" name="btn_add" formaction="addedt_user.php?l=<?php echo $l?>&id=0"><i class="fa fa-plus-square-o"></i> Add User</button>
+						<button type="button" class="btn btn-primary" title="Add Position" id="btn_add" name="btn_add" formaction="addedt_job.php?l=<?php echo $l?>&id=0"><i class="fa fa-plus-square-o"></i> Add Position</button>
 					</td>
 				</tr>
 				</table>
-				<table style="width:100%;" border="0" id="tabRecord">
+				<table id="tabRecord" style="width:100%;">
 				<tr class="header">
-					<th style="width:20%;">Name Surname</th>
-					<th style="width:12%;">Nickname</th>
-					<th style="width:10%;">Telephone</th>
-					<th style="width:10%;">LineID</th>
-					<th style="width:20%;">Login/E-mail</th>
-					<th style="width:12%;">Role</th>
-					<th style="width:8%;">Status</th>
+					<th style="width:45%;">Position Description</th>
+					<th style="width:45%;">Position Value</th>
 					<th>Actions</th>
 				</tr>
 				<?php
-					$sql_usr = "SELECT * FROM rec_user ";
-					$sql_usr .= " where rec_usr != 'admin' order by rec_name, rec_sname";
-					$stmt_usr = $con->query($sql_usr);
-					$rows_res = $stmt_usr->rowCount();
+					$sql_job = "SELECT * FROM position ";
+					$sql_job .= " order by position";
+					$stmt_job = $con->query($sql_job);
+					$rows_res = $stmt_job->rowCount();
 					if ($rows_res >0){
-						while ($result_usr = $stmt_usr->fetch()) {
+						while ($result_job = $stmt_job->fetch()) {
 				?>
 				<tr>
-					<td><?php echo $result_usr['rec_title'].$result_usr['rec_name']." ".$result_usr['rec_sname'] ?></td>
-					<td><?php echo $result_usr['rec_nickname']?></td>
-					<td><?php echo $result_usr['rec_tel']?></td>
-					<td><?php echo $result_usr['rec_lineID']?></td>
-					<td><?php echo $result_usr['rec_usr']?></td>
-					<td><?php echo $result_usr['rec_role']?></td>
-					<td><?php echo $result_usr['rec_status']?></td>
+					<td><?php echo $result_job['position']?></td>
+					<td><?php echo $result_job['position_val']?></td>
 					<td>
-						<button type="button" class="btn btn-lg btn-success" title="Edit User" id="btn_edt" name="btn_edt" formaction="addedt_user.php?l=<?php echo $l?>&id=<?php echo $result_usr['rec_ID']?>"><i class="fa fa-edit"></i></button>
-						<button type="button" class="btn btn-lg btn-danger" title="Delete User" id="btn_del" name="btn_del" formaction="del.php?l=<?php echo $l?>&frm=user&id=<?php echo $result_usr['rec_ID']?>"><i class="fa fa-trash-o"></i></button>
+						<button type="button" class="btn btn-lg btn-success" title="Edit Position" id="btn_edt" name="btn_edt" formaction="addedt_job.php?l=<?php echo $l?>&id=<?php echo $result_job['position_ID']?>"><i class="fa fa-edit"></i></button>
+						<button type="button" class="btn btn-lg btn-danger" title="Delete Position" id="btn_del" name="btn_del" formaction="del.php?l=<?php echo $l?>&frm=position&id=<?php echo $result_job['position_ID']?>"><i class="fa fa-trash-o"></i></button>
 					</td>
 				</tr>
-					<?php }
+				<?php }
 					}
 					?>
 				</table>
@@ -127,11 +120,10 @@ else{
 			</div>
 		</div>
 		<!-- End Modal Confirm Delete -->
-
-	<script type="text/javascript">
+	<script>
 	function myFunction() {
 		  // Declare variables
-		  var input, filter, table, tr, td0,td1,td2,td3,td4,td5,td6, i, txtValue0,txtValue1,txtValue2,txtValue3,txtValue4,txtValue5,txtValue6;
+		  var input, filter, table, tr, td0, td1, td2, i, txtValue0, txtValue1, txtValue2;
 		  input = document.getElementById("txtKeySearch");
 		  filter = input.value.toUpperCase();
 		  table = document.getElementById("tabRecord");
@@ -141,28 +133,11 @@ else{
 		  for (i = 0; i < tr.length; i++) {
 				td0 = tr[i].getElementsByTagName("td")[0];
 				td1 = tr[i].getElementsByTagName("td")[1];
-				td2 = tr[i].getElementsByTagName("td")[2];
-				td3 = tr[i].getElementsByTagName("td")[3];
-				td4 = tr[i].getElementsByTagName("td")[4];
-				td5 = tr[i].getElementsByTagName("td")[5];
-				td6 = tr[i].getElementsByTagName("td")[6];
 				
-				if (td0 || td1 || td2 || td3 || td4 || td5 || td6) {
+				if (td0 || td1 || td2) {
 						txtValue0 = td0.textContent || td0.innerText;
 						txtValue1 = td1.textContent || td1.innerText;
-						txtValue2 = td2.textContent || td2.innerText;
-						txtValue3 = td3.textContent || td3.innerText;
-						txtValue4 = td4.textContent || td4.innerText;
-						txtValue5 = td5.textContent || td5.innerText;
-						txtValue6 = td6.textContent || td6.innerText;
-						
-						if ((txtValue0.toUpperCase().indexOf(filter) > -1) ||
-						(txtValue1.toUpperCase().indexOf(filter) > -1) ||
-						(txtValue2.toUpperCase().indexOf(filter) > -1) ||
-						(txtValue3.toUpperCase().indexOf(filter) > -1) ||
-						(txtValue5.toUpperCase().indexOf(filter) > -1) ||
-						(txtValue5.toUpperCase().indexOf(filter) > -1) ||
-						(txtValue6.toUpperCase().indexOf(filter) > -1))
+						if ((txtValue0.toUpperCase().indexOf(filter) > -1) ||(txtValue1.toUpperCase().indexOf(filter) > -1) )
 						{
 							tr[i].style.display = "";
 						} 
@@ -170,13 +145,13 @@ else{
 							tr[i].style.display = "none";
 						}
 				}
-		  } //end for
+		  }
 	}
 	</script>
 	<script type="text/javascript">
 		$( document ).ready( function () {
+			
 		});
-		
 		$("button").on('click', function(e){
 			e.preventDefault();
 			var dataURL = $(this).attr('formaction');

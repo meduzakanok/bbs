@@ -4,10 +4,6 @@ include 'function.php';
 $l = '';
 $str_l = '';
 $current_login = '';
-//if (isset($_POST['l']))
-//	$str_l = $_POST['l'];
-//if (($str_l == '') && isset($_GET['l']))
-//	$str_l = $_GET['l'];
 isset( $_POST['l'] ) ? $str_l = $_POST['l'] : $str_l = $_GET['l'];
 
 if ($str_l == '')
@@ -53,7 +49,6 @@ else{
 					<li><a href="index.php?l=<?php echo $l?>"><span class="fa fa-home"></span> Home</a></li>
 					<li class="active"><a href="form.php?l=<?php echo $l?>"><span class="fa fa-sticky-note"></span> FORM</a></li>
 					<li><a href="search.php?l=<?php echo $l?>"><span class="fa fa-search"></span> SEARCH</a></li>
-					<li><a href="jobs.html?l=<?php echo $l?>"><span class="fa fa-id-card-o"></span> JOBS</a></li>
 					<li><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
 					<li><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>
 					<li><a href="report.html?l=<?php echo $l?>"><span class="fa fa-folder-open"></span> REPORT</a></li>
@@ -1207,10 +1202,9 @@ else{
 									<div class="divLast">&nbsp;<?php echo $txtTime ?></div>
 								</td>
 								<td style="text-align:right;">Client Customer Company : </td>
-								<td>
+								<td colspan="2">
 									<div class="divLast">&nbsp;<?php echo $txtClientCompany ?></div>
 								</td>
-								<td></td>
 							</tr>
 							<tr>
 								<td style="text-align:right;">Pass : </td>

@@ -53,7 +53,6 @@ else{
 					<li><a href="index.php?l=<?php echo $l?>"><span class="fa fa-home"></span> Home</a></li>
 					<li class="active"><a href="form.php?l=<?php echo $l?>"><span class="fa fa-sticky-note"></span> FORM</a></li>
 					<li><a href="search.php?l=<?php echo $l?>"><span class="fa fa-search"></span> SEARCH</a></li>
-					<li><a href="jobs.html?l=<?php echo $l?>"><span class="fa fa-id-card-o"></span> JOBS</a></li>
 					<li><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
 					<li><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>
 					<li><a href="report.html?l=<?php echo $l?>"><span class="fa fa-folder-open"></span> REPORT</a></li>
@@ -478,7 +477,7 @@ else{
 													address = '".$txtAddress."' ,subdistrict = '".$ddSubDistrict_info."' ,district = '".$ddDistrict_info."' ,province = '".$ddProvince_info."' ,zipcode = '".$txtZipcode."' ,
 													blood = '".$radBlood."' ,gender = '".$radGender."' ,contract = '".$radContract."' ,expstatus = '".$radExpStatus."' ,expstatus_info = '".$txtExpStatus."' ,
 													marital = '".$radMarital."' ,nationality = '".$radNationality."' ,nationality_info = '".$txtNationality."' ,ethnicity = '".$radEthnicity."' ,ethnicity_info = '".$txtEthnicity."' ,birthdate = '".$txtBDDate."' ,
-													update_date = '".$current_date."' 
+													update_date = '".$current_date."'  , update_by = '".$current_login."' 
 													WHERE candidate_ID = '".$candidate_ID."' ";
 						$stmt_candidate_upd = $con->query($sql_candidate_upd);
 						$r_candidate = $stmt_candidate_upd->rowCount();
@@ -1243,10 +1242,9 @@ else{
 									<div class="divLast">&nbsp;<?php echo $txtTime ?></div>
 								</td>
 								<td style="text-align:right;">Client Customer Company : </td>
-								<td>
+								<td colspan="2">
 									<div class="divLast">&nbsp;<?php echo $txtClientCompany ?></div>
 								</td>
-								<td></td>
 							</tr>
 							<tr>
 								<td style="text-align:right;">Pass : </td>

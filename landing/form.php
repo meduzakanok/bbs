@@ -49,7 +49,6 @@ else{
 					<li><a href="index.php?l=<?php echo $l?>"><span class="fa fa-home"></span> Home</a></li>
 					<li class="active"><a href="form.php?l=<?php echo $l?>"><span class="fa fa-sticky-note"></span> FORM</a></li>
 					<li><a href="search.php?l=<?php echo $l?>"><span class="fa fa-search"></span> SEARCH</a></li>
-					<li><a href="jobs.html?l=<?php echo $l?>"><span class="fa fa-id-card-o"></span> JOBS</a></li>
 					<li><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
 					<li><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>
 					<li><a href="report.html?l=<?php echo $l?>"><span class="fa fa-folder-open"></span> REPORT</a></li>
@@ -123,7 +122,7 @@ else{
 								<tr>
 									<td style="text-align:right;width: 35%">Nickname&nbsp;</td>
 									<td>
-										<div class="col-sm-5"><input class="form-control" type="text" name="txtNickname" id="txtNickname" style="width: 100%"></div>
+										<div class="col-sm-5"><input class="form-control" type="text" name="txtNickname" id="txtNickname" style="width: 100%" maxlength="50"></div>
 									</td>
 								</tr>
 								</table>
@@ -655,19 +654,10 @@ else{
 								<td colspan="2">
 									<select id="ddCurrentPosition1" name="ddCurrentPosition1" class="ddStyle ddSearch" style="width: 100%"></select>   
 								</td>
-								<td>
-									<!--<input type="button" class="addrow add_btn div_inline" id="btn_addPosition" name="btn_addPosition" value="Add">
-									<button type="button" class="addrow btn btn-success"  id="btn_addPosition" name="btn_addPosition" ><i class="fa fa-plus-square-o"></i> Add</button>-->
-									<button type="button" class="btn btn-success" title="Add Position" data-toggle="modal" data-target="#modalPosition"  id="btn_addPosition" name="btn_addPosition"><i class="fa fa-plus-square-o"></i></button>
-								</td>
+								<td></td>
 								<td style="text-align:right;">Interested Position : </td>
-								<td colspan="2">
+								<td colspan="3">
 									<select id="ddInterestedPosition1" name="ddInterestedPosition1" class="ddStyle ddSearch" style="width: 100%"></select>
-								</td>
-								<td>
-									<!--<input type="button" class="addrow add_btn div_inline" id="btn_addIPosition" name="btn_addIPosition" value="Add">
-									<button type="button" class="addrow btn btn-success"  id="btn_addIPosition" name="btn_addIPosition" ><i class="fa fa-plus-square-o"></i> Add</button>-->
-									<button type="button" class="btn btn-success" title="Add Position" data-toggle="modal" data-target="#modalPosition"  id="btn_addIPosition" name="btn_addIPosition"><i class="fa fa-plus-square-o"></i></button>
 								</td>
 							</tr>
 							<tr>
@@ -798,13 +788,10 @@ else{
 									<input class="form-control col-sm-5r" type="text" id="txtTime1" name="txtTime1" data-format="HH:mm" data-template="HH : mm" >
 								</td>
 								<td style="text-align:right;">Client Customer Company : </td>
-								<td>
+								<td colspan="2">
 									<select id="ddClientCompany1" name="ddClientCompany1" class="ddStyle ddSearch" style="width: 100%"></select>
 									<input type="hidden" id="txtClientID1" name="txtClientID1" style="width: 20px">
 									<input type="hidden" id="txtClientCompany1" name="txtClientCompany1" style="width: 20px">
-								</td>
-								<td>
-									<button type="button" class="btn btn-success" title="Add Company" data-toggle="modal" data-target="#modalCompany"  id="btn_addCustomerCompany" name="btn_addCustomerCompany"><i class="fa fa-plus-square-o"></i></button>
 								</td>
 							</tr>
 							<tr>
@@ -896,58 +883,13 @@ else{
 				</form>
 			</div>
 		</div>
-		<!-- Start Modal Position -->
-		<form id="frmPosition" method="post" action="">
-		<!-- The Modal -->
-		  <div class="modal" id="modalPosition">
+		<!-- Start Modal Add Edit -->
+		<div class="modal" id="modalAddEdt">
 			<div class="modal-dialog modal-lg">
-			  <div class="modal-content">
-				<!-- Modal Header -->
-				<div class="modal-header">
-				  <h4 class="modal-title">Position</h4>
-				  <button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<!-- Modal body -->
-				<div class="modal-body">
-					<div class="part_form">
-						<table border="0" style="width: 100%;border-color:#DDDDDD" id="tabaddPosition">
-						<tr>
-							<td>
-								<table border="0" style="width: 100%" class="tabForm_part">
-								<tr>
-									<td style="text-align:right;">Job title (EN) : </td>
-									<td><input class="form-control col-sm-5r" type="text" id="txtPositionEN" name="txtPositionEN" style="width: 100%"></td>
-								</tr>
-								<tr>
-									<td style="text-align:right;">Job title (TH) : </td>
-									<td><input class="form-control col-sm-5r" type="text" id="txtPositionTH" name="txtPositionTH" style="width: 100%"></td>
-								</tr>
-								<tr>
-									<td style="text-align:right;">Job details : </td>
-									<td>
-										<textarea id="txtNote" name="txtNote" rows="4" style="width: 100%" maxlength="300"></textarea>
-									</td>
-								</tr>
-								<tr>
-									<td style="width: 20%"></td>
-									<td ></td>
-								</tr>
-								</table>
-							</td>
-						</tr>
-						</table>
-					</div>
-				</div>
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-lg btn-success"  id="btn_submitPosition" name="btn_submitPosition" data-dismiss="modal"><i class="fa fa-save"></i> Save</button>
-					<button type="button" class="btn btn-lg btn-danger"  id="btn_cancelPosition" name="btn_cancelPosition" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
-				</div>
-			  </div>
+			  <div class="modal-content" id="modalContentAddEdt"></div>
 			</div>
-		  </div>
-		</form>
-		<!-- End Modal Position -->
+		</div>
+		<!-- End Modal Add Edit -->
 		<!-- Start Modal Company -->
 		<form id="frmCompany" method="post" action="">
 			<!-- The Modal -->
@@ -1022,7 +964,7 @@ else{
 			var candidate_ID 		= $('#candidate_ID').val();
 
 			event.preventDefault(); 
-			$.post("validate.php",{candidate_ID:candidate_ID, name_th:name_th, sname_th:sname_th, name_en:name_en, sname_en:sname_en ,action:"validate-candidate"},function(data){
+			$.post("validate.php",{ID:candidate_ID, name_th:name_th, sname_th:sname_th, name_en:name_en, sname_en:sname_en ,action:"validate-candidate"},function(data){
 				//alert(data);
 				if (data == '1')
 					$("#frmRecruit").submit();
@@ -1033,55 +975,6 @@ else{
 			});
 		});
 		
-		/*
-		$("frmRecruit").submit(function (event) {
-			var formData = {
-			  txtIDcard: $("#txtIDcard").val(),
-			  action: "validate-candidate"
-			};
-
-			$.ajax({
-				type: "POST",
-				url: "validate.php",
-				data: formData,
-				dataType: "json",
-				encode: true,
-			}).done(function (data) {
-				alert(data);
-					if (data == '1'){
-						event.preventDefault(); 			// Prevents the default submit
-						// your code here (not asynchronous)
-						$(this).unbind('submit').submit(); 	// continue the submit unbind preventDefault
-					}
-					else {
-						dataURL = 'alert.php?id=3';
-						$('#modalContentAlert').load(dataURL,function(){$('#modalAlert').modal('show')});
-					}	
-			});
-			event.preventDefault();
-			
-			$.post("validate.php",{txtIDcard:txtIDcard ,action:"validate-candidate"},function(data){
-				//alert(data);
-				if (data == '1')
-				{
-					$(this).unbind('submit').submit();
-				}
-				else {
-					dataURL = 'alert.php?id=3';
-					$('#modalContentAlert').load(dataURL,function(){$('#modalAlert').modal('show')});
-				}	
-			});
-		});*/
-		//document.getElementById("btn_submit").onclick = function() {fn_submit()};
-		//document.getElementById("btn_reset").onclick = function() {fn_reset()};
-		//function fn_submit() {
-			//document.getElementById("frmRecruit").submit();
-			//window.location.replace("form.php");
-		//}
-		//function fn_reset() {
-			//document.getElementById("txt_name_en").value='';
-		//	document.getElementById("frmRecruit").submit();
-		//}
 		$("#btn_reset").click(function(){
 			location.replace('form.php?l=<?php echo $l?>');
 		});
@@ -1173,12 +1066,14 @@ else{
 		
 		$("#txtPresentSalary1").keyup(function(){
 			var txtBBSOfferCalculation1 = 0;
-			txtBBSOfferCalculation1 = ((( parseInt($('#txtPresentSalary1').val()) + (parseInt($('#txtPresentSalary1').val()) * parseInt($('#txtBonus1').val()) ) )/12)*1.2) + parseInt($('#txtPresentSalary1').val());
+			//txtBBSOfferCalculation1 = ((( parseInt($('#txtPresentSalary1').val()) + (parseInt($('#txtPresentSalary1').val()) * parseInt($('#txtBonus1').val()) ) )/12)*1.2) + parseInt($('#txtPresentSalary1').val());
+			txtBBSOfferCalculation1 = (((parseInt($('#txtBonus1').val()) + 12) * parseInt($('#txtPresentSalary1').val())) / 12)*1.2;
 			$("#txtBBSOfferCalculation"+$('#callRow1').val()).val(txtBBSOfferCalculation1);
 		});
 		$("#txtBonus1").keyup(function(){
 			var txtBBSOfferCalculation1 = 0;
-			txtBBSOfferCalculation1 = ((( parseInt($('#txtPresentSalary1').val()) + (parseInt($('#txtPresentSalary1').val()) * parseInt($('#txtBonus1').val()) ) )/12)*1.2) + parseInt($('#txtPresentSalary1').val());
+			//txtBBSOfferCalculation1 = ((( parseInt($('#txtPresentSalary1').val()) + (parseInt($('#txtPresentSalary1').val()) * parseInt($('#txtBonus1').val()) ) )/12)*1.2) + parseInt($('#txtPresentSalary1').val());
+			txtBBSOfferCalculation1 = (((parseInt($('#txtBonus1').val()) + 12) * parseInt($('#txtPresentSalary1').val())) / 12)*1.2;
 			$("#txtBBSOfferCalculation"+$('#callRow1').val()).val(txtBBSOfferCalculation1);
 		});
 		 
@@ -1379,16 +1274,16 @@ else{
 				addrow31 +="</select>";
 				addrow31 +="</td>";
 				addrow31 +="<td>";
-				addrow31 +="<button type=\"button\" class=\"btn btn-success\" title=\"Add Position\" data-toggle=\"modal\" data-target=\"#modalPosition\"  id=\"btn_addPosition\" name=\"btn_addPosition\"><i class=\"fa fa-plus-square-o\"></i></button>";
+				//addrow31 +="<button type=\"button\" class=\"btn btn-success\" title=\"Add Position\" data-toggle=\"modal\" data-target=\"#modalPosition\"  id=\"btn_addPosition\" name=\"btn_addPosition\"><i class=\"fa fa-plus-square-o\"></i></button>";
 				addrow31 +="</td>";
 				addrow31 +="<td style=\"text-align:right;\">Interested Position : </td>";
-				addrow31 +="<td colspan=\"2\">";
+				addrow31 +="<td colspan=\"3\">";
 				addrow31 +="<select id=\"ddInterestedPosition"+txtPart31ID+"\" name=\"ddInterestedPosition"+txtPart31ID+"\" class=\"ddStyle ddSearch\" style=\"width: 100%\">";
 				addrow31 +="</select>";
 				addrow31 +="</td>";
-				addrow31 +="<td>";
-				addrow31 +="<button type=\"button\" class=\"btn btn-success\" title=\"Add Position\" data-toggle=\"modal\" data-target=\"#modalPosition\"  id=\"btn_addIPosition\" name=\"btn_addIPosition\"><i class=\"fa fa-plus-square-o\"></i></button>";
-				addrow31 +="</td>";
+				//addrow31 +="<td>";
+				//addrow31 +="<button type=\"button\" class=\"btn btn-success\" title=\"Add Position\" data-toggle=\"modal\" data-target=\"#modalPosition\"  id=\"btn_addIPosition\" name=\"btn_addIPosition\"><i class=\"fa fa-plus-square-o\"></i></button>";
+				//addrow31 +="</td>";
 				addrow31 +="</tr>";		
 				addrow31 +="<tr>";
 				addrow31 +="<td style=\"text-align:right;\">Years of Experience : </td>";
@@ -1524,12 +1419,14 @@ else{
 				<!----------------------------------------------------------------------------------------------------------------------------------set up add 3-1 function------------------------------------------------------------------------------------------------------->
 				$("#txtPresentSalary"+txtPart31ID).keyup(function(){
 					var txtBBSOfferCalculation = 0;
-					txtBBSOfferCalculation = ((( parseInt($('#txtPresentSalary'+txtPart31ID).val()) + (parseInt($('#txtPresentSalary'+txtPart31ID).val()) * parseInt($('#txtBonus'+txtPart31ID).val()) ) )/12)*1.2) + parseInt($('#txtPresentSalary'+txtPart31ID).val());
+					//txtBBSOfferCalculation = ((( parseInt($('#txtPresentSalary'+txtPart31ID).val()) + (parseInt($('#txtPresentSalary'+txtPart31ID).val()) * parseInt($('#txtBonus'+txtPart31ID).val()) ) )/12)*1.2) + parseInt($('#txtPresentSalary'+txtPart31ID).val());
+					txtBBSOfferCalculation = (((parseInt($('#txtBonus'+txtPart31ID).val()) + 12) * parseInt($('#txtPresentSalary'+txtPart31ID).val())) / 12)*1.2;
 					$("#txtBBSOfferCalculation"+$('#callRow'+txtPart31ID).val()).val(txtBBSOfferCalculation);
 				});
 				$("#txtBonus"+txtPart31ID).keyup(function(){
 					var txtBBSOfferCalculation = 0;
-					txtBBSOfferCalculation = ((( parseInt($('#txtPresentSalary'+txtPart31ID).val()) + (parseInt($('#txtPresentSalary'+txtPart31ID).val()) * parseInt($('#txtBonus'+txtPart31ID).val()) ) )/12)*1.2) + parseInt($('#txtPresentSalary'+txtPart31ID).val());
+					//txtBBSOfferCalculation = ((( parseInt($('#txtPresentSalary'+txtPart31ID).val()) + (parseInt($('#txtPresentSalary'+txtPart31ID).val()) * parseInt($('#txtBonus'+txtPart31ID).val()) ) )/12)*1.2) + parseInt($('#txtPresentSalary'+txtPart31ID).val());
+					txtBBSOfferCalculation = (((parseInt($('#txtBonus'+txtPart31ID).val()) + 12) * parseInt($('#txtPresentSalary'+txtPart31ID).val())) / 12)*1.2;
 					$("#txtBBSOfferCalculation"+$('#callRow'+txtPart31ID).val()).val(txtBBSOfferCalculation);
 				});
 				<!----------------------------------------------------------------------------------------------------------------------------------set up add 3-1 Salary------------------------------------------------------------------------------------------------------->
@@ -1548,14 +1445,14 @@ else{
 				addrow32 +="<td style=\"text-align:right;\">Time : </td>";
 				addrow32 +="<td><input class=\"form-control col-sm-5r\" type=\"text\" id=\"txtTime"+txtPart32ID+"\" name=\"txtTime"+txtPart32ID+"\" data-format=\"HH:mm\" data-template=\"HH : mm\"></td>";
 				addrow32 +="<td style=\"text-align:right;\">Client Customer Company : </td>";
-				addrow32 +="<td>";
+				addrow32 +="<td colspan='2'>";
 				addrow32 +="<select id=\"ddClientCompany"+txtPart32ID+"\" name=\"ddClientCompany"+txtPart32ID+"\" class=\"ddStyle ddSearch\" style=\"width: 100%\">";
 				addrow32 +="</select><input type=\"hidden\" id=\"txtClientID"+txtPart32ID+"\" name=\"txtClientID"+txtPart32ID+"\" style=\"width: 20px\">";
 				addrow32 +="<input type=\"hidden\" id=\"txtClientCompany"+txtPart32ID+"\" name=\"txtClientCompany"+txtPart32ID+"\" style=\"width: 20px\">";
 				addrow32 +="</td>";
-				addrow32 +="<td>";
-				addrow32 +="<button type=\"button\" class=\"btn btn-success\" title=\"Add Company\" data-toggle=\"modal\" data-target=\"#modalCompany\"  id=\"btn_addCustomerCompany\" name=\"btn_addCustomerCompany\"><i class=\"fa fa-plus-square-o\"></i></button>";
-				addrow32 +="</td>";
+				//addrow32 +="<td>";
+				//addrow32 +="<button type=\"button\" class=\"btn btn-success\" title=\"Add Company\" data-toggle=\"modal\" data-target=\"#modalCompany\"  id=\"btn_addCustomerCompany\" name=\"btn_addCustomerCompany\"><i class=\"fa fa-plus-square-o\"></i></button>";
+				//addrow32 +="</td>";
 				addrow32 +="</tr>";
 				addrow32 +="<tr>";
 				addrow32 +="<td style=\"text-align:right;\">Pass : </td>";
@@ -1688,7 +1585,6 @@ else{
 						txtSNameTh: "required",
 						ddTitleEn: "required",
 						ddTitleTh: "required",
-						txtIDcard: "required",
 						txtBDDate: "required",
 						txtAgeYear: {required: true, min: 1, number: true},
 						"chkPosition[]" : {required: true, minlength: 1}
@@ -1700,7 +1596,6 @@ else{
 						txtSNameTh: "required",
 						ddTitleEn: "required",
 						ddTitleTh: "required",
-						txtIDcard: "required",
 						txtBDDate: "required",
 						txtAgeYear: "required",
 						"chkPosition[]" : "required"
@@ -1734,9 +1629,10 @@ else{
 					invalidHandler: function() {
 						//alert("form is invalid");
 					}
-				});
+			});
 			//End Validate*/
 		});
+
 	</script>
 </body>
 </html>

@@ -5,34 +5,35 @@ $id_string = '';
 $id = $_GET['id'];
 $l = $_GET["l"];
 if (($id=='0')||empty($id)){
-	$id_string = "Add Language";
-	$lang = "";
-	$lang_val = "";
+	$id_string = "Add Position";
+	$position = "";
+	$position_val = "";
 }else{
-	$id_string = "Edit Language id=".$id;
-	$sql_rec_lang ="SELECT * FROM prog_lang where lang_ID = '".$id."' ";
-	$stmt_rec_lang = $con->query($sql_rec_lang);
-	$rows_rec_lang = $stmt_rec_lang->rowCount();
-	if ($rows_rec_lang > 0){
-		while ($result_rec_lang = $stmt_rec_lang->fetch()) {
-			$lang = $result_rec_lang['lang'];
-			$lang_val = $result_rec_lang['lang_val'];
+	$id_string = "Edit Position id=".$id;
+	$sql_rec_job ="SELECT * FROM position where position_ID = '".$id."' ";
+	$stmt_rec_job = $con->query($sql_rec_job);
+	$rows_rec_job = $stmt_rec_job->rowCount();
+	if ($rows_rec_job > 0){
+		while ($result_rec_job = $stmt_rec_job->fetch()) {
+			$position = $result_rec_job['position'];
+			$position_val = $result_rec_job['position_val'];
 		}
 	}// end if row>0
 }
 ?>
 <script type="text/javascript">
-		//Start Validate
+		
 	$(document).ready(function () {
+		//Start Validate
 		//alert('00000000000000000000');
 		$( "#frmAddEdt" ).validate( {
 			rules: {
-				txtLanguage: "required",
-				txtLanguage_val: "required"
+				position: "required",
+				position_val: "required"
 			},
 			messages: {
-				txtLanguage: "required",
-				txtLanguage_val: "required"
+				position: "required",
+				position_val: "required"
 			},
 			errorElement: "em",
 			errorPlacement: function ( error, element ) {
@@ -51,9 +52,9 @@ if (($id=='0')||empty($id)){
 			},
 			unhighlight: function (element, errorClass, validClass) {
 				$( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
-				if (document.getElementById("eLang").style.display == "block"){
-					$( "#eLang" ).addClass( "help-block" );
-					$( "#txtLanguage_val" ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+				if (document.getElementById("ePosition").style.display == "block"){
+					$( "#ePosition" ).addClass( "help-block" );
+					$( "#position_val" ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
 				}
 			},
 			submitHandler: function(form) {
@@ -62,30 +63,30 @@ if (($id=='0')||empty($id)){
 				var frm = '';
 				var id = '';
 				id = $('#id').val();
-				var lang = '';
-				lang = $('#txtLanguage').val();
-				var lang_val  = '';
-				lang_val  = $('#txtLanguage_val').val();
-				//alert(client_company);
-				if (lang_val != ''){
+				var position = '';
+				position = $('#position').val();
+				var position_val = '';
+				position_val = $('#position_val').val();
+				if (position_val != ''){
 					//alert('11111111111111');
-					$.post("validate.php",{ID:'<?php echo $id ?>', lang_val:lang_val, action:"validate-lang"},function(data){
+					$.post("validate.php",{ID:'<?php echo $id ?>', position_val:position_val, action:"validate-position"},function(data){
 						//alert(data);
 						if (data == '1'){
 							//alert('122322');
-							$("#eLang").html('');
-							document.getElementById("eLang").style.display = "none";
-							$( "#txtLanguage_val" ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
-							if ((lang!='')&& (lang_val!='')){
+							$("#ePosition").html('');
+							document.getElementById("ePosition").style.display = "none";
+							$( "#position_val" ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+							if ((position!='')&& (position_val!='')){
 								
 								if (($( "#id" ).val() ==0)||($( "#id" ).val() =='')){
-									frm = 'addlang';
+									frm = 'addposition';
 								}else{
-									frm = 'updlang';
+									frm = 'updposition';
 								}
-								$.post("addupd_lang.php",{id:id, lang : lang, lang_val : lang_val,  l : "<?php echo $l ?>", frm : frm},function(datai){
+								$.post("addupd_job.php",{id:id, position : position, position_val : position_val, l : "<?php echo $l ?>", frm : frm},function(datai){
 									//alert(datai);
 									if (datai == '1'){
+										
 										alertF('Result','<font color="green">บันทึกข้อมูลเรียบร้อยแล้ว !!</font>');
 									}
 									else{
@@ -94,13 +95,13 @@ if (($id=='0')||empty($id)){
 								});
 							}
 						}else {
-							$( "#eLang" ).addClass( "help-block" );
-							$( "#txtLanguage_val" ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
-							$("#eLang").html('Duplicate language !!!');
-							document.getElementById("eLang").style.display = "block";
+							$( "#ePosition" ).addClass( "help-block" );
+							$( "#position_val" ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+							$("#ePosition").html('Duplicate position !!!');
+							document.getElementById("ePosition").style.display = "block";
 						}	
 					});
-				}//end if lang_val
+				}//end if position_val
 				
 			},
 			invalidHandler: function() {
@@ -116,14 +117,14 @@ if (($id=='0')||empty($id)){
 		document.body.appendChild(dialogBox); // actually append it
 	}
 	function redirect(){
-		location.replace('admin_language.php?l=<?php echo $l?>');
+		location.replace('jobs.php?l=<?php echo $l?>');
 	}
 </script>
 <form id="frmAddEdt" method="post" action="">
 <!-- Modal Header -->
 <div class="modal-header">
-	<h4 class="modal-title"><?php echo $id_string?></h4>
-	<button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h4 class="modal-title"><?php echo $id_string?></h4>
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
 </div>
 <!-- Modal body -->
 <div class="modal-body">
@@ -133,15 +134,15 @@ if (($id=='0')||empty($id)){
 			<td><input id="id" name="id" type="hidden" value="<?php echo $id?>">
 				<table border="0" style="width: 100%" class="tabForm_part">
 				<tr>
-					<td style="text-align:right;">Language Description : </td>
-					<td><div class="col-sm-5"><input class="form-control" type="text" id="txtLanguage" name="txtLanguage" style="width: 100%" value="<?php echo $lang?>" autocomplete="off"></div></td>
+					<td style="text-align:right;">Position Description : </td>
+					<td><div class="col-sm-5"><input class="form-control" type="text" id="position" name="position" style="width: 100%" value="<?php echo $position?>" autocomplete="off"></div></td>
 				</tr>
 				<tr>
-					<td style="text-align:right;">Language Value : </td>
-					<td><div class="col-sm-5"><input class="form-control" type="text" id="txtLanguage_val" name="txtLanguage_val" style="width: 100%" value="<?php echo $lang_val?>" autocomplete="off"><div id="eLang" class="has-error" style="display:none">Duplicate!!!</div></div></td>
+					<td style="text-align:right;">Position Value : </td>
+					<td><div class="col-sm-5"><input class="form-control" type="text" id="position_val" name="position_val" style="width: 100%" value="<?php echo $position_val?>" autocomplete="off"><div id="ePosition" class="has-error" style="display:none">Duplicate!!!</div></div></td>
 				</tr>
 				<tr>
-					<td style="width: 30%"></td>
+					<td style="width: 25%"></td>
 					<td></td>
 				</tr>
 				</table>
@@ -152,7 +153,7 @@ if (($id=='0')||empty($id)){
 </div>
 <!-- Modal footer -->
 <div class="modal-footer">
-	<button type="submit" class="btn btn-lg btn-success"  id="btn_submit" name="btn_submit"><i class="fa fa-save"></i> Save</button>
-	<button type="button" class="btn btn-lg btn-danger"  id="btn_cancel" name="btn_cancel" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+	<button type="submit" class="btn btn-lg btn-success"  id="btn_jobSubmit" name="btn_jobSubmit"><i class="fa fa-save"></i> Save</button>
+	<button type="button" class="btn btn-lg btn-danger"  id="btn_jobCancel" name="btn_jobCancel" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
 </div>
 </form>
