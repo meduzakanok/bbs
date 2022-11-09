@@ -84,7 +84,7 @@ if (($id=='0')||empty($id)){
 									frm = 'updmodule';
 								}
 								$.post("addupd_module.php",{id:id, SAP_module : SAP_module, SAP_moduleVal : SAP_moduleVal,  l : "<?php echo $l ?>", frm : frm},function(datai){
-									//alert(datai);
+									alert(datai);
 									if (datai == '1'){
 										alertF('Result','<font color="green">บันทึกข้อมูลเรียบร้อยแล้ว !!</font>');
 									}
