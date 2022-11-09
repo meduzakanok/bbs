@@ -8,7 +8,7 @@
 	$rec_usr = '';
 	$rec_name = '';
 	$rec_sname = '';
-	$sql_usrPass = "SELECT * FROM rec_user where status ='Active' and rec_usr='".$txtUser."' and rec_pass='".$txtPass."'";
+	$sql_usrPass = "SELECT * FROM rec_user where rec_status ='Active' and rec_usr='".$txtUser."' and rec_pass='".$txtPass."'";
 	$stmt_usrPass = $con->query($sql_usrPass);
 	$rows_usrPass = $stmt_usrPass->rowCount();
 	if ($rows_usrPass>0){
@@ -21,6 +21,7 @@
 	}
 	else
 		$chk_res ='';
+	//$chk_res = $sql_usrPass;
 	if ($chk_res <> ''){
 		
 		$sql_usrDel = "Delete FROM record_login WHERE login_user='".$rec_usr."' and login_date < now() - interval 1 week";
