@@ -32,7 +32,7 @@ function AddModule(){
 		$res = 1;
 	else
 		$res = 0;
-	//$res = $sql;
+	$res = $sql;
 	return $res;
 }
 
