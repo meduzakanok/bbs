@@ -136,7 +136,7 @@
                     url: "login.php",
                     data: $(this).serialize(), // get all form field value in serialize form
                     success: function(dat){
-						//alert('Data from the server' + dat);
+						alert('Data from the server' + dat);
 						//$("#show_message").fadeIn();
 						//$("#ajax-form").fadeOut();
 						var jsonData = JSON.parse(dat);
