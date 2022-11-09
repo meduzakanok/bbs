@@ -74,7 +74,7 @@ else{
 				<form id="frmRecruit" name="frmRecruit" method="POST" action="form_view.php" enctype="multipart/form-data"><input type="hidden" id="l" name="l" value="<?php echo $l?>">
 				<!--Start Part1-->
 				<div class="part_form">
-					<h4 class="mb-4">Part 1 :  Information</h4><input type="text" id="candidate_ID" name="candidate_ID" value="">
+					<h4 class="mb-4">Part 1 :  Information</h4><input type="hidden" id="candidate_ID" name="candidate_ID" value="">
 					<table border="0" style="width: 100%" class="tabForm"> 
 						<tr>
 							<td colspan="2" style="text-align:right;">
