@@ -964,15 +964,16 @@ else{
 			var candidate_ID 		= $('#candidate_ID').val();
 
 			event.preventDefault(); 
-			$.post("validate.php",{ID:candidate_ID, name_th:name_th, sname_th:sname_th, name_en:name_en, sname_en:sname_en ,action:"validate-candidate"},function(data){
-				//alert(data);
-				if (data == '1')
-					$("#frmRecruit").submit();
-				else {
-					dataURL = 'alert.php?id=3&l=<?php echo $l?>';
-					$('#modalContentAlert').load(dataURL,function(){$('#modalAlert').modal('show')});
-				}	
-			});
+			if (name_th&& sname_th&&name_en&&sname_en)
+				$.post("validate.php",ID:candidate_ID, name_th:name_th, sname_th:sname_th, name_en:name_en, sname_en:sname_en ,action:"validate-candidate"},function(data){
+					//alert(data);
+					if (data == '1')
+						$("#frmRecruit").submit();
+					else {
+						dataURL = 'alert.php?id=3&l=<?php echo $l?>';
+						$('#modalContentAlert').load(dataURL,function(){$('#modalAlert').modal('show')});
+					}	
+				});
 		});
 		
 		$("#btn_reset").click(function(){

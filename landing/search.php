@@ -138,11 +138,11 @@ else{
 									$sql_position .= "'".$pos."',";
 									$arrpos[$pos] = 'selected';
 								}
-								$sql_position = substr($sql,0, -1).")";
+								$sql_position = substr($sql_position,0, -1).")";
 								if ($candidate_rec != '')
 									$sql_position .= " and (candidate_ID in ".$candidate_rec.")";
 								$sql_position .= " group by candidate_ID";
-								//echo 'sql candidate_position - '.$sql."<br/>";
+								//echo 'sql_position - '.$sql_position."<br/>";
 								$stmt_position = $con->query($sql_position);
 								//$rows = mysqli_num_rows($query);
 								$candidate_pos = '(';
@@ -490,6 +490,8 @@ else{
 			placeholder: '--Select Position--',
 			search: true
 		});
+		
+		$(".ddSearch").select2();
 		
 		$(function(){
 			$.post("load-dropdown.php",{position_id:'<?php echo $ddInterestedPosition?>',action:"load-position",act:'1'},function(data){

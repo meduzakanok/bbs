@@ -37,7 +37,22 @@ else{
 function validate_condidate($candidate_ID, $name_th,$sname_th,$name_en,$sname_en){
 	global $con;
 	//$sql = "SELECT * FROM candidate where flag_delete ='N' and idcard ='".$txtIDcard."'";
-	$sql_vCandidate = "SELECT * FROM candidate where flag_delete ='N' and candidate_ID != '".$candidate_ID."' and ((name_th ='".$name_th."' and sname_th ='".$sname_th."') OR (name_en ='".$name_en."' and sname_en ='".$sname_en."') )";
+	$sql_vCandidate = "SELECT * FROM candidate where flag_delete ='N' and candidate_ID != '".$candidate_ID."' ";
+	if (($name_th!='') && ($sname_th!='') && ($name_en!='') && ($sname_en!=''))
+		$sql_vCandidate .= "AND ((name_th ='".$name_th."' and sname_th ='".$sname_th."')  OR (name_en ='".$name_en."' and sname_en ='".$sname_en."'))";
+	elseif (($name_th=='') && ($sname_th=='') && ($name_en!='') && ($sname_en!=''))
+		$sql_vCandidate .= "AND (name_en ='".$name_en."' and sname_en ='".$sname_en."') ";
+	elseif (($name_th!='') && ($sname_th=='') && ($name_en!='') && ($sname_en!=''))
+		$sql_vCandidate .= "AND (name_en ='".$name_en."' and sname_en ='".$sname_en."') ";
+	elseif (($name_th=='') && ($sname_th!='') && ($name_en!='') && ($sname_en!=''))
+		$sql_vCandidate .= "AND (name_en ='".$name_en."' and sname_en ='".$sname_en."') ";		
+	elseif (($name_th!='') && ($sname_th!='') && ($name_en=='') && ($sname_en==''))
+		$sql_vCandidate .= "AND (name_th ='".$name_th."' and sname_th ='".$sname_th."') ";
+	elseif (($name_th!='') && ($sname_th!='') && ($name_en!='') && ($sname_en==''))
+		$sql_vCandidate .= "AND (name_th ='".$name_th."' and sname_th ='".$sname_th."') ";
+	elseif (($name_th!='') && ($sname_th!='') && ($name_en=='') && ($sname_en!=''))
+		$sql_vCandidate .= "AND (name_th ='".$name_th."' and sname_th ='".$sname_th."') ";
+	
 	$stmt_vCandidate = $con->query($sql_vCandidate);
 	$rows_vCandidate = $stmt_vCandidate->rowCount();
 	if ($rows_vCandidate == 0) 

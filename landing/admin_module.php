@@ -121,7 +121,7 @@ else{
 	<script>
 	function myFunction() {
 		  // Declare variables
-		  var input, filter, table, tr, td0, td1, td2, i, txtValue0, txtValue1, txtValue2;
+		  var input, filter, table, tr, td0, td1, i, txtValue0, txtValue1;
 		  input = document.getElementById("txtKeySearch");
 		  filter = input.value.toUpperCase();
 		  table = document.getElementById("tabRecord");
@@ -131,7 +131,8 @@ else{
 		  for (i = 0; i < tr.length; i++) {
 				td0 = tr[i].getElementsByTagName("td")[0];
 				td1 = tr[i].getElementsByTagName("td")[1];
-				if (td0) {
+				if (td0 || td1) {
+						txtValue0 = td0.textContent || td0.innerText;
 						txtValue1 = td1.textContent || td1.innerText;
 						if ((txtValue0.toUpperCase().indexOf(filter) > -1) 
 							||(txtValue1.toUpperCase().indexOf(filter) > -1) )

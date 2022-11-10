@@ -84,7 +84,7 @@ if (($id=='0')||empty($id)){
 									frm = 'updmodule';
 								}
 								$.post("addupd_module.php",{id:id, SAP_module : SAP_module, SAP_moduleVal : SAP_moduleVal,  l : "<?php echo $l ?>", frm : frm},function(datai){
-									alert(datai);
+									//alert(datai);
 									if (datai == '1'){
 										alertF('Result','<font color="green">บันทึกข้อมูลเรียบร้อยแล้ว !!</font>');
 									}
@@ -138,7 +138,7 @@ if (($id=='0')||empty($id)){
 				</tr>
 				<tr>
 					<td style="text-align:right;">Module Value : </td>
-					<td><div class="col-sm-5"><input class="form-control" type="text" id="txtModule_val" name="txtModule_val" style="width: 100%" value="<?php echo $SAP_moduleVal?>" autocomplete="off"><div id="eModule" class="has-error" style="display:none">Duplicate!!!</div></div></td>
+					<td><div class="col-sm-5"><input class="form-control" type="text" id="txtModule_val" name="txtModule_val" style="width: 100%" value="<?php echo $SAP_moduleVal?>" autocomplete="off" maxlength="10"><div id="eModule" class="has-error" style="display:none">Duplicate!!!</div></div></td>
 				</tr>
 				<tr>
 					<td style="width: 30%"></td>
