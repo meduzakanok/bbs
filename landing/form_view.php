@@ -1168,6 +1168,8 @@ else{
 									$txtClientCompany			= $_POST['txtClientCompany'.$inv_record];
 									//$txtClientID					= $_POST['txtClientID'.$inv_record];
 									isset( $_POST['txtClientID'.$inv_record] ) 							? $txtClientID =$_POST['txtClientID'.$inv_record]									: $txtClientID = 0;
+									if ($txtClientID =='')
+										$txtClientID = 0;
 									$txtClientDepartment		= $_POST['txtClientDepartment'.$inv_record];
 									$txtClientContact				= $_POST['txtClientContact'.$inv_record];
 									

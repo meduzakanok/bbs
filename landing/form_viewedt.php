@@ -1207,6 +1207,8 @@ else{
 									$txtClientCompany			= $_POST['txtClientCompany'.$inv_record];
 									//$txtClientID					= $_POST['txtClientID'.$inv_record];
 									isset( $_POST['txtClientID'.$inv_record] ) 							? $txtClientID =$_POST['txtClientID'.$inv_record]									: $txtClientID = 0;
+									if ($txtClientID =='')
+										$txtClientID = 0;
 									$txtClientDepartment		= $_POST['txtClientDepartment'.$inv_record];
 									$txtClientContact				= $_POST['txtClientContact'.$inv_record];
 									
@@ -1225,7 +1227,7 @@ else{
 									$sql_invrecord .= " create_date,update_date, update_by)";
 									$sql_invrecord .= " VALUES ('".$candidate_ID."', '".trim($txtInterviewDate_ins)."', '".$txtClientID."', '".$ddPass."', '".$ddSignContract."', '".$txtContractPeriod."', '".$txtStartDate."', '".$txtNote32."', '".$txtIntvRec_matchingNo."',";
 									$sql_invrecord .= " '".$current_date."', '".$current_date."','".$current_login."')";
-									echo "sql_invrecord - ".$sql_invrecord."<br>";
+									//echo "sql_invrecord - ".$sql_invrecord."<br>";
 									$stmt_invrecord = $con->query($sql_invrecord);
 									//-----------------------------------------------------------------------------end insert invrecord
 					?>
