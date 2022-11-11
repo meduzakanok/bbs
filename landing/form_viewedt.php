@@ -178,19 +178,18 @@ else{
 						
 						isset( $_POST['txtZipcode'] ) 							? $txtZipcode = $_POST['txtZipcode'] 										: $txtZipcode = "";
 						
-						$radBlood 					= $_POST['radBlood'];
-						$radGender 					= $_POST['radGender'];
-						$radContract 				= $_POST['radContract'];
+						isset( $_POST['radBlood'] ) 						? $radBlood = $_POST['radBlood'] 									: $radBlood = "";
+						isset( $_POST['radGender'] ) 						? $radGender = $_POST['radGender'] 									: $radGender = "";
+						isset( $_POST['radContract'] ) 						? $radContract = $_POST['radContract'] 									: $radContract = "";
 						
-						$radExpStatus 				= $_POST['radExpStatus'];
+						isset( $_POST['radExpStatus'] ) 						? $radExpStatus = $_POST['radExpStatus'] 									: $radExpStatus = "";
 						isset( $_POST['txtExpStatus'] ) 						? $txtExpStatus = $_POST['txtExpStatus'] 								: $txtExpStatus = "";
 						
-						$radMarital 					= $_POST['radMarital'];
-						
-						$radNationality 				= $_POST['radNationality'];
+						isset( $_POST['radMarital'] ) 						? $radMarital = $_POST['radMarital'] 									: $radMarital = "";
+						isset( $_POST['radNationality'] ) 						? $radNationality = $_POST['radNationality'] 									: $radNationality = "";
 						isset( $_POST['txtNationality'] ) 						? $txtNationality = $_POST['txtNationality'] 								: $txtNationality = "";
 						
-						$radEthnicity 					= $_POST['radEthnicity'];
+						isset( $_POST['radEthnicity'] ) 							? $radEthnicity = $_POST['radEthnicity'] 									: $radEthnicity = "";
 						isset( $_POST['txtEthnicity'] ) 							? $txtEthnicity = $_POST['txtEthnicity'] 									: $txtEthnicity = "";
 						
 						$txtBDDate 					= $_POST['txtBDDate'];
