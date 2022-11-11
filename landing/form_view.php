@@ -172,20 +172,19 @@ else{
 						$ddProvince_info 		= $_POST['ddProvince_info'];
 						
 						isset( $_POST['txtZipcode'] ) 							? $txtZipcode = $_POST['txtZipcode'] 										: $txtZipcode = "";
+						isset( $_POST['radBlood'] ) 						? $radBlood = $_POST['radBlood'] 									: $radBlood = "";
+						isset( $_POST['radGender'] ) 						? $radGender = $_POST['radGender'] 									: $radGender = "";
+						isset( $_POST['radContract'] ) 						? $radContract = $_POST['radContract'] 									: $radContract = "";
 						
-						$radBlood 				= $_POST['radBlood'];
-						$radGender 				= $_POST['radGender'];
-						$radContract 			= $_POST['radContract'];
-						
-						$radExpStatus 			= $_POST['radExpStatus'];
+						isset( $_POST['radExpStatus'] ) 						? $radExpStatus = $_POST['radExpStatus'] 									: $radExpStatus = "";
 						isset( $_POST['txtExpStatus'] ) 						? $txtExpStatus = $_POST['txtExpStatus'] 								: $txtExpStatus = "";
 						
-						$radMarital 				= $_POST['radMarital'];
+						isset( $_POST['radMarital'] ) 						? $radMarital = $_POST['radMarital'] 									: $radMarital = "";
 						
-						$radNationality 			= $_POST['radNationality'];
+						isset( $_POST['radNationality'] ) 						? $radNationality = $_POST['radNationality'] 									: $radNationality = "";
 						isset( $_POST['txtNationality'] ) 						? $txtNationality = $_POST['txtNationality'] 								: $txtNationality = "";
 						
-						$radEthnicity 				= $_POST['radEthnicity'];
+						isset( $_POST['radEthnicity'] ) 							? $radEthnicity = $_POST['radEthnicity'] 									: $radEthnicity = "";
 						isset( $_POST['txtEthnicity'] ) 							? $txtEthnicity = $_POST['txtEthnicity'] 									: $txtEthnicity = "";
 						
 						$txtBDDate 				= $_POST['txtBDDate'];
@@ -207,13 +206,13 @@ else{
 						isset( $_POST['ddModule'] ) ? $ddModule = $_POST['ddModule'] : $ddModule = "";
 						isset( $_POST['ddLanguage'] ) ? $ddLanguage = $_POST['ddLanguage'] : $ddLanguage = "";
 						
-						$radSACode 				= $_POST['radSACode']; 
+						isset( $_POST['radSACode'] ) 						? $radSACode = $_POST['radSACode'] 									: $radSACode = "";
 						isset( $_POST['txtSALange'] ) 						? $txtSALange = $_POST['txtSALange'] 									: $txtSALange = "";
 						
-						$radBACode 				= $_POST['radBACode'];
+						isset( $_POST['radBACode'] ) 						? $radBACode = $_POST['radBACode'] 									: $radBACode = "";
 						isset( $_POST['txtBALange'] ) 						? $txtBALange = $_POST['txtBALange'] 									: $txtBALange = "";
 						
-						$radProjectManager		= $_POST['radProjectManager'];
+						isset( $_POST['radProjectManager'] ) 						? $radProjectManager = $_POST['radProjectManager'] 									: $radProjectManager = "";
 						isset( $_POST['txtProjectManagerLang'] ) 			? $txtProjectManagerLang = $_POST['txtProjectManagerLang'] 		: $txtProjectManagerLang = "";
 						
 						isset( $_POST['chkTester'] ) ? $chkTester = $_POST['chkTester'] : $chkTester = "";
