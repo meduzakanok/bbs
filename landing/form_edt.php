@@ -1740,7 +1740,7 @@ else{
 
 			event.preventDefault(); 
 			$.post("validate.php",{ID:candidate_ID, name_th:name_th, sname_th:sname_th, name_en:name_en, sname_en:sname_en ,action:"validate-candidate"},function(data){
-				alert(data);
+				//alert(data);
 				if (data == '1')
 					$("#frmRecruit").submit();
 				else {
