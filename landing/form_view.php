@@ -414,6 +414,7 @@ else{
 									$sql_contactMail .= " create_date,update_date, update_by)";
 									$sql_contactMail .= " VALUES ('".$candidate_ID."', '".$mail."', 'Email', ";
 									$sql_contactMail .= " '".$current_date."', '".$current_date."','".$current_login."')";
+									echo "sql_contactMail - ".$sql_contactMail."<br/>";
 									$stmt_contactMail= $con->query($sql_contactMail);
 								}
 							}
@@ -427,6 +428,7 @@ else{
 									$sql_contactTel .= " create_date,update_date, update_by)";
 									$sql_contactTel .= " VALUES ('".$candidate_ID."', '".$tel."', 'Telephone', ";
 									$sql_contactTel .= " '".$current_date."', '".$current_date."','".$current_login."')";
+									echo "sql_contactTel - ".$sql_contactTel."<br/>";
 									$stmt_contactTel = $con->query($sql_contactTel);
 								}
 							}
@@ -438,6 +440,7 @@ else{
 							$sql_contactLine .= " create_date,update_date, update_by)";
 							$sql_contactLine .= " VALUES ('".$candidate_ID."', '".$txtLineID."', 'LineID', ";
 							$sql_contactLine .= " '".$current_date."', '".$current_date."','".$current_login."')";
+							echo "sql_contactLine - ".$sql_contactLine."<br/>";
 							$stmt_contactLine = $con->query($sql_contactLine);
 						}
 						//-----------------------------------------------------------------------------end insert LineID
@@ -452,7 +455,7 @@ else{
 						$sql_candidate .= " '".$current_date."', '".$current_date."','".$current_login."')";
 						$stmt_candidate = $con->query($sql_candidate);
 						$r_candidate = $stmt_candidate->rowCount();
-						//echo "sql_candidate - ".$sql_candidate."<br/>";
+						echo "sql_candidate - ".$sql_candidate."<br/>";
 						//echo "r_candidate - ".$r_candidate."<br/>";
 						//-----------------------------------------------------------------------------end insert candidate
 						$sql_updDel = "Delete FROM record_update WHERE candidate_ID='".$candidate_ID."' and update_date < now() - interval 1 week";
