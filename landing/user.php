@@ -1,6 +1,7 @@
 <?php
 include 'db_utf8.php';
 include 'function.php';	
+
 $l = '';
 $str_l = '';
 $current_login = '';
@@ -14,6 +15,9 @@ else{
 	$current_login = getLogin($str_l , 3);
 	$str_l = getLogin($str_l , 1);
 }
+$login_role = getVal("rec_user",$current_login,"rec_role","rec_usr");
+if ($login_role != 'Super')
+	header('Location: user_self.php?l='.$l);
 ?>
 <!doctype html>
 <html lang="en">
@@ -62,7 +66,15 @@ else{
 					<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
-								<li class="nav-item active"><a class="nav-link" href="search.html"><font color="#0891f8">User List</font></a></li>
+								<?php if ($login_role == 'Super'){?>
+										<li class="nav-item active"><a class="nav-link" href="user.php?l=<?php echo $l?>"><font color="#0891f8">User List</font></a></li>
+										<li class="nav-item"><a class="nav-link" href="user_self.php?l=<?php echo $l?>">User Profile</a></li>
+									<?php if ($current_login == 'admin'){?>
+										<li class="nav-item"><a class="nav-link" href="adm.php?l=<?php echo $l?>">Admin</a></li>
+									<?php }?>
+								<?php }else{?>
+									<li class="nav-item active"><a class="nav-link" href="user_self.php?l=<?php echo $l?>"><font color="#0891f8">User Profile</font></a></li>
+								<?php }?>
 							</ul>
 					</div>
 				</div>

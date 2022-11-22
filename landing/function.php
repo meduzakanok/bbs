@@ -1,4 +1,21 @@
 <?php
+function getVal($act,$id,$rfield,$ifield){
+	global $con;
+	$sql_res = "SELECT ".$ifield.",".$rfield." FROM ".$act." where ".$ifield."='".$id."'";
+	$stmt_res = $con->query($sql_res);
+	$rows_res = $stmt_res->rowCount();
+	$res = '';
+	if ($rows_res ==1) {
+		while ($result_res = $stmt_res->fetch()) {
+			if ($id == $result_res[$ifield])
+				$res = $result_res[$rfield];
+			else 
+				$res = "";
+		  }
+	} 
+	//$res = $sql_res ;
+	return $res;
+}
 function getLogin($enc, $ind) {
 	include 'db_utf8.php';
      $r_enc = '';
@@ -46,6 +63,18 @@ function getLogin($enc, $ind) {
 	elseif ($ind ==3)
 	{															//-----------------return dec l
 		$r_enc = trim(decrypt($str_l));
+	}
+	elseif ($ind ==4)
+	{															//-----------------return rec_role
+		$sql_usrSessN = "SELECT * FROM rec_user WHERE rec_usr ='".$str_l."'";
+		$stmt_usrSessN= $con->query($sql_usrSessN);
+		$rows_usrSessN = $stmt_usrSessN->rowCount();
+		
+		if ($rows_usrSessN>0){
+			while ($result_usrSessN = $stmt_usrSessN->fetch()) {
+				$r_enc = $result_usrSessN['rec_role'];
+			}
+		}
 	}
 	else{														//-----------------return enc l
 		$r_enc = $l;
