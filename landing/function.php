@@ -16,9 +16,22 @@ function getVal($act,$id,$rfield,$ifield){
 	//$res = $sql_res ;
 	return $res;
 }
+function insLog($current_login, $sql) {
+	include 'db_utf8.php';
+	$sql_del = "Delete FROM record_logging WHERE create_date < now() - interval 1 week";
+	$stmt_del = $con->query($sql_del);
+	
+	$current_date = current_date();
+	$sql = str_replace("'", "\'", $sql);
+	$sql_ins  = "INSERT INTO record_logging (log_cmd, ";
+	$sql_ins .= " create_date,create_by)";
+	$sql_ins .= " VALUES ('".$sql."', ";
+	$sql_ins .= " '".$current_date."','".$current_login."')";
+	$stmt_ins = $con->query($sql_ins);
+}
 function getLogin($enc, $ind) {
 	include 'db_utf8.php';
-     $r_enc = '';
+    $r_enc = '';
 	$l = '';
 	$str_l = $enc;
 	$str_l = trim(urlencode($str_l));

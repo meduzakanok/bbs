@@ -25,7 +25,8 @@ function AddPosition(){
 	$sql  = "INSERT INTO position (position, position_val, ";
 											$sql .= " create_date,update_date, update_by)";
 											$sql .= " VALUES ('".$position."', '".$position_val."',";
-											$sql .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											$sql .= " '".$current_date."', '".$current_date."','".$current_login
+	insLog($current_login, $sql);										
 	$stmt = $con->query($sql);									
 	$rows_res = $stmt->rowCount();
 	if ($rows_res >0)
@@ -43,6 +44,7 @@ function UpdatePosition(){
 				position='".$position."', position_val='".$position_val."',
 				update_date = '".$current_date."'  , update_by = '".$current_login."' 
 				WHERE position_ID='".$id."'";
+	insLog($current_login, $sql);
 	$stmt_job = $con->query($sql);
 	$rows_res = $stmt_job->rowCount();
 	if ($rows_res >0)

@@ -34,6 +34,7 @@ function AddUser(){
 											$sql .= " create_date,update_date, update_by)";
 											$sql .= " VALUES ('".$txtEmail."', '".$txtPassword."', '".$ddTitle."',  '".$txtName."',  '".$txtSurname."',  '".$txtNickname."',  '".$txtTelephone."',  '".$txtLineID."',  '".$radRole."',  '".$radStatus."', ";
 											$sql .= " '".$current_date."', '".$current_date."','".$current_login."')";
+	insLog($current_login, $sql);
 	$stmt = $con->query($sql);									
 	$rows_res = $stmt->rowCount();
 	if ($rows_res >0)
@@ -53,6 +54,7 @@ function UpdateUser(){
 				rec_tel='".$txtTelephone."', rec_lineID='".$txtLineID."', rec_role='".$radRole."', rec_status='".$radStatus."',
 				update_date = '".$current_date."'  , update_by = '".$current_login."' 
 				WHERE rec_ID='".$id."'";
+	insLog($current_login, $sql);
 	$stmt_usr = $con->query($sql);
 	$rows_res = $stmt_usr->rowCount();
 	if ($rows_res >0)

@@ -3,6 +3,7 @@ include 'db_utf8.php';
 include 'function.php';	
 $l = '';
 $str_l = '';
+$current_login = '';
 isset( $_POST['l'] ) ? $str_l = $_POST['l'] : $str_l = $_GET['l'];
 
 if ($str_l == '')
@@ -14,7 +15,9 @@ else{
 	$str_l = getLogin($str_l , 1);
 }
 $login_role = getVal("rec_user",$current_login,"rec_role","rec_usr");
-$id = getVal("rec_user",$current_login,"rec_ID","rec_usr");
+//$id = getVal("rec_user",$current_login,"rec_ID","rec_usr");
+if ($login_role != 'Super')
+	header('Location: user_self.php?l='.$l);
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,8 +52,8 @@ $id = getVal("rec_user",$current_login,"rec_ID","rec_usr");
 					<li><a href="index.php?l=<?php echo $l?>"><span class="fa fa-home"></span> Home</a></li>
 					<li><a href="form.php?l=<?php echo $l?>"><span class="fa fa-sticky-note"></span> FORM</a></li>
 					<li><a href="search.php?l=<?php echo $l?>"><span class="fa fa-search"></span> SEARCH</a></li>
-					<li><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
-					<li class="active"><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>
+					<li class="active"><a href="admin.php?l=<?php echo $l?>"><span class="fa fa-cog"></span> ADMIN</a></li>
+					<li><a href="user.php?l=<?php echo $l?>"><span class="fa fa-user"></span> USER</a></li>
 					<li><a href="report.php?l=<?php echo $l?>"><span class="fa fa-folder-open"></span> REPORT</a></li>
 					<li><a href="../"><span class="fa fa-sign-out"></span> LOGOUT</a></li>
 				</ul>
@@ -65,15 +68,15 @@ $id = getVal("rec_user",$current_login,"rec_ID","rec_usr");
 					<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
-								<?php if ($login_role == 'Super'){?>
-									<li class="nav-item"><a class="nav-link" href="user.php?l=<?php echo $l?>">User List</a></li>
-									<li class="nav-item active"><a class="nav-link" href="user_self.php?l=<?php echo $l?>">User Profile</a></li>
-									<?php if ($current_login == 'admin'){?>
-										<li class="nav-item"><a class="nav-link" href="adm.php?l=<?php echo $l?>"><font color="#0891f8">Admin</font></a></li>
-									<?php }?>
-								<?php }else{?>
-									<li class="nav-item active"><a class="nav-link" href="user_self.php?l=<?php echo $l?>"><font color="#0891f8">User Profile</font></a></li>
+								<ul class="nav navbar-nav ml-auto">
+								<li class="nav-item"><a class="nav-link" href="admin.php?l=<?php echo $l?>">[ Company ]</font></a></li>
+								<li class="nav-item"><a class="nav-link" href="jobs.php?l=<?php echo $l?>">[ Position ]</a></li>
+								<li class="nav-item"><a class="nav-link" href="admin_language.php?l=<?php echo $l?>">[ Programming Language ]</a></li>
+								<li class="nav-item"><a class="nav-link" href="admin_module.php?l=<?php echo $l?>">[ SAP Modules ]</a></li>
+								<?php if ($current_login == 'admin'){?>
+									<li class="nav-item active"><a class="nav-link" href="adm.php?l=<?php echo $l?>"><font color="#0891f8">[ Admin ]</font></a></li>
 								<?php }?>
+							</ul>
 							</ul>
 					</div>
 				</div>
@@ -130,6 +133,9 @@ $id = getVal("rec_user",$current_login,"rec_ID","rec_usr");
 							</label><br/>
 							<label class="lblcontainer" onclick="changeMethod('DELETE')">
 								<input type="radio" class="lblcontainer" id="rad_DELETE" name="radTab" value="DELETE" <?php echo ($radTab == "DELETE" ? "checked" : "") ?>>&nbsp;DELETE FROM {table} where
+							</label><br/>
+							<label class="lblcontainer" onclick="changeMethod('TRUNCATE')">
+								<input type="radio" class="lblcontainer" id="rad_TRUNCATE" name="radTab" value="TRUNCATE" <?php echo ($radTab == "TRUNCATE" ? "checked" : "") ?>>&nbsp;TRUNCATE {table} 
 							</label><br/>
 							</td>
 						</tr>
@@ -208,6 +214,8 @@ $id = getVal("rec_user",$current_login,"rec_ID","rec_usr");
 	function setQuery(v){
 		if ($('#rad_DESCRIBE').is(':checked'))
 			$( "#txtQuery" ).val($( "#rad_DESCRIBE" ).val()+' '+v);
+		else if ($('#rad_TRUNCATE').is(':checked'))
+			$( "#txtQuery" ).val($( "#rad_TRUNCATE" ).val()+' '+v);
 		else if ($('#rad_SELECT').is(':checked'))
 			$( "#txtQuery" ).val($( "#rad_SELECT" ).val()+' * FROM '+v);
 		else if ($('#rad_DELETE').is(':checked'))

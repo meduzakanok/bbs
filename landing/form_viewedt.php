@@ -265,9 +265,11 @@ else{
 						//-----------------------------------------------------------------------------start insert part2
 						if (isset($chkPosition) && ($chkPosition != '')){
 							$sql_delete_position = "DELETE FROM candidate_position where candidate_ID='".$candidate_ID."'";
+							insLog($current_login, $sql_delete_position);
 							$stmt_delete_position = $con->query($sql_delete_position);
 							
 							$sql_delete_positionskill = "DELETE FROM candidate_positionskill where candidate_ID='".$candidate_ID."'";
+							insLog($current_login, $sql_delete_positionskill);
 							$stmt_delete_positionskill = $con->query($sql_delete_positionskill);
 							
 							foreach( $chkPosition as $key => $pos ) {
@@ -281,6 +283,7 @@ else{
 										$sql_position .= " '".$txtPositionOther."', ";
 									$sql_position .= " '".$current_date."', '".$current_date."','".$current_login."')";
 									//echo 'sql_position = '.$sql_position.'<br>';
+									insLog($current_login, $sql_position);
 									$stmt_position = $con->query($sql_position);
 									
 									if($pos == 'SAP') {								//-----------------------------------------------------------------------------start insert SAP
@@ -292,6 +295,7 @@ else{
 													$sql_sap_skill .= " create_date,update_date, update_by)";
 													$sql_sap_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$sap_skill."', 'text', ";
 													$sql_sap_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
+													insLog($current_login, $sql_sap_skill);
 													$stmt_sap_skill = $con->query($sql_sap_skill);
 													$pos_ind[0][1] .= '- '.$sap_skill.'<br/>';
 												} //end if sap_skill
@@ -307,6 +311,7 @@ else{
 													$sql_prog_skill .= " create_date,update_date, update_by)";
 													$sql_prog_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$prog_skill."', 'text', ";
 													$sql_prog_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
+													insLog($current_login, $sql_prog_skill);
 													$stmt_prog_skill = $con->query($sql_prog_skill);
 													$pos_ind[1][1] .= '- '.$prog_skill.'<br/>';
 												} //end if sql_prog_skill
@@ -320,6 +325,7 @@ else{
 											$sql_sa_skill .= " create_date,update_date, update_by)";
 											$sql_sa_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$radSACode."', 'choice', ";
 											$sql_sa_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											insLog($current_login, $sql_sa_skill);
 											$stmt_sa_skill = $con->query($sql_sa_skill);
 											if($radSACode == 'Y')
 												$radSACode_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
@@ -331,6 +337,7 @@ else{
 											$sql_sa_skill_txt .= " create_date,update_date, update_by)";
 											$sql_sa_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtSALange."', 'text', ";
 											$sql_sa_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											insLog($current_login, $sql_sa_skill_txt);
 											$stmt_sa_skill_txt = $con->query($sql_sa_skill_txt);
 										} //end if txtSALange
 									}
@@ -341,6 +348,7 @@ else{
 											$sql_ba_skill .= " create_date,update_date, update_by)";
 											$sql_ba_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$radBACode."', 'choice', ";
 											$sql_ba_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											insLog($current_login, $sql_ba_skill);
 											$stmt_ba_skill = $con->query($sql_ba_skill);
 											if($radBACode == 'Y')
 												$radBACode_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
@@ -352,6 +360,7 @@ else{
 											$sql_ba_skill_txt .= " create_date,update_date, update_by)";
 											$sql_ba_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtBALange."', 'text', ";
 											$sql_ba_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											insLog($current_login, $sql_ba_skill_txt);
 											$stmt_ba_skill_txt = $con->query($sql_ba_skill_txt);
 										} //end if txtBALange
 									}
@@ -362,6 +371,7 @@ else{
 											$sql_proj_skill .= " create_date,update_date, update_by)";
 											$sql_proj_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$radProjectManager."', 'choice', ";
 											$sql_proj_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											insLog($current_login, $sql_proj_skill);
 											$stmt_proj_skill = $con->query($sql_proj_skill);
 											if($radProjectManager == 'Y')
 												$radProjectManager_ind = '<img src="images/radioBtnC.png"> Yes&nbsp;&nbsp;<img src="images/radioBtnW.png"> No';
@@ -373,6 +383,7 @@ else{
 											$sql_proj_skill_txt .= " create_date,update_date, update_by)";
 											$sql_proj_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtProjectManagerLang."', 'text', ";
 											$sql_proj_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											insLog($current_login, $sql_proj_skill_txt);
 											$stmt_proj_skill_txt = $con->query($sql_proj_skill_txt);
 										} //end if txtProjectManagerLang
 									}
@@ -385,6 +396,7 @@ else{
 													$sql_tester_skill .= " create_date,update_date, update_by)";
 													$sql_tester_skill .= " VALUES ('".$candidate_ID."', '".$pos."', '".$tester_skill."', 'choice', ";
 													$sql_tester_skill .= " '".$current_date."', '".$current_date."','".$current_login."')";
+													insLog($current_login, $sql_tester_skill);
 													$stmt_tester_skill = $con->query($sql_tester_skill);
 													if ($tester_skill == 'Automate')
 														$pos_ind[5][1] =  '<img src="images/radioBtnC.png"> Automate';
@@ -401,6 +413,7 @@ else{
 											$sql_proa_skill_txt .= " create_date,update_date, update_by)";
 											$sql_proa_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtProjectAdminSkill."', 'text', ";
 											$sql_proa_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											insLog($current_login, $sql_proa_skill_txt);
 											$stmt_proa_skill_txt = $con->query($sql_proa_skill_txt);
 										} //end if txtProjectManagerLang
 									}
@@ -411,6 +424,7 @@ else{
 											$sql_other_skill_txt .= " create_date,update_date, update_by)";
 											$sql_other_skill_txt .= " VALUES ('".$candidate_ID."', '".$pos."', '".$txtPositionOtherSkill."', 'text', ";
 											$sql_other_skill_txt .= " '".$current_date."', '".$current_date."','".$current_login."')";
+											insLog($current_login, $sql_other_skill_txt);
 											$stmt_other_skill_txt = $con->query($sql_other_skill_txt);
 										} //end if txtPositionOtherSkill
 									} 											//-----------------------------------------------------------------------------end insert on each position
@@ -422,6 +436,7 @@ else{
 						//-----------------------------------------------------------------------------start insert Email
 						if (isset($txtEmail)){
 							$sql_delete_contactMail = "DELETE FROM candidate_contact where candidate_ID='".$candidate_ID."' and contact_type='Email' ";
+							insLog($current_login, $sql_delete_contactMail);
 							$stmt_delete_contactMail = $con->query($sql_delete_contactMail);
 							
 							foreach( $txtEmail as $key => $mail ) {
@@ -430,6 +445,7 @@ else{
 									$sql_contactMail .= " create_date,update_date, update_by)";
 									$sql_contactMail .= " VALUES ('".$candidate_ID."', '".$mail."', 'Email', ";
 									$sql_contactMail .= " '".$current_date."', '".$current_date."','".$current_login."')";
+									insLog($current_login, $sql_contactMail);
 									$stmt_contactMail = $con->query($sql_contactMail);
 								}
 							}//end for mail
@@ -438,6 +454,7 @@ else{
 						//-----------------------------------------------------------------------------start insert Telephone
 						if (isset($txtTelephone)){
 							$sql_delete_contactTel = "DELETE FROM candidate_contact where candidate_ID='".$candidate_ID."' and contact_type='Telephone' ";
+							insLog($current_login, $sql_delete_contactTel);
 							$stmt_delete_contactTel = $con->query($sql_delete_contactTel);
 							
 							foreach( $txtTelephone as $key => $tel ) {
@@ -446,6 +463,7 @@ else{
 									$sql_contactTel .= " create_date,update_date, update_by)";
 									$sql_contactTel .= " VALUES ('".$candidate_ID."', '".$tel."', 'Telephone', ";
 									$sql_contactTel .= " '".$current_date."', '".$current_date."','".$current_login."')";
+									insLog($current_login, $sql_contactTel);
 									$stmt_contactTel = $con->query($sql_contactTel);
 								}
 							}
@@ -454,19 +472,23 @@ else{
 						//-----------------------------------------------------------------------------start insert LineID
 						if(isset($_POST['txtLineID']) && $_POST['txtLineID'] != '') {
 							$sql_delete_contactLineID = "DELETE FROM candidate_contact where candidate_ID='".$candidate_ID."' and contact_type='LineID' ";
+							insLog($current_login, $sql_delete_contactLineID);
 							$stmt_delete_contactLineID = $con->query($sql_delete_contactLineID);
 							
 							$sql_contactLine  = "INSERT INTO candidate_contact (candidate_ID, contact_info, contact_type, ";
 							$sql_contactLine .= " create_date,update_date, update_by)";
 							$sql_contactLine .= " VALUES ('".$candidate_ID."', '".$txtLineID."', 'LineID', ";
 							$sql_contactLine .= " '".$current_date."', '".$current_date."','".$current_login."')";
+							insLog($current_login, $sql_contactLine);
 							$stmt_contactLine = $con->query($sql_contactLine);
 						}
 						//-----------------------------------------------------------------------------end insert LineID
 						$sql_updDel = "Delete FROM record_update WHERE candidate_ID='".$candidate_ID."' and update_date < now() - interval 1 week";
+						insLog($current_login, $sql_updDel);
 						$stmt_updDel = $con->query($sql_updDel);
 						$sql_updIns  = "INSERT INTO record_update(candidate_ID ,update_by, update_date) ";
 						$sql_updIns .= "VALUES('".$candidate_ID."', '".$current_login."', '".$current_date . "') ";
+						insLog($current_login, $sql_updIns);
 						$stmt_updIns = $con->query($sql_updIns);
 						//-----------------------------------------------------------------------------start insert candidate
 						$sql_candidate_upd = "UPDATE candidate SET
@@ -478,6 +500,7 @@ else{
 													marital = '".$radMarital."' ,nationality = '".$radNationality."' ,nationality_info = '".$txtNationality."' ,ethnicity = '".$radEthnicity."' ,ethnicity_info = '".$txtEthnicity."' ,birthdate = '".$txtBDDate."' ,
 													update_date = '".$current_date."'  , update_by = '".$current_login."' 
 													WHERE candidate_ID = '".$candidate_ID."' ";
+						insLog($current_login, $sql_candidate_upd);
 						$stmt_candidate_upd = $con->query($sql_candidate_upd);
 						$r_candidate = $stmt_candidate_upd->rowCount();
 						//echo "sql_candidate - ".$sql_candidate."<br/>";
@@ -489,6 +512,7 @@ else{
 								if($filedel != '') {
 									$sql_delete_file = "DELETE FROM candidate_file where file_ID='".$filedel."'";
 									//echo "sql del file".$sql_delete_file ."<br/>";
+									insLog($current_login, $sql_delete_file);
 									$stmt_delete_file = $con->query($sql_delete_file);
 								} //end filedel
 							} //end for chkFileDelete
@@ -514,6 +538,12 @@ else{
 										$sql_candidate_file="INSERT INTO candidate_file(candidate_ID, filename, filetype, size, data,create_date,update_date, update_by)";
 										$sql_candidate_file .= " VALUES ('".$candidate_ID."', '".$filename."','".$file_type."','".$file_size."','".$content."', ";
 										$sql_candidate_file .= " '".$current_date."', '".$current_date."','".$current_login."')";
+										
+										$sql_candidate_file_log="INSERT INTO candidate_file(candidate_ID, filename, filetype, size, data,create_date,update_date, update_by)";
+										$sql_candidate_file_log .= " VALUES ('".$candidate_ID."', '".$filename."','".$file_type."','".$file_size."','file data', ";
+										$sql_candidate_file_log .= " '".$current_date."', '".$current_date."','".$current_login."')";
+										insLog($current_login, $sql_candidate_file_log);
+										
 										$stmt_candidate_file = $con->query($sql_candidate_file);
 										//echo "sql_candidate_file = ".$sql_candidate_file."<br>";
 									}
@@ -1049,6 +1079,7 @@ else{
 									$sql_callrecord .= " '".$ddTypeEmp."', '".$txtPresentSalary."', '".$txtBonus."', '".$txtOtherIncome_notebook."', '".$txtOtherIncome_StandBy."', '".$txtOtherIncome_transportation."', '".$txtOtherIncome_ShiftWork."', '".$txtOtherIncome_OT."', ";
 									$sql_callrecord .= " '".$txtOtherIncome_Others."', '".$txtOtherIncome_Others_baht."', '".$txtBBSOfferCalculation."', '".$txtStartDateNewJob."', '".$txtExpectationSalary."', '".$txtBBSOffer."', '".$txtNote."', '".$txtCallRec_matchingNo."', ";
 									$sql_callrecord .= " '".$current_date."', '".$current_date."','".$current_login."')";
+									insLog($current_login, $sql_callrecord);
 									$stmt_callrecord = $con->query($sql_callrecord);
 									//-----------------------------------------------------------------------------end insert callrecord
 					?>
@@ -1227,6 +1258,7 @@ else{
 									$sql_invrecord .= " create_date,update_date, update_by)";
 									$sql_invrecord .= " VALUES ('".$candidate_ID."', '".trim($txtInterviewDate_ins)."', '".$txtClientID."', '".$ddPass."', '".$ddSignContract."', '".$txtContractPeriod."', '".$txtStartDate."', '".$txtNote32."', '".$txtIntvRec_matchingNo."',";
 									$sql_invrecord .= " '".$current_date."', '".$current_date."','".$current_login."')";
+									insLog($current_login, $sql_invrecord);
 									//echo "sql_invrecord - ".$sql_invrecord."<br>";
 									$stmt_invrecord = $con->query($sql_invrecord);
 									//-----------------------------------------------------------------------------end insert invrecord

@@ -26,6 +26,7 @@ function AddModule(){
 											$sql .= " create_date,update_date, update_by)";
 											$sql .= " VALUES ('".$SAP_module."', '".$SAP_moduleVal."',";
 											$sql .= " '".$current_date."', '".$current_date."','".$current_login."')";
+	insLog($current_login, $sql);
 	$stmt = $con->query($sql);									
 	$rows_res = $stmt->rowCount();
 	if ($rows_res >0)
@@ -43,6 +44,7 @@ function UpdateModule(){
 				SAP_module='".$SAP_module."', SAP_moduleVal='".$SAP_moduleVal."',
 				update_date = '".$current_date."'  , update_by = '".$current_login."' 
 				WHERE SAP_ID='".$id."'";
+	insLog($current_login, $sql);
 	$stmt_module = $con->query($sql);
 	$rows_res = $stmt_module->rowCount();
 	if ($rows_res >0)

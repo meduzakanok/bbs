@@ -90,7 +90,7 @@ if (($id=='0')||empty($id)){
 									frm = 'updcompany';
 								}
 								$.post("addupd_company.php",{id:id, client_company : client_company, client_department : client_department, client_contact:client_contact, l : "<?php echo $l ?>", frm : frm},function(datai){
-									//alert(datai);
+									alert(datai);
 									if (datai == '1'){
 										alertF('Result','<font color="green">บันทึกข้อมูลเรียบร้อยแล้ว !!</font>');
 									}

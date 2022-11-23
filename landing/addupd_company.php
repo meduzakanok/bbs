@@ -27,6 +27,7 @@ function AddCompany(){
 											$sql .= " create_date,update_date, update_by)";
 											$sql .= " VALUES ('".$client_company."', '".$client_department."','".$client_contact."',";
 											$sql .= " '".$current_date."', '".$current_date."','".$current_login."')";
+	insLog($current_login, $sql);
 	$stmt = $con->query($sql);									
 	$rows_res = $stmt->rowCount();
 	if ($rows_res >0)
@@ -44,6 +45,7 @@ function UpdateCompany(){
 				client_company='".$client_company."', client_department='".$client_department."',client_contact='".$client_contact."',
 				update_date = '".$current_date."'  , update_by = '".$current_login."' 
 				WHERE client_ID='".$id."'";
+	insLog($current_login, $sql);
 	$stmt_job = $con->query($sql);
 	$rows_res = $stmt_job->rowCount();
 	if ($rows_res >0)

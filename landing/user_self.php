@@ -86,13 +86,10 @@ if ($id > 0) {
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
 								<?php if ($login_role == 'Super'){?>
-									<li class="nav-item"><a class="nav-link" href="user.php?l=<?php echo $l?>">User List</a></li>
-									<li class="nav-item active"><a class="nav-link" href="user_self.php?l=<?php echo $l?>"><font color="#0891f8">User Profile</font></a></li>
-									<?php if ($current_login == 'admin'){?>
-										<li class="nav-item"><a class="nav-link" href="adm.php?l=<?php echo $l?>">Admin</a></li>
-									<?php }?>
+									<li class="nav-item"><a class="nav-link" href="user.php?l=<?php echo $l?>">[ User List ]</a></li>
+									<li class="nav-item active"><a class="nav-link" href="user_self.php?l=<?php echo $l?>"><font color="#0891f8">[ User Profile ]</font></a></li>
 								<?php }else{?>
-									<li class="nav-item active"><a class="nav-link" href="user_self.php?l=<?php echo $l?>"><font color="#0891f8">User Profile</font></a></li>
+									<li class="nav-item active"><a class="nav-link" href="user_self.php?l=<?php echo $l?>"><font color="#0891f8">[ User Profile ]</font></a></li>
 								<?php }?>
 							</ul>
 					</div>

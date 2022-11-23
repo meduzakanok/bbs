@@ -66,6 +66,9 @@ else{
 								<li class="nav-item active"><a class="nav-link" href="jobs.php?l=<?php echo $l?>"><font color="#0891f8">[ Position ]</font></a></li>
 								<li class="nav-item"><a class="nav-link" href="admin_language.php?l=<?php echo $l?>">[ Programming Language ]</a></li>
 								<li class="nav-item"><a class="nav-link" href="admin_module.php?l=<?php echo $l?>">[ SAP Modules ]</a></li>
+								<?php if ($current_login == 'admin'){?>
+									<li class="nav-item"><a class="nav-link" href="adm.php?l=<?php echo $l?>">[ Admin ]</a></li>
+								<?php }?>
 							</ul>
 					</div>
 				</div>
