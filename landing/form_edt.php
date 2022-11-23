@@ -722,7 +722,7 @@ else{
 						</td>
 						<td style="text-align:right;">Language :&nbsp;</td>
 						<td>
-							<input class="form-control" type="text" id="txtSALange" name="txtSALange" style="width: 100%" value="<?php echo $SA_skill_txt?>">
+							<input class="form-control" type="text" id="txtSALange" name="txtSALange" style="width: 100%" value="<?php echo $SA_skill_txt?>" maxlength="500">
 						</td>
 					</tr>
 					<?php
@@ -773,7 +773,7 @@ else{
 						</td>
 						<td style="text-align:right;">Language :&nbsp;</td>
 						<td>
-							<input class="form-control" type="text" id="txtBALange" name="txtBALange" style="width: 100%" value="<?php echo $BA_skill_txt?>">
+							<input class="form-control" type="text" id="txtBALange" name="txtBALange" style="width: 100%" value="<?php echo $BA_skill_txt?>" maxlength="500">
 						</td>
 					</tr>
 					<?php
@@ -860,7 +860,7 @@ else{
 						</td>
 						<td style="text-align:right;">Language :&nbsp;</td>
 						<td>
-							<input class="form-control" type="text" id="txtProjectManagerLang" name="txtProjectManagerLang" style="width: 100%" value="<?php echo $PM_skill_txt?>">
+							<input class="form-control" type="text" id="txtProjectManagerLang" name="txtProjectManagerLang" style="width: 100%" value="<?php echo $PM_skill_txt?>" maxlength="500">
 						</td>
 					</tr>
 					<?php
@@ -890,7 +890,7 @@ else{
 						</td>
 						<td style="text-align:right;">Skill :&nbsp;</td>
 						<td colspan="3">
-							<input class="form-control" type="text" id="txtProjectAdminSkill" name="txtProjectAdminSkill" style="width: 100%" value="<?php echo $Admin_skill_txt?>">
+							<input class="form-control" type="text" id="txtProjectAdminSkill" name="txtProjectAdminSkill" style="width: 100%" value="<?php echo $Admin_skill_txt?>" maxlength="500">
 						</td>
 					</tr>
 					<?php
@@ -926,11 +926,11 @@ else{
 							<label class="lblcontainer">&nbsp;<input type="checkbox" class="checkbox label_inline lblcontainer" id="position_Other" name="chkPosition[]" value="Other" <?php echo $Other?>>&nbsp;&nbsp;Other</label>
 						</td>
 						<td>
-							<input class="form-control" type="text" name="txtPositionOther" id="txtPositionOther" style="width: 100%" value="<?php echo $Other_txt?>">
+							<input class="form-control" type="text" name="txtPositionOther" id="txtPositionOther" style="width: 100%" value="<?php echo $Other_txt?>" maxlength="100">
 						</td>
 						<td style="text-align:right;">Skill :&nbsp;</td>
 						<td colspan="3">
-							<input class="form-control" type="text" id="txtPositionOtherSkill" name="txtPositionOtherSkill" style="width: 100%" value="<?php echo $Other_skill_txt?>">
+							<input class="form-control" type="text" id="txtPositionOtherSkill" name="txtPositionOtherSkill" style="width: 100%" value="<?php echo $Other_skill_txt?>" maxlength="500">
 						</td>
 					</tr>
 					<tr>

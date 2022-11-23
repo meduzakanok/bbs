@@ -545,7 +545,7 @@ else{
 						</td>
 						<td style="text-align:right;">Language :&nbsp;</td>
 						<td>
-							<input class="form-control" type="text" id="txtSALange" name="txtSALange" style="width: 100%">
+							<input class="form-control" type="text" id="txtSALange" name="txtSALange" style="width: 100%" maxlength="500">
 						</td>
 					</tr>
 					<tr>
@@ -561,7 +561,7 @@ else{
 						</td>
 						<td style="text-align:right;">Language :&nbsp;</td>
 						<td>
-							<input class="form-control" type="text" id="txtBALange" name="txtBALange" style="width: 100%">
+							<input class="form-control" type="text" id="txtBALange" name="txtBALange" style="width: 100%" maxlength="500">
 						</td>
 					</tr>
 					<tr>
@@ -589,7 +589,7 @@ else{
 						</td>
 						<td style="text-align:right;">Language :&nbsp;</td>
 						<td>
-							<input class="form-control" type="text" id="txtProjectManagerLang" name="txtProjectManagerLang" style="width: 100%">
+							<input class="form-control" type="text" id="txtProjectManagerLang" name="txtProjectManagerLang" style="width: 100%" maxlength="500">
 						</td>
 					</tr>
 					<tr>
@@ -598,7 +598,7 @@ else{
 						</td>
 						<td style="text-align:right;">Skill :&nbsp;</td>
 						<td colspan="3">
-							<input class="form-control" type="text" id="txtProjectAdminSkill" name="txtProjectAdminSkill" style="width: 100%">
+							<input class="form-control" type="text" id="txtProjectAdminSkill" name="txtProjectAdminSkill" style="width: 100%" maxlength="500">
 						</td>
 					</tr>
 					<tr>
@@ -606,11 +606,11 @@ else{
 							<label class="lblcontainer">&nbsp;<input type="checkbox" class="checkbox label_inline lblcontainer" id="position_Other" name="chkPosition[]" value="Other">&nbsp;&nbsp;Other</label>
 						</td>
 						<td>
-							<input class="form-control" type="text" name="txtPositionOther" id="txtPositionOther" style="width: 100%">
+							<input class="form-control" type="text" name="txtPositionOther" id="txtPositionOther" style="width: 100%" maxlength="100">
 						</td>
 						<td style="text-align:right;">Skill :&nbsp;</td>
 						<td colspan="3">
-							<input class="form-control" type="text" id="txtPositionOtherSkill" name="txtPositionOtherSkill" style="width: 100%">
+							<input class="form-control" type="text" id="txtPositionOtherSkill" name="txtPositionOtherSkill" style="width: 100%" maxlength="500">
 						</td>
 					</tr>
 					<tr>
